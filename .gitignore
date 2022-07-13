@@ -1,0 +1,13 @@
+# ignore everything (dirs, files, sub-dirs, sub-files)
+/*
+# but do not ignore the .gitignore file
+!.gitignore
+
+# do not ignore fish dir (needed due to the above bullet point)
+!/Lecture 1 - Intro
+# ignore files and sub dirs in the /fish directory
+/Lecture 1 - Intro/*
+# but do not ignore the config.fish file
+!/Lecture 1 - Intro/Lecture 1-Intro.pdf
+/Lecture 1 - Intro/Interpolation.m
+!/Lecture 1 - Intro/Lecture 1-Intro.tex

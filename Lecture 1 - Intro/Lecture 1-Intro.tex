@@ -1,0 +1,202 @@
+\documentclass{beamer}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+\usepackage{tikz}
+\usetheme{default}
+%\usecolortheme{seahorse}
+\usepackage{default}
+
+  \setbeamertemplate{footline}[page number]
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{frametitle}[default][center]
+\setbeamerfont{frametitle}{shape=\scshape}
+
+\usepackage{color}
+
+{\title{\textsc{Numerical Methods-Lecture I: Outline of Course}}
+\author{Trevor Gallen}
+\date{}
+
+\begin{document}
+
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}
+\frametitle[alignment=center]{Goals}
+Aim is to teach numerical methods, give you the tools you need to write down, solve, and estimate models
+\bigskip
+\begin{enumerate}
+\item Interpolation 
+\bigskip
+\item Numerical derivatives
+\bigskip
+\item Maximization/minimization 
+\bigskip
+\begin{itemize}
+\item Deterministic, stochastic 
+\bigskip
+\item Derivative-based, derivative-free
+\bigskip
+\item Local, global
+\bigskip
+\end{itemize}
+\item Numerical integration/quadrature
+\bigskip
+\item Bellman equations 
+\bigskip
+\item Calibrate (and possibly estimate) structural models 
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle[alignment=center]{Odds \& Ends}
+\begin{enumerate}
+\item This course runs for 8 weeks, from October 21st-December 7th.\\
+\bigskip
+\item Office hours will be coordinated with the student(s)
+\bigskip
+\bigskip
+\item Contact:  tgallen [at] purdue
+\bigskip
+\item Grading:  Four homeworks, one ``paper"/model
+\bigskip
+\item Course Text:  Judd
+\bigskip
+\item Also useful:  Miranda \& Fackler
+\bigskip
+\item Various readings
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle[alignment=center]{Background on Computational}
+\begin{itemize}
+\item More and more, interesting problems have wrinkles
+\bigskip
+\item Simple examples:
+\bigskip
+\begin{itemize}
+\item Game theory (Bringing game parameters to data)
+\bigskip
+\item Industrial organization (Demand system estimation)
+\bigskip
+\item Labor economics (Household bargaining, nonlinear constraints)
+\smallskip
+\item Public economics (program participation, dynamics)
+\bigskip
+\item Macroeconomics (DSGE models of last 30 years)
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle[alignment=center]{Distinguishing characteristics}
+\begin{itemize}
+\item Explicit specifications of preferences, production, and behavior
+\smallskip
+\item Frequently, many different actors 
+\bigskip
+\item Frequently, markets clearing
+\bigskip
+\item Numerical output
+\bigskip
+\item Increasingly, dynamic
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle[alignment=center]{Great Leap Forward}
+\begin{itemize}
+\item Focus on numerical output has been great!
+\bigskip
+\begin{itemize}
+\item Complexity \only<2->{\color{red}{$\neq$ black box!!!}\color{black}}
+\bigskip
+\item No more hand waving (or less)
+\bigskip
+\item Closer link to data
+\bigskip
+\item Failure of models is feature not bug\only<3->{\color{red}{(?!)}\color{black}}
+\bigskip
+\item Real predictions
+\bigskip
+\end{itemize}
+\item But it has its costs
+\bigskip
+\begin{itemize}
+\item Complexity 
+\bigskip
+\item Death of economic intuition
+\bigskip
+\item Closed form
+\bigskip
+\item Unclear if many numerical heuristics work
+\bigskip
+\item Perhaps most importantly: black hole of time!
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle[alignment=center]{Outline of course}
+\begin{itemize}
+\item Matlab introduction
+\bigskip
+\item Bellman equations: theory
+\bigskip
+\item Bellman equations: extremely limited numerical solution
+\bigskip
+\item Numerical derivatives
+\bigskip
+\begin{itemize}
+\item Derivative-based and derivative-free
+\bigskip
+\item Local and global
+\bigskip
+\end{itemize}
+\item Maximization
+\bigskip
+\item Equation solving
+\bigskip
+\item Interpolation
+\bigskip
+\item Integration
+\bigskip
+\item Simulated methods of estimation
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle[alignment=center]{Potential Uses of concepts}
+\begin{itemize}
+\item Bellman equations: most dynamic problems
+\bigskip
+\item Numerical derivatives: maximization, equation-solving
+\bigskip
+\item Maximization: Agent problems, estimation
+\bigskip
+\item Equation solving: Solving models
+\bigskip
+\item Interpolation: Making your life easier, allowing for richer agent choice, better estimation
+\bigskip
+\item Integration: Allowing for shocks, allowing for agent heterogeneity
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle[alignment=center]{What do you want to see?}
+ What tools, models, papers, methods would you like to learn?
+\end{frame}
+
+
+
+
+
+
+\end{document}
