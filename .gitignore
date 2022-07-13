@@ -5,9 +5,17 @@
 
 # do not ignore fish dir (needed due to the above bullet point)
 !/Lecture 1 - Intro
+!/Lecture 2 - Matlab Intro
+
 # ignore files and sub dirs in the /fish directory
 /Lecture 1 - Intro/*
 # but do not ignore the config.fish file
 !/Lecture 1 - Intro/Lecture 1-Intro.pdf
-/Lecture 1 - Intro/Interpolation.m
 !/Lecture 1 - Intro/Lecture 1-Intro.tex
+!/Lecture 2 - Matlab Intro/CakeEating.m
+!/Lecture 2 - Matlab Intro/CakeGrowth.m
+!/Lecture 2 - Matlab Intro/GraphingExample.m
+!/Lecture 2 - Matlab Intro/HelenofTroy.m
+!/Lecture 2 - Matlab Intro/MatlabIntro.m
+!/Lecture 2 - Matlab Intro/SampleFunction.m
+!/Lecture 2 - Matlab Intro/VFI_intro.m
