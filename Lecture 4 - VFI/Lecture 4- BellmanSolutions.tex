@@ -1,0 +1,241 @@
+\documentclass{beamer}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+\usepackage{tikz}
+\usetheme{default}
+%\usecolortheme{seahorse}
+\usepackage{default}
+
+  \setbeamertemplate{footline}[page number]
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{frametitle}[default][center]
+\setbeamerfont{frametitle}{shape=\scshape}
+
+\usepackage{color}
+
+{\title{\textsc{Numerical Methods-Lecture IV: Bellman Equations: Solutions}}
+\author{Trevor Gallen}
+\date{}
+
+\begin{document}
+
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}
+\frametitle[alignment=center]{Preliminaries}
+\begin{itemize}
+\item We've seen the abstract concept of Bellman Equations
+\bigskip
+\item Now we'll talk about a way to solve the Bellman Equation: Value Function Iteration
+\bigskip
+\item This is as simple as it gets!
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle[alignment=center]{Value Function Iteration}
+\begin{itemize}
+\item Bellman equation:
+$$V(x)=\underset{y\in\Gamma(x)}{\max}\left\{F(x,y)+\beta V(y)\right\}$$
+\item A solution to this equation is a function $V$ for which this equation holds $\forall$ x
+\item What we'll do instead is to assume an initial $V_0$ and define $V_1$ as:
+$$V_1(x)=\underset{y\in\Gamma(x)}{\max}\left\{F(x,y)+\beta V_0(y)\right\}$$
+\item Then redefine $V_0=V_1$ and repeat
+\item Eventually, $V_1\approx V_0$
+\begin{itemize}
+\item But $V$ is typically continuous: we'll discretize it
+\item Make function continuous by connecting the dots
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\foreach \x in {1,2,...,15}{
+\begin{frame}
+\frametitle[alignment=center]{Aside: Approximating f(x) }
+\begin{figure}
+\centering
+\includegraphics[scale=0.5]{interpfig_\x.png}
+\end{figure}
+\end{frame}
+}
+
+\begin{frame}
+\frametitle[alignment=center]{Basic Steps}
+\begin{enumerate}
+\item Choose grid of states $X$ and a stopping threshold $\epsilon$
+\item Assume an initial $V_0$ for each $x\in X$
+\item For each $x\in X$, solve the problem:
+$$\underset{y\in\Gamma(x)}{\max}\left\{F(x,y)+\beta V_0(y)\right\}$$
+\item Store the solution as $V_1(x)$
+\item Redefine $V_0=V_1$
+\item Repeat steps 3-5 until $abs(V_1-V_0)<\epsilon$. 
+\item Now, for all your relevant points, the Bellman equation holds
+\item Solve the system one last time, storing the policy function
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle[alignment=center]{How do I solve the problem?}
+\begin{itemize}
+\item Step 3 requires you to solve:
+$$\underset{y\in\Gamma(x)}{\max}\left\{F(x,y)+\beta V_0(y)\right\}$$
+\item How do we do it?  
+\item How do we maximize?
+\item We'll learn good ways
+\item For now, discretize all your choices like you discretized your states
+\item Pick best choice, store utility
+\item If you allow for choices to imply states that aren't defined, interpolate linearly
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle[alignment=center]{Aside: Intuition for VFI}
+\begin{itemize}
+\item In the iteration period, all future states are the same: we don't care what happens.
+\item In a ``cake-eating" example, this means eat everything.
+\item In such a scenario, we eat all the cake: we're happier with more cake.
+\item When we iterate once more, now tomorrow is the last day on earth: we now prefer saving a little cake.
+\item When we iterate again, tomorrow's tomorrow is the last day...
+\item Because we discount, as we iterate more, whatever we do on the last day matters less and less
+\item Eventually, we're all but immortal: $\underset{t\rightarrow\infty}\lim\beta^t=0$ \uncover<2->{(really, $\underset{t\rightarrow\infty}\lim\beta^tu_2(x_t,x_{t+1})x_{t+1}=0)$}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle[alignment=center]{Let's do a concrete example}
+$$U(c_t)=\log(c_t)$$
+$$c_t+i_t=k_t^{0.7}$$
+$$k_{t+1}=0.93 k_t+i_t$$
+\begin{itemize}
+\item Discretize states
+\begin{itemize}
+\item Minimum: $\underbar{k}=0$
+\item Maximum: $\bar{k}=0.93 \bar{k}+\bar{k}^{0.7}\Rightarrow \bar{k}=7075$
+\item Choose 10 possible steps
+\end{itemize}
+\item Allow choice of feasible discrete $k$
+\item Choose best, store it.
+\item Repeat
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle[alignment=center]{Solving in Matlab}
+\scriptsize
+\texttt{alpha = 0.7;}\\
+\texttt{delta = 0.07;}\\
+\texttt{k\_min = 0;}\\
+\texttt{k\_max = 7075;}\\
+\texttt{k\_num = 10;}\\
+\texttt{k\_space = linspace(k\_min,k\_max,k\_num);}\\
+\texttt{V\_1 = 0.*k\_space;}\\
+\texttt{V\_0 = V\_1;}\\
+\texttt{error = Inf;}\\
+\texttt{while error > 1e-10}\\
+\ \ \ \texttt{for k\_index = 1:k\_num}\\
+\ \ \ \ \texttt{k = k\_space(k\_index);}\\
+\ \ \ \ \texttt{kchoice\_index = find(k\_space $<$ 0.93k+k.\string^0.7);}\\
+\ \ \ \ \texttt{k\_choices = k\_space(kchoice\_index);}\\
+\ \ \ \ \texttt{c\_choices = 0.93*k+k.\string^0.7-k\_choices;}\\
+\ \ \ \ \texttt{utility = log(c\_choices) + beta V\_0(find(kchoice\_index));}\\
+\ \ \ \ \texttt{[V,ind] = max(utility);}\\
+\ \ \ \ \texttt{V\_1(k\_index) = V;}\\
+\ \ \ \ \texttt{k\_best(k\_index) = k\_choices(ind);}\\
+\ \ \ \ \texttt{end}\\
+\ \ \texttt{error = max(abs(V\_1-V\_0))}\\
+\texttt{end}
+\end{frame}
+
+
+%\begin{frame}
+%\frametitle[alignment=center]{ What are we doing?}
+%\begin{itemize}
+%\begin{figure}
+%\centering
+%\includegraphics{VFI_Simple_1.png}
+%\end{figure}
+%\end{itemize}
+%\end{frame}
+
+%\begin{frame}
+%\frametitle[alignment=center]{ What are we doing?}
+%\begin{itemize}
+%\begin{figure}
+%\centering
+%\includegraphics{VFI_Simple_2.png}
+%\end{figure}
+%\end{itemize}
+%\end{frame}
+
+%\begin{frame}
+%\frametitle[alignment=center]{ What are we doing?}
+%\begin{itemize}
+%\begin{figure}
+%\centering
+%\includegraphics{VFI_Simple_3.png}
+%\end{figure}
+%\end{itemize}
+%\end{frame}
+
+%\begin{frame}
+%\frametitle[alignment=center]{ What are we doing?}
+%\begin{itemize}
+%\begin{figure}
+%\centering
+%\includegraphics{VFI_Simple_4.png}
+%\end{figure}
+%\end{itemize}
+%\end{frame}
+
+%\begin{frame}
+%\frametitle[alignment=center]{ What are we doing?}
+%\begin{itemize}
+%\begin{figure}
+%\centering
+%\includegraphics{VFI_Simple_5.png}
+%\end{figure}
+%\end{itemize}
+%\end{frame}
+
+
+\begin{frame}
+\frametitle[alignment=center]{Simulating in Matlab}
+\scriptsize
+\texttt{num\_i = k\_num}\\
+\texttt{num\_t = 50;}\\
+\texttt{k\_sim = NaN(num\_i,num\_t);}\\
+\texttt{k\_sim(:,1) = NaN(num\_i,num\_t);}\\
+\texttt{for i = 1:num\_i}\\
+\texttt{for t = 1:num\_t}\\
+\texttt{k\_sim(i,t+1) = k\_best(find(k\_space)==k\_sim(i,t))}\\
+\texttt{end}
+\texttt{end}
+\end{frame}
+
+%\begin{frame}
+%\frametitle[alignment=center]{ What are we doing?}
+%\begin{itemize}
+%\begin{figure}
+%\centering
+%\includegraphics{VFI_Simple_Sim_1.png}
+%\end{figure}
+%\end{itemize}
+%\end{frame}
+
+%\begin{frame}
+%\frametitle[alignment=center]{ What are we doing?}
+%\begin{itemize}
+%\begin{figure}
+%\centering
+%\includegraphics{VFI_Simple_Sim_2.png}
+%\end{figure}
+%\end{itemize}
+%\end{frame}
+
+
+\end{document}

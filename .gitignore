@@ -7,11 +7,13 @@
 !/Lecture 1 - Intro
 !/Lecture 2 - Matlab Intro
 !/Lecture 3 - Bellman Theory
+!/Lecture 4 - VFI
 
 # ignore files and sub dirs in the /fish directory
 /Lecture 1 - Intro/*
 /Lecture 2 - Matlab Intro/*
 /Lecture 3 - Bellman Theory/*
+/Lecture 4 - VFI/*
 
 # but do not ignore the config.fish file
 !/Lecture 1 - Intro/Lecture 1-Intro.pdf
@@ -27,3 +29,11 @@
 
 !/Lecture 3 - Bellman Theory/Lecture-3-BellmanEquationsTheory.tex
 !/Lecture 3 - Bellman Theory/Lecture-3-BellmanEquationsTheory.pdf
+
+!/Lecture 4 - VFI/interpfig_*.png
+!/Lecture 4 - VFI/Lecture 4- BellmanSolutions.tex
+!/Lecture 4 - VFI/Lecture 4- BellmanSolutions.pdf
+!/Lecture 4 - VFI/*.m
+
+
+
