@@ -9,6 +9,7 @@
 !/Lecture 3 - Bellman Theory
 !/Lecture 4 - VFI
 !/Lecture 5 - Newton's Method
+!/Lecture 6 - Newton's Method Applied
 
 # ignore files and sub dirs in the /fish directory
 /Lecture 1 - Intro/*
@@ -16,6 +17,7 @@
 /Lecture 3 - Bellman Theory/*
 /Lecture 4 - VFI/*
 /Lecture 5 - Newton's Method/*
+/Lecture 6 - Newton's Method Applied/*
 
 # but do not ignore the config.fish file
 !/Lecture 1 - Intro/Lecture 1-Intro.pdf
@@ -41,3 +43,9 @@
 !/Lecture 5 - Newton's Method/Lecture 5- NewtonsMethod.tex
 !/Lecture 5 - Newton's Method/*.png
 !/Lecture 5 - Newton's Method/*.nb
+
+!/Lecture 6 - Newton's Method Applied/*.m
+!/Lecture 6 - Newton's Method Applied/*.pdf
+!/Lecture 6 - Newton's Method Applied/*.tex
+!/Lecture 6 - Newton's Method Applied/*.png
+
