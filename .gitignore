@@ -8,12 +8,14 @@
 !/Lecture 2 - Matlab Intro
 !/Lecture 3 - Bellman Theory
 !/Lecture 4 - VFI
+!/Lecture 5 - Newton's Method
 
 # ignore files and sub dirs in the /fish directory
 /Lecture 1 - Intro/*
 /Lecture 2 - Matlab Intro/*
 /Lecture 3 - Bellman Theory/*
 /Lecture 4 - VFI/*
+/Lecture 5 - Newton's Method/*
 
 # but do not ignore the config.fish file
 !/Lecture 1 - Intro/Lecture 1-Intro.pdf
@@ -35,5 +37,7 @@
 !/Lecture 4 - VFI/Lecture 4- BellmanSolutions.pdf
 !/Lecture 4 - VFI/*.m
 
-
-
+!/Lecture 5 - Newton's Method/Lecture 5- NewtonsMethod.pdf
+!/Lecture 5 - Newton's Method/Lecture 5- NewtonsMethod.tex
+!/Lecture 5 - Newton's Method/*.png
+!/Lecture 5 - Newton's Method/*.nb
