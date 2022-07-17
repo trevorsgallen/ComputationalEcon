@@ -10,6 +10,8 @@
 !/Lecture 4 - VFI
 !/Lecture 5 - Newton's Method
 !/Lecture 6 - Newton's Method Applied
+!/Lecture 7 - Other Methods
+!/Lecture 8 - Interpolation
 
 # ignore files and sub dirs in the /fish directory
 /Lecture 1 - Intro/*
@@ -18,6 +20,8 @@
 /Lecture 4 - VFI/*
 /Lecture 5 - Newton's Method/*
 /Lecture 6 - Newton's Method Applied/*
+/Lecture 7 - Other Methods/*
+/Lecture 8 - Interpolation/*
 
 # but do not ignore the config.fish file
 !/Lecture 1 - Intro/Lecture 1-Intro.pdf
@@ -48,4 +52,14 @@
 !/Lecture 6 - Newton's Method Applied/*.pdf
 !/Lecture 6 - Newton's Method Applied/*.tex
 !/Lecture 6 - Newton's Method Applied/*.png
+
+!/Lecture 7 - Other Methods/*.png
+!/Lecture 7 - Other Methods/*.m
+!/Lecture 7 - Other Methods/*.tex
+!/Lecture 7 - Other Methods/*.pdf
+
+!/Lecture 8 - Interpolation/*.m
+!/Lecture 8 - Interpolation/*.png
+!/Lecture 8 - Interpolation/*.tex
+!/Lecture 8 - Interpolation/*.pdf
 
