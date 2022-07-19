@@ -13,6 +13,7 @@
 !/Lecture 7 - Other Methods
 !/Lecture 8 - Interpolation
 !/Lecture 9 - Quadrature
+!/Lecture 10 - Sargent Ljungqvist
 
 # ignore files and sub dirs in the /fish directory
 /Lecture 1 - Intro/*
@@ -24,6 +25,7 @@
 /Lecture 7 - Other Methods/*
 /Lecture 8 - Interpolation/*
 /Lecture 9 - Quadrature/*
+/Lecture 10 - Sargent Ljungqvist/*
 
 # but do not ignore the config.fish file
 !/Lecture 1 - Intro/Lecture 1-Intro.pdf
@@ -70,4 +72,7 @@
 !/Lecture 9 - Quadrature/*.pdf
 !/Lecture 9 - Quadrature/*.tex
 
+!/Lecture 10 - Sargent Ljungqvist/*.tex
+!/Lecture 10 - Sargent Ljungqvist/*.pdf
+!/Lecture 10 - Sargent Ljungqvist/*.m
 
