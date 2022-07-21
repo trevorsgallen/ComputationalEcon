@@ -16,6 +16,7 @@
 !/Lecture 10 - Sargent Ljungqvist
 !/Lecture 11 - NCG
 !/Lecture 11 - NCG/NCG Code
+!/Lecture 12 - CGE
 
 # ignore files and sub dirs in the /fish directory
 /Lecture 1 - Intro/*
@@ -30,6 +31,7 @@
 /Lecture 10 - Sargent Ljungqvist/*
 /Lecture 11 - NCG/*
 /Lecture 11 - NCG/NCG Code/*
+/Lecture 12 - CGE/*
 
 # but do not ignore the config.fish file
 !/Lecture 1 - Intro/Lecture 1-Intro.pdf
@@ -85,4 +87,9 @@
 !/Lecture 11 - NCG/*.pdf
 !/Lecture 11 - NCG/*.tex
 !/Lecture 11 - NCG/*.png
+
+!/Lecture 12 - CGE/*.xlsx
+!/Lecture 12 - CGE/*.png
+!/Lecture 12 - CGE/*.pdf
+!/Lecture 12 - CGE/*.tex
 
