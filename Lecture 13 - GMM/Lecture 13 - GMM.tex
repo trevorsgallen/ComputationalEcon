@@ -1,0 +1,339 @@
+\documentclass{beamer}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+\usepackage{tikz}
+\usetheme{default}
+%\usecolortheme{seahorse}
+\usepackage{default}
+  \setbeamertemplate{footline}[page number]
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{frametitle}[default][center]
+\setbeamerfont{frametitle}{shape=\scshape}
+
+\usepackage{xcolor}
+
+\usepackage[flushleft]{threeparttable}
+
+{\title{\textsc{Numerical Methods-Lecture XIII: \\
+A Practical Discussion of GMM/MSM} \\ \tiny (or; How to Estimate a Structural Model)}
+\date{}
+\author{Trevor Gallen}
+
+\begin{document}
+\renewcommand*{\inserttotalframenumber}{\pageref{lastframe}}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+
+\section{Introduction}
+\subsection{Introduction}
+\begin{frame}
+\frametitle{Introduction}
+\begin{itemize}
+\item We will play fast and loose with the term ``GMM"
+\bigskip
+\item Much of the time I just mean a ``minimum distance" estimator
+\bigskip
+\item That said, GMM is the best
+\bigskip
+\item A way to ``calibrate" or estimate your model
+\bigskip
+\item Take your model seriously and have it interact with the data
+\bigskip
+\item Don't have to target entire distribution: require your model to say something without saying everything
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{GMM}
+\begin{itemize}
+\item First, forget everything you know.
+\bigskip
+\item In most uses, GMM is making your fit look like the data, just like least squares
+\bigskip
+\item Only difference is the moment conditions
+\bigskip
+\item Let's do an extremely transparent example (!?)
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Example: Setup}
+\begin{itemize}
+\item Agents like Medicaid, private health insurance, and consumption
+$$U_i(m_i,p_i,c_i)=\log(c_i)+\psi_{1,i}m_i+\psi_{2,i}p_i$$
+Where they have the budget constraint:
+$$Inc_i=c_i+P_pp_i+P_mm_i$$
+And where:
+$$\left[\begin{array}{c}\psi_{1,i}\\\psi_{2,i}\end{array}\right]\sim\mathcal{N}\left(\left[\begin{array}{c}0\\0\end{array}\right],\left[\begin{array}{cc}\sigma_{\psi_1}^2 & \sigma_{\psi_1\psi_2}^2 \\ \sigma_{\psi_1\psi_2}^2 & \sigma_{\psi_2}^2 \end{array}\right]\right)$$
+$$Inc_i\sim\log\mathcal{N}(\mu_{Inc},\sigma^2_{Inc})$$
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Example: Estimation Procedure}
+\begin{enumerate}
+\item Extract moments from ``true dataset."
+\item Assume a set of parameters.  
+\item With parameters, solve agent's policy functions.
+\item With policy functions, simulate dataset.  
+\item Compare simulated parameters to true parameters.  
+\item Take weighted sum of squared differences.
+\item With a new set of parameters, start back at 3
+\item Continue until your simulated parameters are as close as can be
+\end{enumerate}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Example: Identification}
+\begin{itemize}
+\item It's worth thinking about how we identify preferences
+\bigskip
+\item We'll identify based off behavior: what people actually do
+\bigskip
+\item Moreover, we assume they maximize, so take FOC's/maximize
+\bigskip
+\item In this case, maximize.
+\bigskip
+\item Want to estimate \textbf{distributions} of $\psi_1$, $\psi_2$, $\psi_3$, $\sigma$
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Example: Estimation Moments}
+\begin{itemize}
+\item How do you choose moments?
+\bigskip
+\item I choose (haphazardly):
+\begin{enumerate}
+\item Proportion of households that have no insurance
+\item Proportion of households with only one medicaid contract
+\item Proportion of households with 1 medicaid contract that have at least one private insurance contract
+\item Average level of consumption (3)
+\item Standard deviation of consumption ()
+\item Conditional on having any insurance, mean consumption
+\item Conditional on having any insurance, standard deviation of consumption
+\item Proportion of households that have more than 5 contracts
+\item Correlation of m and p
+\item Correlation of m and c
+\item Correlation of c and p
+\end{enumerate}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Example: Estimation Moments}
+\begin{itemize}
+\item The core of GMM here is, after creating the simulated population:
+ $$f(\Theta)=\left[\begin{array}{c}\left[length(find(best\_m==0 \& best\_p == 0))./num \right] \\ \left[length(find(best\_m==1))./num\right] \\  \vdots \\ \left[mean(best\_c(find(best\_m+best\_p>0)))\right] \end{array}\right]$$
+ \item And, with moment(:,1) holding the simulated moments and moment(:,2) holding the targets,
+ $$error = sum((moment(:,1)-moment(:,2)).^2)$$
+ \end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Example: Estimation Moments}
+See Main.m and Estimation.m (and Data.m for the ``true" data generating process!)
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Okay...I think I get it(?)}
+\begin{itemize}
+\item<2-> Do you?
+\bigskip
+\item<3->  Also see a general equilibrium version of firm taxation in separate files Main.m and Estimator.m
+\bigskip
+\item<3-> I still don't get the notation and the optimal part...
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{A little on notation}
+\begin{itemize}
+\item You normally see GMM written like:
+$$\beta_N=\arg\underset{\beta\in\mathbb{P}}{\min}g_N(\beta)'Wg_N(\beta)$$
+\item Where $g_N(\beta) = \frac{1}{N}\sum_{i=1}^Nf(x_t,\beta)$, where your moment condition is: $E_t(f(x_t,\beta))=0$
+\bigskip
+\item Let $ME_1$ stand for ``Moment error 1", then $g_N(\beta)'Wg_N(\beta)$ is really just:
+$$\left[\begin{array}{c}ME_1 \\ ME_2 \\ ME_3 \\ \vdots \\ ME_r\end{array}\right]\left[\begin{array}{ccccc}1 & 0 & 0 & \cdots & 0 \\ 0 & 1 & 0 & \cdots & 0  \\ 0 & 0 & 1 & \cdots & 0 \\ \vdots & \vdots & \vdots & \ddots & 
+\vdots \\ 0 & 0 & 0 & \cdots & 1\end{array}\right]\left[\begin{array}{ccccc}ME_1 & ME_2 & ME_3 & \cdots & ME_r\end{array}\right]$$
+\item Note that because of how I wrote the weighting matrix, this is just the sum of squared errors:
+$$ME_1^2+ME_2^2+ME_3^2+...+ME_r^2$$
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{A little on the best choice of W}
+\begin{itemize}
+\item You'll note that some of my moment choices are pretty correlated
+\item With this weighting, you give one data concept multiple weights
+\item But let's now take the variance-covariance matrix of our moments:
+$$V=\left(\left[\begin{array}{c}ME_1 \\ ME_2 \\ ME_3 \\ \cdots \\ ME_r\end{array}\right]\left[\begin{array}{ccccc}ME_1 & ME_2 & ME_3 & \cdots & ME_r\end{array}\right]\right)$$
+(Or, with many data points the sample mean of the same thing)
+\item Then use $V$ as your new $W$
+\item What is this doing?
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{A little on the best choice of W}
+\begin{itemize}
+\item This is just weighted least squares
+\bigskip
+\item But more numerically, what $V$ is getting at is the information in a given moment condition
+\bigskip
+\item Every moment is saying something about your $\theta$'s
+\bigskip
+\item What the weighting matrix does is listens more to:
+\begin{itemize}
+\item Moments that are more consistent (not a lot of noise)
+\item Moments that move a lot for small deviations of $\theta$
+\end{itemize}
+\item That second is particularly interesting, and should a bit like the information matrix?
+\item When your model blows up with small changes in the parameter, it means the parameter is very precisely pinned down
+\item Good and bad, bad and good.
+\item From a practical standpoint, $W=I$ with slight tweaks for moments of different absolute magnitude gets you pretty far
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Calibration vs. Estimation}
+\begin{itemize}
+\item Fundamentally, model uncertainty about parameters comes from sensitivity
+\smallskip
+\item If changing a parameter a little doesn't harm your fit, then you don't really know what it is (or your data/model doesn't)
+\smallskip
+\item This may help the information matrix's relation to standard errors make sense to you!  
+\smallskip 
+\item<2-> It also makes clear that robustness checks are doing the same thing!
+\smallskip
+\item<3-> It's the \textbf{\emph{change}} in your score.
+\smallskip
+\item<4-> For whatever reason, it's relatively rare to report standard errors when you don't touch microdata
+\smallskip
+\item<4->  More typically, you see ``calibration" and ``robustness" rather than ``estimation" and ``standard errors."
+\smallskip
+\item<4->  ``Estimation is when you care about your standard errors."
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Second, Firm-Size Model}
+\begin{itemize}
+\item Sometimes firm size triggers big taxes
+\bigskip
+\item Examples: ACA, France
+\bigskip
+\item What should happen?
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Second, Firm-Size Model}
+\begin{itemize}
+\item Many firms, with production function:
+$$Y_i=A_iL_i^\alpha$$
+\item And profit function:
+$$\pi_i=Y_i-wL_i(1-\tau_i)$$
+\item $$\tau_i=\begin{cases} 0 & \text{if $L_i<\bar{L}$} \\ \overline{\tau} & \text{o.w.}\end{cases}$$
+\item Many households with utility:
+$$u(w,L)=wL-0.001(wL)^2+\psi(1-L)$$
+\item Supply and demand must hold:
+$$\sum_{h\in \{HH\}}L_h=\sum_{f\in\{F\}}L_F$$\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Second, Firm-Size Model}
+\begin{itemize}
+\item Match model to data on:
+\begin{enumerate}
+\item Proportion of firms smaller than 1
+\item Between 1 and 2
+\item Between 3 and 4
+\item At the size cutoff
+\item Mean firm size
+\item Proportion of households providing $<$0.35 labor
+\item Proportion of households providing between 0.35 and 0.6 labor
+\item Proportion of households providing less than 0.1 labor
+\item Mean amount of labor supplied
+\end{enumerate}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Final Point on SMM/MSM and GMM}
+\begin{itemize}
+\item Let $g(Y_t,\theta)$ be something that relates data and parameters of interest and equals zero
+\bigskip
+\item Normally: $$outcome^{model}(\theta|X_i)-outcome^{data}(X_i)=0$$
+\item In simulated: $$\frac{1}{S}\sum_{s=1}^{S}outcome_s^{simmodel}(\theta|X_i)-outcome^{data}(X_i)=0$$
+\item I.e. the ``definite" model becomes uncertain as well--simulate until the mean isn't uncertain anymore, can treat as regular GMM, as if you knew the closed form outcome
+\end{itemize}
+\end{frame}
+
+
+%\begin{frame}
+%\frametitle{Example: Setup}
+%\begin{itemize}
+%\item Agents choose how much to work and whether or not to be in program, with utility:
+%$$U(H,P_1)=\alpha H+\beta_{HH}H^2-\psi P_1-\gamma P_1 H$$
+%\item Notice that the two decisions are joint.
+%\bigskip
+%\item Let $H\in(0,\infty)$, $P_1\in\{0,1\}$.
+%\bigskip
+%\item Let's take our model seriously and estimate the parameters $\alpha$, $\beta$, $\psi$, $\gamma$
+%\bigskip
+%\item Need data on the joint distribution of $H$ and $P_1$
+%\end{itemize}
+%\end{frame}
+
+%\begin{frame}
+%\frametitle{Example: Setup}
+%\begin{itemize}
+%\item Agents choose which two programs to be in:
+%$$U(P_1,P_2) = \psi_1P_1  + \psi_2 P_2 X_1 + \psi_3  P_1P_2 X_2$$
+%Where $X$ is some data that varies over people that makes them like/dislike program 2 more.  We will have four choices each with different idiosyncratic utility:
+%$$U_i = U(P_{1,i},P_{2,i})+\epsilon_i,\ \ \ \ \epsilon_i\sim\mathcal{N}(0,\sigma^2)$$
+%\item Compare four different options, normalizing to the first:
+%$$\begin{array}{lccc}
+%Choice & P_1 & P_2 & Utility \\
+%1 & 0 & 0 & 0 \\
+%2 & \psi_1 & 0 & \psi_1+\epsilon_2 \\
+%3 & 0 & \psi_2 & \psi_2+\epsilon_3\\
+%4 & \psi_1 & \psi_2 & \psi_1+\psi_2+\psi_3+\epsilon_4\\
+%\end{array}$$
+%\end{itemize}
+%\end{frame}
+
+%\begin{frame}
+%\frametitle{Example: ``Data"}
+%$$\begin{array}{lcccc}
+%\text{Individual} & X_1 & X_2 & \text{Participation Choice} \\
+% 1 &       2.6883  &     -1.0248       &      4\\
+% 2 &       9.1694    &  -0.62072      &       3\\
+% 3 &      -11.294    &    7.4485     &        2\\
+% 4 &       4.3109     &   7.0452     &        3\\
+% 5 &       1.5938     &    7.086      &       3\\
+% 6 &      -6.5384    &    3.3575    &         1\\
+% 7 &       -2.168    &   -6.0374     &        2\\
+% 8 &       1.7131    &    3.5862     &        4\\
+%  9 &      17.892    &    8.1512     &        4\\
+%  10 &      13.847   &     2.4445   &          3\\
+%  11 &     -6.7494   &     5.1735   &         2\\
+%  12 &      15.175   &     3.6344    &         4\\
+% 13 &        3.627    &   -1.5172     &        4\\
+% 14 &     -0.31527  &      1.4694   &          3\\
+% 15 &       3.5737  &     -3.9364    &         4\\
+% \end{array}$$
+%\end{frame}
+
+\end{document}

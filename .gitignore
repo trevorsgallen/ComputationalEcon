@@ -17,6 +17,8 @@
 !/Lecture 11 - NCG
 !/Lecture 11 - NCG/NCG Code
 !/Lecture 12 - CGE
+!/Lecture 13 - GMM
+!/Lecture 13 - GMM/FittingFirmSize
 
 # ignore files and sub dirs in the /fish directory
 /Lecture 1 - Intro/*
@@ -32,6 +34,8 @@
 /Lecture 11 - NCG/*
 /Lecture 11 - NCG/NCG Code/*
 /Lecture 12 - CGE/*
+/Lecture 13 - GMM/*
+/Lecture 13 - GMM/FittingFirmSize/*
 
 # but do not ignore the config.fish file
 !/Lecture 1 - Intro/Lecture 1-Intro.pdf
@@ -92,4 +96,10 @@
 !/Lecture 12 - CGE/*.png
 !/Lecture 12 - CGE/*.pdf
 !/Lecture 12 - CGE/*.tex
+
+!/Lecture 13 - GMM/*.tex
+!/Lecture 13 - GMM/*.pdf
+!/Lecture 13 - GMM/*.m
+!/Lecture 13 - GMM/*.mat
+!/Lecture 13 - GMM/FittingFirmSize/*.m
 
