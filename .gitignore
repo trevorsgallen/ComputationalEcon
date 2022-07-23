@@ -19,6 +19,7 @@
 !/Lecture 12 - CGE
 !/Lecture 13 - GMM
 !/Lecture 13 - GMM/FittingFirmSize
+!/Lecture 14 - Simulation Estimation
 
 # ignore files and sub dirs in the /fish directory
 /Lecture 1 - Intro/*
@@ -36,6 +37,7 @@
 /Lecture 12 - CGE/*
 /Lecture 13 - GMM/*
 /Lecture 13 - GMM/FittingFirmSize/*
+/Lecture 14 - Simulation Estimation/*
 
 # but do not ignore the config.fish file
 !/Lecture 1 - Intro/Lecture 1-Intro.pdf
@@ -105,3 +107,7 @@
 !/Lecture 13 - GMM/FittingFirmSize/
 !/Lecture 13 - GMM/FittingFirmSize/*.m
 
+!/Lecture 14 - Simulation Estimation/*.m
+!/Lecture 14 - Simulation Estimation/*.png
+!/Lecture 14 - Simulation Estimation/*.tex
+!/Lecture 14 - Simulation Estimation/*.pdf
