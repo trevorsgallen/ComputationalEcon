@@ -1,0 +1,97 @@
+\begin{frame}
+\frametitle[alignment=center]{A simple filter}
+\begin{itemize}
+\item Let's say that you're interested in the value of $x_t$
+\bigskip
+\item You only observe:
+$$y_t=x_t+\epsilon_t$$
+or:
+$$y_t\sim\mathcal{N}(x_t,\sigma_y^2)$$
+\bigskip
+\item Finally, you know that:
+$$x_{t+1}= x_{t}+\epsilon_x\ \ \ \ \ \epsilon_x\sim\mathcal{N}(0,\sigma_x^2)$$
+Or:
+$$x_{t+1}|x_t\sim\mathcal{N}\left( x_{t},\sigma_x^2\right)$$
+\end{itemize}
+\end{frame}
+
+%\begin{frame}
+%\frametitle[alignment=center]{Example}
+%\begin{itemize}
+%\item Simple law of motion:
+%$$x_{t+1}=\rho x_t+\nu_t\ \ \ \ \nu_t\sim\mathcal{N}\left(0,\sigma_x^2\right)$$
+%\bigskip
+%\item Call your belief about $x_t$ $\hat{x}_t$.  
+%$$\hat{x}_t\sim\mathcal{N}\left(\hat{x}_t,\sigma_{\hat{x}}\right)$$
+%\item Then we can use Bayes rule to update
+%\end{itemize}
+%\end{frame}
+
+%\begin{frame}
+%\frametitle[alignment=center]{Predicting where you'll be, given two kinds of uncertainty}
+%\begin{itemize}
+%\item Prior beliefs about $x_t$: $f(x_t|y_t)$
+%\item Can predict evolution of beliefs using law of motion, which encompasses both movement noise and inaccuracy:
+%$$\underbrace{f(x_{t+1}|y_t)}_{\text{Beliefs about tomorrow, today}}=\int_{x_{t}}\underbrace{f(x_{t+1}|x_t)}_{\substack{\text{Possible movement,} \\ \text{given I know $x_t$}}}\underbrace{f(x_t|y_t)}_{\substack{\text{Places where} \\ \text{$x_t$ could be}}}dx_t$$
+%\item These are our new beliefs, before we observe any information
+%\item Then, update using new information!
+%\end{itemize}
+%\end{frame}
+
+\begin{frame}
+\frametitle[alignment=center]{Updating with new information}
+\begin{itemize}
+\item We wake up in period $t+1$ and have some prior belief about $x_{t+1}$ $(f(x_{t+1}|y_t)$
+\bigskip
+\item View data, update priors:
+$$f(x_{t+1}|y_{t+1})\propto f(x_{t+1}|y_t)f(y_{t+1}|x_{t+1})$$
+\item Once we have, this, we have our beliefs about the current period's position
+\bigskip
+\item Predict, observe and update.  Predict, observe and update.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle[alignment=center]{Updating a normal distribution}
+\begin{itemize}
+\item Let:  $f_1(x|\mu_1,\sigma_1^2)$, $f_2(x|\mu_2,\sigma_2^2)$ be normal.  Let $f(x|\mu,\sigma^2)$ be their product.
+\scriptsize
+\begin{align*}f(x|\mu,\sigma) & =\left(\frac{1}{\sqrt{2\pi\sigma_1^2}}\exp\left(-\frac{(x-\mu_1)^2}{2\sigma_1^2}\right)\right)\left(\frac{1}{\sqrt{2\pi\sigma_2^2}}\exp\left(-\frac{(x-\mu_2)^2}{2\sigma_2^2}\right)\right) \\
+ & \propto \left(\frac{1}{\sqrt{2\pi\sigma_1^2\sigma_2^2}}\exp\left(-\left(\frac{(x-\mu_1)^2}{2\sigma_1^2}+\frac{(x-\mu_2)^2}{2\sigma_2^2}\right)\right)\right)\\
+  & \propto \left(\frac{1}{\sqrt{2\pi\sigma^2}}\exp\left(-\left(\frac{(x-\mu)^2}{2\sigma^2}\right)\right)\right) \end{align*}
+  Where:
+  $$\mu=\frac{\mu_1\sigma_2^2+\mu_2\sigma_1^2}{\sigma_1^2+\sigma_2^2}\ \ \ \ \ \ \sigma^2=\frac{\sigma_1^2\sigma_2^2}{\sigma_1^2+\sigma_2^2}$$
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle[alignment=center]{The Kalman Filter}
+\begin{itemize}
+\item Step 1: We have prior beliefs
+$$x_t|y_t\sim\mathcal{N}\left(\mu_{\hat{x}_t},\sigma_{\hat{x}_t}^2\right)$$
+\bigskip
+\item We predict what will happen:
+$$x_{t+1}|y_t\sim\mathcal{N}\left(\mu_{\hat{x}_t},\sigma_{\hat{x}_t}^2+\sigma_{x}^2\right)$$
+\item We observe and update:
+$$(x_{t+1}|y_{t+1})\sim\mathcal{N}\left(\frac{\mu_{\hat{x}_t}\sigma_x^2+y_t\sigma_y^2}{\sigma_y^2+\sigma_x^2},\frac{\sigma_y^2\sigma_x^2}{\sigma_y^2+\sigma_x^2}\right)$$
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+We are given the equations:
+$$X_{t+1}=AX_t+BW_{t+1}$$
+$$Y_{t+1}-Y_t=H+DX_t+FW_{t+1}$$
+
+\begin{enumerate}
+\item The joint distribution of $X_{t+1},Y_{t+1}-Y_t$ is:
+$$\left[\begin{array}{c} X_{t+1} \\ Y_{t+1}-Y_t \end{array}\right]\sim\mathcal{N}\left(\left[\begin{array}{c}A \\ D\end{array}\right]X_t,\left[\begin{array}{c}B \\ F\end{array}\right]\left[\begin{array}{cc}B' & F'\end{array}\right]\right)$$
+\item If we know $Q_t$, then our distribution for both variables is:
+$$\left[\begin{array}{c} X_{t+1} \\ Y_{t+1}-Y_t \end{array}\right]\sim\mathcal{N}\left(\left[\begin{array}{c}0 \\ H\end{array}\right]+\left[\begin{array}{c}A \\ D\end{array}\right]\bar{X}_t,\left[\begin{array}{c}A \\ D\end{array}\right]\Sigma_t\left[\begin{array}{cc} A' & D' \end{array}\right]+\left[\begin{array}{c}B \\ F\end{array}\right]\left[\begin{array}{cc}B' & F'\end{array}\right]\right)$$
+\item The density of $X_{t+1}$ conditional on $Y_{t+1}-Y_t$ and $Q_t$ is found by dividing the joint distribution of the two variables by the marginal density of $Y_{t+1}-Y_t$ conditioned on $Q_t$.  This is a least squares!
+$$E[(X_{t+1}-A\bar{X}_t)|Y_{t+1}-Y_t-H-D\bar{X}_t,Q_t]=\mathcal{\kappa}(\Sigma_t)(Y_{t+1}-H-D\bar{X}_t)$$
+where the kalman gain $\mathcal{\kappa}(\Sigma_t)$ is $(A\Sigma_t D'+BF')(D\Sigma_tD'+FF')^{-1}$.
+\item Then we have an update on our $\Sigma_t$:
+$$\Sigma_{t+1}=A\Sigma_tA'+BB'-(A\Sigma_tD'+BF')(D\Sigma_tD'+FF')^{-1}(D'\Sigma_tA+F'B)$$
+\end{enumerate}
+\end{frame}

@@ -21,6 +21,7 @@
 !/Lecture 13 - GMM/FittingFirmSize
 !/Lecture 14 - Simulation Estimation
 !/Lecture 15 - Dynamic Discrete Choice Estimation
+!/Lecture 16 - MCMC
 
 # ignore files and sub dirs in the /fish directory
 /Lecture 1 - Intro/*
@@ -40,6 +41,7 @@
 /Lecture 13 - GMM/FittingFirmSize/*
 /Lecture 14 - Simulation Estimation/*
 /Lecture 15 - Dynamic Discrete Choice Estimation/*
+/Lecture 16 - MCMC/*
 
 # but do not ignore the config.fish file
 !/Lecture 1 - Intro/Lecture 1-Intro.pdf
@@ -118,3 +120,9 @@
 !/Lecture 15 - Dynamic Discrete Choice Estimation/*.pdf
 !/Lecture 15 - Dynamic Discrete Choice Estimation/*.tex
 !/Lecture 15 - Dynamic Discrete Choice Estimation/*.png
+
+!/Lecture 16 - MCMC/*.m
+!/Lecture 16 - MCMC/*.pdf
+!/Lecture 16 - MCMC/*.tex
+!/Lecture 16 - MCMC/*.png
+
