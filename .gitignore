@@ -23,6 +23,7 @@
 !/Lecture 15 - Dynamic Discrete Choice Estimation
 !/Lecture 16 - MCMC
 !/Lecture 17 - Likelihoods and Filtering
+!/Homework 1
 
 # ignore files and sub dirs in the /fish directory
 /Lecture 1 - Intro/*
@@ -44,6 +45,7 @@
 /Lecture 15 - Dynamic Discrete Choice Estimation/*
 /Lecture 16 - MCMC/*
 /Lecture 17 - Likelihoods and Filtering/*
+/Homework 1/*
 
 # but do not ignore the config.fish file
 !/Lecture 1 - Intro/Lecture 1-Intro.pdf
@@ -133,3 +135,4 @@
 !/Lecture 17 - Likelihoods and Filtering/*.tex
 !/Lecture 17 - Likelihoods and Filtering/*.png
 
+!/Homework 1/*.pdf
