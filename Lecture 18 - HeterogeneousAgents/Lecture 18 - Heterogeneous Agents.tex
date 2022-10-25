@@ -1,0 +1,284 @@
+\documentclass{beamer}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+\usepackage{tikz}
+\usetheme{default}
+%\usecolortheme{seahorse}
+\usepackage{default}
+  \setbeamertemplate{footline}[page number]
+\usepackage{multirow}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{frametitle}[default][center]
+\setbeamerfont{frametitle}{shape=\scshape}
+
+\usepackage{xcolor}
+
+\usepackage[flushleft]{threeparttable}
+
+{\title{\textsc{Heterogeneous Agents} \\ \tiny (See Krusell Smith 1998)}
+\author{Trevor Gallen}
+\date{}
+\begin{document}
+\renewcommand*{\inserttotalframenumber}{\pageref{lastframe}}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}
+\frametitle[alignment=center]{Introduction}
+\begin{itemize}
+\item We spend an enormous time on representative agents
+\bigskip
+\item Model has been quite fruitful
+\bigskip
+\item But there are theoretical reasons to think that a RA model wouldn't capture everything
+\bigskip
+\item What about heterogeneity?  Income constraints?
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle[alignment=center]{Krusell Smith}
+\begin{itemize}
+\item Take same basic NCG model we've been using
+\bigskip
+\item We don't care who owns what: only the \emph{total} income and capital in the society matter
+\bigskip
+\item It's plausible to think that the \emph{distribution} matters
+\bigskip
+\item Now, people not only face aggregate uncertainty but also idiosyncratic income\/employment shocks, and that they can't borrow past an exogenously-set lower bound.
+\bigskip
+\item Because you can't insure your shocks, there's a wealth distribution
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle[alignment=center]{The Environment}
+\begin{itemize}
+\item People have preferences over their stream of consumption $c_t$:
+$$E_0\sum_{t=0}^\infty \beta^tU(c_t)$$
+\item With:
+$$U(c)=\underset{\nu\rightarrow \sigma}{\lim}\frac{c^{1-\nu}-1}{1-\nu}$$
+\item Aggregate production $y$:
+$$y=c+k'-(1-\delta)k$$
+\item Labor supplied is $\epsilon\tilde{l}$, where $\epsilon\in\{0,1\}$ is exogenous
+\bigskip
+\item Also have aggregate shock $z\in\{b,g\}$, correlated with $\epsilon$
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle[alignment=center]{The Environment: Shocks}
+\begin{itemize}
+\item Probability transition $\pi_{ss'\epsilon\epsilon'}$, denotes your probability of moving to state $s'$ from state $s$ and at the same time to state $\epsilon'$ from state $\epsilon$.  
+\bigskip
+\item All inflows/outflows are balanced, so that (conditioning on $z$), we have independence across individuals
+$$\pi_{ss'00+\pi_{ss'01}}=\pi_{ss'10}+\pi_{ss'11}=\pi_{ss'}$$
+\item<2-> That is, $\epsilon$ today doesn't impact $s$ transition probabilities
+\bigskip
+\item<3-> In addition, the aggregate number of households in the bad state is always $u_g$ or $u_b$, depending on the state:
+$$u_s\frac{\pi_{ss'00}}{\pi_{ss'}}+(1-u_s)\frac{\pi_{ss'10}}{\pi_{ss'}}=u_{s'}$$
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle[alignment=center]{State Variables-I}
+\begin{itemize}
+\item There is only one asset: aggregate capital
+\bigskip
+\item Denoting aggregate capital as $\bar{k}$ and aggregate labor as $\bar{l}$:
+$$w(\bar{k},\bar{l},z)=(1-\alpha)z\left(\frac{\bar{k}}{\bar{l}}\right)^\alpha\ \ \ \ \ r(\bar{k},\bar{l},z)=\alpha z\left(\frac{\bar{k}}{\bar{l}}\right)^{\alpha-1}$$
+\item In order to know what $w$ and $r$ will be, I need to know... 
+\bigskip
+\item ...what $\bar{k}$ and $\bar{l}$ will be!
+\bigskip
+\item $\bar{k}$ and $\bar{l}$ come from everyone...I need to know the distribution of capital by employment status, called $\Gamma$, as well as my standard $z$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle[alignment=center]{State Variables-II}
+\begin{itemize}
+\item I need to know the distribution of capital, $\Gamma$
+\bigskip
+\item To plan for tomorrow, I need to know the \emph{law of motion} of the distribution, to find $\Gamma'$.  
+\bigskip
+\item Call this law of motion of the distribution $H(\gamma,z,z')$
+\bigskip
+\item Then for an individual, he needs to know his own capital, his own employment, the distribution of capital, and aggregate productivity: $(k,\epsilon,\Gamma,z)$
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle[alignment=center]{Optimization Problem}
+\begin{itemize}
+\item The agent's optimization problem is therefore:
+$$V(k,\epsilon,\Gamma,z)=\underset{c,k'}{\max}\left[U(c)+\beta E(V(k',\epsilon';\Gamma,z'))\right]$$
+\item Subject to:
+$$c+k'=r(\bar{k},\bar{l},z)k+w(\bar{k},\bar{l},z)\tilde{l}\epsilon+(1-\delta)k$$
+$$\Gamma'=H(\Gamma,z,z')$$
+$$k'\geq 0$$
+\item Solving this problem, we get:
+$$k'=f(k,\epsilon,\Gamma,z)$$
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle[alignment=center]{Equilbrium}
+Equilibrium is:
+\begin{enumerate}
+\item $H$, the law of motion for $\Gamma$, consistent with $f$
+\bigskip
+\item $V$ and $f$, the individual's value and policy functions
+\bigskip
+\item $r$ and $w$, pricing functions that clear markets given the consumer's $V$ and $f$
+\end{enumerate}
+Do you see the problem?
+\end{frame}
+
+\begin{frame}
+\frametitle[alignment=center]{A solution(?)}
+\begin{itemize}
+\item How can we characterize a distribution?
+\bigskip
+\item Only give the agents the first $m$ (statistical!) moments of the distribution and make their best guess
+\bigskip
+\item But then...we still don't have a good law of motion, consistent with $f$?
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle[alignment=center]{A solution algorithm}
+\begin{enumerate}
+\item Summarize distribution by first $m$ statistical moments
+\bigskip
+\item \emph{Assume} a law of motion for agents
+\bigskip
+\item Solve and simulate behavior (inner loop)
+\bigskip
+\item From simulated behavior, solve for new law of motion.  
+\bigskip
+\item If new law of motion is different, go back to step (3).  Otherwise, proceed. 
+\bigskip
+\item If result is different from with $m-1$ moments, add a moment.  If not, end.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle[alignment=center]{Model parameters}
+Assume some parameters
+\begin{itemize}
+\item Period of one quarter
+\item $\beta=0.99$
+\item CRRA $\sigma=1$
+\item Capital share $\alpha=0.36$
+\item Good and bad shock: $z_g=1.01$ \& $z_b=0.99$
+\item Unemployment rates: $u_g=0.04$ \& $u_b=0.10$
+\item Choose process for $(z,\epsilon)$ so:
+\begin{itemize}
+\item Average duration of good and bad times is 8 quarters
+\item Average duration of an unemployment spell is 1.5 quarters in good times and 2.5 quarters in bad times
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle[alignment=center]{Results: Approximate Aggregation}
+Assume some parameters
+\begin{itemize}
+\item Only the mean of capital matters, predicts 99.9998\% of variation in capital 
+\bigskip
+\item Better prediction techniques would mean nothing
+\bigskip
+\item Caution: self-fulfilling approximate equilbiria \emph{might} exist...
+\bigskip
+\item But no evidence for this
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle[alignment=center]{Results: Why only the mean?}
+Assume some parameters
+\begin{itemize}
+\item Fundamentally, all that matters is your propensity to save out of wealth 
+\bigskip
+\item If everyone always saves the same proportion of wealth, it doesn't matter who has the wealth
+\bigskip
+\item Savings behavior is only atypical for the very poor
+\bigskip
+\item But the really poor don't matter for aggregate capital
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle[alignment=center]{Some issues}
+Assume some parameters
+\begin{itemize}
+\item Model distribution (entirely endogenous from labor) is not skewed enough 
+\bigskip
+\item Reality: poorest 20\% have 0\% wealth.
+\item Model: poorest 20\% have 9\% wealth
+\item Reality: richest 5\% have 50\% wealth.
+\item Model: richest 5\% have 11\% wealth
+\bigskip
+\item How do we generate this?  
+\begin{itemize}
+\item Random discount factors
+\item Differences in unemployed income
+\end{itemize}
+\item These can nail the distribution
+\item With a more reasonable wealth distribution, nothing changes 
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle[alignment=center]{Aggregate Time Series}
+\begin{itemize}
+\bigskip
+\item Lack of full insurance increases capital by 0.6\% in the baseline.
+\bigskip
+\item Up to 6.7\% with high risk aversion
+\bigskip
+\item Can get more hand-to-mouth with different $\beta$'s, aggregate no longer looks like PHI
+\bigskip
+\item Not many differences between representative agent and heterogeneous agent, except PIH-type behavior.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle[alignment=center]{Conclusions}
+\begin{itemize}
+\bigskip
+\item Novel way to introduce interacting agents.
+\bigskip
+\item Reminds us that bounded rationality w.r.t. expectations is very easy with Bellmans
+\bigskip
+\item No change from heterogeneous agents is a result!
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle[alignment=center]{Computational Course Takeaways}
+\small
+\begin{itemize}
+\item Economic intuition frequently more helpful than computational skill in solving computational problems
+\item Structural estimation on normal (well-behaved) problems is very easy (NFP)
+\begin{enumerate}
+\item Make guesses at parameters
+\item Solve model
+\item Calculate difference between moments and reality (or likelihood)
+\item Go back to step 1 with this data, update parameters
+\end{enumerate}
+\item True in CGE models where you might (1) solve individual problems given w and $\theta$, (2) clear markets given L($\theta$), then calculate moments
+\item True in dynamic choice models where you might (1) solve for Bellman given $\theta$  then choose $\theta$ to fit moments
+\item True in heterogeneous-agent models where you (1) assume parameters, a law of motion (2) solve VFI given parameters, law of motion (3) simulate law of motion (4) return to step \#2 until law of motion is accurate description (5) return to step \#1 to change parameters.
+\end{itemize}
+\end{frame}
+
+
+
+
+\end{document}

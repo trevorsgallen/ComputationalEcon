@@ -1,0 +1,113 @@
+\documentclass[11pt]{article}
+\usepackage{appendix}
+\usepackage{graphicx} 
+\usepackage{setspace}
+\usepackage{amsmath,float,verbatim,multicol}
+\usepackage{array}
+\usepackage{lscape}
+\usepackage{hyperref}
+
+\usepackage{amssymb}
+\bibliographystyle{plainnat}
+\usepackage[round]{natbib}
+\usepackage{multirow}
+
+\setlength{\textheight}{8.8in} \setlength{\textwidth}{6.3in}
+\setlength{\oddsidemargin}{0.2in} \setlength{\topmargin}{-0.30in}
+\setlength{\footnotesep}{10.0pt}
+
+\newcommand{\ol}{\overline}
+
+
+
+\renewcommand{\baselinestretch}{1.25}
+\title{Solving a Lifecycle Model}
+\author{ Trevor Gallen \\ Econ 64200 }
+\date{Fall 2022}
+
+\begin{document}
+\bibliographystyle{myplainnat}
+%\bibpunct{(}{)}{;}{a}{}{,}6868
+
+\maketitle
+
+This homework is the first part of a multi-part homework.  This homework starts us with a relatively simple deterministic lifecycle model and asks you to solve it in Matlab.\\
+
+\textbf{Deliverables}
+\begin{itemize}
+\item You should have a word/\LaTeX document that has three sections: 
+\begin{enumerate}
+\item Discusses the model and answers the questions I pose throughout.
+\item Contains the tables and figures you will produce.
+\item Contains a discussion of your programming choices if you had to make any.
+\end{enumerate}
+\item You should have a Matlab file or set of files (zipped) that contain \textbf{all} your programs and raw data.  There should be a file called ``Main.M" that produces everything I need in one click.
+\end{itemize}
+
+
+\section{Model}
+Households have period utility over consumption $c_t$ and labor $L_t$ at time $t$: $u(c_t,L_t)$, which takes the form of balanced growth preferences with constant Frisch elasticity of labor supply:
+$$u(c_t,L_t)=log(c_t)-\psi \frac{\epsilon}{1+\epsilon}L_t^{1+\epsilon}{\epsilon}$$
+Letting $s$ denote savings, $w$ denote wages, $r$ denote interest rates, households have period budget constraint:
+$$c_t+s_t=w_tL_t+(1+r_t)s_{t-1}$$
+Households maximize the net present value of utility, discounted at a rate $0<\beta<1$. Assume that households live until period $T$.\\
+\ \\
+\textbf{Question 1a:} Write out the household's net present value budget constraint.\\
+\textbf{Question 1b:} Write out the household's sequence problem.\\
+\textbf{Question 1c:} Write out the household's value function problem.\\
+
+\clearpage
+\section{Basic Matlab}
+Now, let the following numerical assumptions hold:
+\begin{table}[ht!]
+\centering
+\begin{tabular}{lcc}
+\hline
+\hline
+\multicolumn{3}{c}{Table 1: Calibration}\\
+\hline
+Concept & Parameter & Value \\ 
+Lifespan & T & 45 \\
+Disutility of labor & $\psi$ & 10\\
+Frisch elasticity of labor supply & $\epsilon$ & 0.75\\
+Discount factor & $\beta$ & 0.96\\
+Wages: $w_t$, $t\neq 30$ & $w_{t\neq30}$ & 1\\
+Wages: $w_30$ & $w_{t\neq30}$ & 1.05\\
+Interest rates: $r_t$, $t\neq 20$ & $r_{t\neq30}$ & 0.05\\
+Interest rates $r_20$ & $w_{t\neq20}$ & 1.1\\
+\hline
+\hline
+\end{tabular}
+\end{table}
+
+\textbf{Question 2:} Write a Matlab program that does the following.
+\begin{itemize}
+\item Section 1a:  Defines all exogenous parameters in Table 1, including making $w_t$ and $r_t$ 45-entry column vectors. (It is important to be consistent in terms of column vs. row).
+\item Section 1b:  Defines a NPV discount rate for all 45 periods (e.g. contains $[1;1/(1+r_1);1/((1+r_1)*(1+r_2))] $and so on.  You may find Matlab's cumulative product function ``cumprod" useful.
+\item Section 2a:  Define the utility function, which takes in $c$ and $L$ (as inputs) and spits out utility (given $\psi$ and $\epsilon$, which are set by Table 1.  Write it so you can give the function a vector of $c$ and $L$ and it will spit out a vector of utilities.
+$$ut(c,L)=log(c_t)-\psi \frac{\epsilon}{1+\epsilon}L_t^{1+\epsilon}{\epsilon}$$
+\item Section 2b:  A function of the lifetime excess savings, which takes in a vector of $c_t$'s and a vector of $w_t$'s and $L_t$'s, and spits out excess savings
+$$bc\_lifetime(c,L)=\sum_{t=1}^T\frac{c_t}{\prod_{\tau=1}^t(1+r_\tau)}-\sum_{t=1}^T\frac{w_tL_t}{\prod_{\tau=1}^t(1+r_\tau)}$$
+\item Section 2c:  A lifetime utility function which penalizes debt (a simple way of making constrained optimization unconstrained), e.g.:
+$$ut\_lifetime(c,L) = sum(beta.^[0:T-1]ut(c,L))-10*(bc\_lifetime(c,L)>0)*bc\_lifetime(c,L)$$
+\item Section 3:  Create an initial guess, and pass the negative of the life to a \emph{minimizer}, such as fminunc.  You may have to think about how to pass the anonymous arguments.
+\item Section 4:  Graph out $c_t$ and $L_t$.  Clearly label your graphs.
+\item Section 5:  Answer the following questions:
+\begin{itemize}
+\item What is the intertemporal elasticity of substitution suggested by consumption's response in period 20?  
+\item What is the Frisch elasticity of labor supply suggested by labor's response in period 30?
+\item Why is consumption rising over time?  
+\item What, in the calibration and functional form choice drove the numerical answers to the previous three questions?  What parameterization of $\beta$ would make $c_{t+1}/c_t$ flat?
+\end{itemize}
+\end{itemize}
+
+\clearpage
+\section{Research}
+You now have a very simple deterministic numerical model of people's labor over the lifecycle.  However, the model is too simple to be particularly interesting.  Change the model in an interesting way, and report your results.  This is your opportunity to actually think, so please take time with this:  how can you adjust the model, parameterization, etc. to make this model (a) more interesting and (b) more realistic?
+
+\end{document}
+
+
+
+
+
