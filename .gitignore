@@ -17,5 +17,81 @@
 !/Lecture 1 - Intro/
 !/Lecture 1 - Intro/*.pdf
 !/Lecture 1 - Intro/*.png
+!/Lecture 1 - Intro/*.m
 
-Lecture 1 - IntroLecture 2 - Matlab IntroLecture 3 - Bellman TheoryLecture 4 - VFILecture 5 - Newton's MethodLecture 6 - Newton's Method AppliedLecture 7 - Other MethodsLecture 8 - InterpolationLecture 9 - QuadratureLecture 9 - Reinforcement LearningLecture 10 - Sargent LjungqvistLecture 11 - NCGLecture 12 - CGELecture 13 - GMMLecture 14 - Simulation EstimationLecture 15 - Dynamic Discrete Choice EstimationLecture 16 - MCMCLecture 17 - Likelihoods and FilteringLecture 18 - HeterogeneousAgents
+!/Lecture 2 - Matlab Intro/
+!/Lecture 2 - Matlab Intro/*.pdf
+!/Lecture 2 - Matlab Intro/*.png
+!/Lecture 2 - Matlab Intro/*.m
+
+!/Lecture 3 - Bellman Theory/
+!/Lecture 3 - Bellman Theory/*.pdf
+!/Lecture 3 - Bellman Theory/*.png
+!/Lecture 3 - Bellman Theory/*.m
+!/Lecture 4 - VFI/
+!/Lecture 4 - VFI/*.pdf
+!/Lecture 4 - VFI/*.png
+!/Lecture 4 - VFI/*.m
+!/Lecture 5 - Newton's Method/
+!/Lecture 5 - Newton's Method/*.pdf
+!/Lecture 5 - Newton's Method/*.png
+!/Lecture 5 - Newton's Method/*.m
+
+!/Lecture 6 - Newton's Method Applied/
+!/Lecture 6 - Newton's Method Applied/*.pdf
+!/Lecture 6 - Newton's Method Applied/*.png
+!/Lecture 6 - Newton's Method Applied/*.m
+!/Lecture 7 - Other Methods/
+!/Lecture 7 - Other Methods/*.pdf
+!/Lecture 7 - Other Methods/*.png
+!/Lecture 7 - Other Methods/*.m
+!/Lecture 8 - Interpolation/
+!/Lecture 8 - Interpolation/*.pdf
+!/Lecture 8 - Interpolation/*.png
+!/Lecture 8 - Interpolation/*.m
+!/Lecture 9 - Quadrature/
+!/Lecture 9 - Quadrature/*.pdf
+!/Lecture 9 - Quadrature/*.png
+!/Lecture 9 - Quadrature/*.m
+!/Lecture 9 - Reinforcement Learning/
+!/Lecture 9 - Reinforcement Learning/*.pdf
+!/Lecture 9 - Reinforcement Learning/*.png
+!/Lecture 9 - Reinforcement Learning/*.m
+!/Lecture 10 - Sargent Ljungqvist/
+!/Lecture 10 - Sargent Ljungqvist/*.pdf
+!/Lecture 10 - Sargent Ljungqvist/*.png
+!/Lecture 10 - Sargent Ljungqvist/*.m
+!/Lecture 11 - NCG/
+!/Lecture 11 - NCG/*.pdf
+!/Lecture 11 - NCG/*.png
+!/Lecture 11 - NCG/*.m
+!/Lecture 12 - CGE/
+!/Lecture 12 - CGE/*.pdf
+!/Lecture 12 - CGE/*.png
+!/Lecture 12 - CGE/*.m
+!/Lecture 13 - GMM/
+!/Lecture 13 - GMM/*.pdf
+!/Lecture 13 - GMM/*.png
+!/Lecture 13 - GMM/*.m
+
+!/Lecture 14 - Simulation Estimation/
+!/Lecture 14 - Simulation Estimation/*.pdf
+!/Lecture 14 - Simulation Estimation/*.png
+!/Lecture 14 - Simulation Estimation/*.m
+!/Lecture 15 - Dynamic Discrete Choice Estimation/
+!/Lecture 15 - Dynamic Discrete Choice Estimation/*.pdf
+!/Lecture 15 - Dynamic Discrete Choice Estimation/*.png
+!/Lecture 15 - Dynamic Discrete Choice Estimation/*.m
+!/Lecture 16 - MCMC/
+!/Lecture 16 - MCMC/*.pdf
+!/Lecture 16 - MCMC/*.png
+!/Lecture 16 - MCMC/*.m
+!/Lecture 17 - Likelihoods and Filtering/
+!/Lecture 17 - Likelihoods and Filtering/*.pdf
+!/Lecture 17 - Likelihoods and Filtering/*.png
+!/Lecture 17 - Likelihoods and Filtering/*.m
+!/Lecture 18 - HeterogeneousAgents/
+!/Lecture 18 - HeterogeneousAgents/*.pdf
+!/Lecture 18 - HeterogeneousAgents/*.png
+!/Lecture 18 - HeterogeneousAgents/*.m
+
