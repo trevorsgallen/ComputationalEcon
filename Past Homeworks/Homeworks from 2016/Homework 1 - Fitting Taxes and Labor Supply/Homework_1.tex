@@ -1,0 +1,82 @@
+%`preamble' precedes the main text
+\documentclass[11pt]{article}
+\usepackage{graphicx} % this is only needed if you will import graphs into your file. Otherwise- put % before to comment
+\usepackage{setspace}
+\usepackage{hyper}
+\usepackage{natbib}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{multirow}
+%
+%\usepackage{hyperref}
+%\usepackage{hypcap}
+
+\bibliographystyle{aer}
+
+\usepackage{etoolbox}
+
+\newif\ifabbreviation
+\pretocmd{\thebibliography}{\abbreviationfalse}{}{}
+\AtBeginDocument{\abbreviationtrue}
+\DeclareRobustCommand\acroauthor[2]{%
+  \ifabbreviation #2\else #1 (\mbox{#2})\fi}
+
+%adjustment of page parameters
+\renewcommand{\baselinestretch}{1.50} % line spacing is set 1.5
+\setlength{\textheight}{8.8in} \setlength{\textwidth}{6.3in}
+\setlength{\oddsidemargin}{0.2in} \setlength{\topmargin}{-0.30in}
+\setlength{\footnotesep}{10.0pt}
+
+\title{{\Large \bf Homework \#1: Taxes, Taxes, Taxes} \\ \small Econ 690: Numerical Methods}
+\date{Fall 2016}
+
+
+\begin{document}
+\maketitle
+ 
+\noindent
+The purpose of this homework is to familiarize you with the Current Population Survey and to produce and calibrate a simulated economic model to analyze the microeconomic agents within.    Please note that when you write code, you should carefully comment it and organize it so it may be executed with a single click: you will submit your Stata data code and your Matlab calibration/simulation code to me via e-mail before class next Thursday as a major part of this homework grade.  When you do so, please do so with the subject heading ``Econ\_690\_Homework1\_$<$Your name here$>$."  Late homeworks will be dropped by 10 points for the first 12 hours it's late, then I'll post solutions and will not accept late homeworks.\\
+\ \\
+
+\section*{Data Creation}
+Go to the Minnesota Population Center's Integrated Public Use (IPUMS) website for the Current Population Survey (CPS).  If you don't already have an account there, make one.  Then, browse and select data.  Find the variables summarizing:
+\begin{itemize} 
+\item Work: Weeks worked last year, (call it wks)
+\item Work: Usual hours worked per week last year, (call it hperwk)
+\item Demographics: age and ``Relationship to household head" , (call it them age and relate, respectively)
+\item Income:  Total Family Income and Wage and Salary Income
+\end{itemize}
+Select the March 2016 sample and create your sample.  Download your formatted data (when IPUMS creates it) and the Stata command file.  Use the Stata command file to load in your data.
+
+\section*{Data Work}
+Examine your variables and their definitions.  For all household heads between the ages of 25 and 54, create a summary table of the relevant work, demographics, and income variables.  Be very careful about missing data (how is missing coded?  Look it up for each variable on the IPUMS website).  For the summary table, only include observations with no missing data.  Drop all other observations.  \ \\
+
+Create three variables from your currently-existing data: the number of hours someone worked last year, their wage last year, and their nonwage income (family minus personal wage income).  Export these into a CSV file.
+
+\section*{Writing a calibration program}
+Now write a matlab function that takes in individual wage $w_i$, individual disutility of labor parameters $\psi_i$, individual labor $L_i$, individual transfer $T_i$ and individual nonlabor income $\nu_i$. Now, create a Matlab program that takes in wage, disutility of labor, labor hours, transfers, and nonlabor income and spits out utility.  Call this function $U(w_i,\psi_i,L_i,\bar{T},\nu_i)$  Households are taxed according to the 2016 Federal  tax brackets, which  you should look up yourself.  (You may use the 2015 tax brackets if you'd like).  
+
+Their utility is:
+$$U(c_i,L_i)=\log(c_i)-\psi_i\frac{\epsilon}{1+\epsilon}L_i^{\frac{1+\epsilon}{\epsilon}}$$
+Where the budget constraint:
+$$c_i=w_iL_i+T_i+\nu_i$$
+And transfers are a function of total income:
+$$T_i=\max\{\bar{T}-0.1(w_iL_i+\nu_i),0\}$$
+
+\begin{itemize}
+\item Graph out the budget constraint $c_i$ as a function of labor hours $L_i$ of someone whose wage is $w_i=30$.  Call this graph Figure 1, and label it clearly.
+\item Write a function $f^L$ takes in $\psi_i$, $w_i$, and $\nu_i$ (assume $\bar{T}=10000$) and maximizes utility with respect to $L$.  That is:
+$$f^L(\psi_i,w_i,\nu_i)=\underset{L_i}{\arg \max}U(w_i,\psi_i,L_i,\bar{T},\nu_i)$$
+\item Now write a function $g(\psi_i|w_i,\nu_i,\bar{L}_i)$ that takes in $\psi_i$, $w_i$, and $\nu_i$ and, using $f^L$ computes the difference between the simulated $L_i$ and some target $\bar{L}_i$.  
+\end{itemize}
+
+\section*{Theory meets empirics}
+Now you have a function that can take in a guess at $\psi_i$ given wages and nonlabor income and actual labor supply, and spit out what $\psi_i$ must have been.  That is if you loop over values in your data, you define an anonymous function with wage, nonlabor income, and $\bar{L}_i$ and then find the $\psi_i$ that must have been the true preference parameter.
+%$$gtemp= @(psiguess) g(psiguess,w_i^{data},\nu_i^{data},\bar{L}_i^{data})$$ 
+%$$fzero(\@g,1e-03,[1e-10,1])$$
+\begin{itemize}
+\item  Find the $\psi_i$ for every single household in the CPS data.  
+\item Given your $\psi_i$'s you're ready to predict how different policies would affect labor market behavior.  Pick your favorite policy change and analyze its welfare consequences (for instance, ``how does a change in the top marginal tax bracket impact total labor income? tax collections?"  or ``how would a universal basic income affect labor market behavior?"  Give thought to the individual question you ask: be clever.
+\item What are some flaws in this model?  How would you improve it?  Again, be thoughtful, clever, and original.
+\end{itemize}
+\end{document}
