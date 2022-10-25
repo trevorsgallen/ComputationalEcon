@@ -4,7 +4,9 @@
 !.gitignore
 
 
-# but do not ignore the config.fish file
+# but do not ignore the these
+!/Syllabus/*.pdf
+
 !/Lecture 1 - Intro/Lecture 1-Intro.pdf
 !/Lecture 1 - Intro/Lecture 1-Intro.tex
 
@@ -107,3 +109,4 @@
 !/Lecture 17 - Likelihoods and Filtering/*.png
 
 !/Homework 1/*.pdf
+
