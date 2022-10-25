@@ -1,0 +1,140 @@
+\documentclass[a4paper]{article}
+\usepackage[margin=1in, paperwidth=5.5in, paperheight=8.5in]{geometry}
+\usepackage{geometry}
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+\usepackage{natbib}
+
+\usepackage{bibentry}
+
+\usepackage{hyperref}
+\usepackage{hypcap}
+\usepackage{tikz}
+\usepackage{multirow}
+
+\usetikzlibrary{shapes,arrows}
+
+\bibpunct{(}{)}{,}{a}{}{;}
+
+\parindent 0in
+\usepackage{fancyhdr} 
+\pagestyle{fancy} 
+%\bibliographystyle{natbib}
+\bibliographystyle{apalike}
+%\bibliographystyle{aer}
+\fancyhead[RE,RO]{\textsc   Econ 641 Gallen 2022}
+\fancyhead[CE,CO]{\textsc}
+\fancyhead[LE,LO]{\textsc Syllabus}
+
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+\title{Econ 690: Computational Economics/Numerical Methods}
+\author{Trevor Gallen}
+\date{Fall 2022}
+\begin{document}
+%\nobibliography{NumericalMethodsSyllabus}
+
+
+\maketitle
+\emph{Overview of the Class}\\
+The purpose of this class is to give you a computational toolbox you can apply to economic questions.  We will introduce and use numerical methods on computationally tractable problems.  The goal of the course is to encourage Ph.D. students to be apply these techniques to their own research.  Our in-class applications will primarily be public policy and macro-oriented, by solving and simulating the problems of microeconomic agents and aggregating the results. \\
+
+\emph{Outline}\\
+All course applications will use Matlab: I'm fine with you using whatever program you're comfortable with, but support for other programs will be relatively limited.  The course starts with the theory and simple empirics of solving for policy functions of Bellman equations and simulating agent behavior.  We then slowly introduce new tools that make the problems we can tractably solve and simulate more complex and realistic.  After simple discrete Bellman equations, the broad topics we will introduce are 1) numerical derivatives, 2) maximization techniques (derivative-based and derivative free, with local and global methods) 3)  numerical interpolation, 4) quadrature methods 5) simulated maximum likelihood and simulated method of moments.  These topics will allow us to extend our dynamic problems in interesting ways.  Because the course is focused on your own research, we will have student presentations at the end of the quarter.  A short paper or research proposal (with preliminary computational work) is the capstone of this course. I urge you to use this as your \emph{first} stab at a dissertation topic/written field exam.  Failure will be a good learning opportunity.\\
+\ \\
+\emph{Text}\\
+We will use Ken Judd's textbook, Numerical Methods in Economics.  This textbook is not required, but is a wonderful reference and allows anyone interested to extend their toolbox far beyond the scope of this course. I have also made available Mario Miranda and Paul Fackler's Applied Computational Economics and Finance.  This book introduces concepts in a clear way, and also serves as a vehicle for their Matlab ``CompEcon" toolbox (which we will not use, but is very good). \\
+\ \\
+\emph{Logistics}\\
+This class meets on Tuesdays and Thursdays 1:10-2:40 p.m. in Rawls 2077. My office hours will be on Thursdays, from 8:50-9:50 a.m. in KRAN 315.\\
+\ \\
+\emph{Software}\\
+We will use Matlab, should be available on your Krannert office computers.  \\
+
+\emph{Paper}\\
+While this course discusses primarily public policy and macroeconomic applications, it should be useful for students with empirical or theoretical interests of any type.   The main point of this course is to allow you to extend your research.  To that end, I require you to find a topic by 4th week (I will set up a series of short consultation meetings with me) and work out a  computational example of that topic and write up the results by the end of 8th week.  You will give a short 15-20 minute presentation of your topic at the end of the quarter in front of the class.  Your final paper should address any crucial problems, corrections, or suggestions made during your presentation.  However you code, your final paper submission will include  code that can be run easily that will produce your discussed output.  \\
+\ \\
+
+\emph{Formal Requirements}\\
+The formal requirements for this course are two computational problem sets, a ``midterm" paper suggestion, a final presentation, and a final paper.  Your grade will be constructed using the naive average of: \begin{itemize}
+\item Four problem sets, weighted at 35\%.
+\item Your paper suggestion (around 4th week) 10\%.
+\item Your 20-minute paper/proposal presentation (around 7th/8th week) 20\%.
+\item Class participation 5\%.
+\item Your final paper/proposal and code 30\%.
+\end{itemize}
+\ \\
+
+\emph{Extremely Tentative Schedule}
+\begin{table}[ht!]
+\centering
+\begin{tabular}{|l|l|c|c|}
+\hline
+Date & Topic & Reading & Homework \\
+\hline
+\multirow{2}{*}{October 20th} &  \multirow{2}{*}{Outline of course, Matlab Review}  & \multirow{2}{*}{$\cdot$} & \multirow{2}{*}{Hwk. 1 Assigned} \\
+ &    &  & \\
+\hline
+\multirow{2}{*}{October 25th} & \multirow{2}{*}{Bellman Equations (theory \& solutions)} &  Judd, Ch. 12 &  \\
+ & & (espec. 12.1-12.6) & \\
+\hline
+\multirow{2}{*}{October 27th} & \multirow{2}{*}{Newton's Method} &  Judd, Ch. 4.1-4.3 &  \\
+ &  &  Judd, Ch. 5.2 & \\
+\hline
+November 1st & Other Maximization Methods & Judd, Ch. 4.4-4.8  & Hwk. 1 due\\ 
+ & & & Hwk. 2 assigned\\
+\hline
+November 3rd & Interpolation/Chebychev Polynomials & Judd, Ch. 6.1-6.9  & \\
+\hline
+\multirow{2}{*}{November 8th} &  \multirow{2}{*}{Neural Networks \& Reinforcement Learning} & \multirow{2}{*}{Powell, Ch. 10} & Hwk. 2 Due \\
+ &     &  &  Hwk. 3 Assigned\\
+%November 8th &  Quadrature & Judd, Ch. 7.1-7.5  & Hwk. 3 Assigned\\
+\hline
+\multirow{2}{*}{November 10th} & \multirow{2}{*}{Application: Unemployment Insurance} & \multirow{2}{*}{Sargent \& Ljungqvist, 1998}  & \multirow{2}{*}{Project Meetings} \\
+ &  &  &  \\
+\hline
+\multirow{2}{*}{November 15th} & \multirow{2}{*}{Application: Solving the NCG} & \multirow{2}{*}{Conesa, Kehoe and Ruhl 2005} & Hwk. 3 Due, \\
+ &  &  & Project Meetings \\
+ \hline
+ \multirow{2}{*}{November 17th} & \multirow{2}{*}{CGE Models-I }& Gallen and Mulligan 2018 & \multirow{2}{*}{Hwk. 4 Assigned}\\
+ &  & Shoven and Whalley, 1984 & \\
+ \hline
+ November 22nd  & CGE Models-II & (virtual class) & \\
+ \hline
+ \multirow{2}{*}{November 29th} & \multirow{2}{*}{Simulated Estimation - I } & Rust, 1989 & \multirow{2}{*}{Hwk. 4 Due}\\
+ &  & Shoven and Whalley, 1984 & \\
+\hline
+\multirow{2}{*}{December 1st} & \multirow{2}{*}{Simulated Estimation - II} & \multirow{2}{*}{Judd and Su 2012} & \\
+ &    &  &  \\
+\hline
+\multirow{2}{*}{December 6th} & \multirow{2}{*}{Simulated Estimation - III} &  Keane and Moffitt, 1995,  & \multirow{2}{*}{$\cdot$}\\
+&   &  McFadden, 1989,  & \\
+\hline
+\multirow{2}{*}{December 8th} & \multirow{2}{*}{Heterogeneous Agents and Equilibrium} & Krusell \& Smith, 1998 & \\
+ &  &  & \\
+\hline
+TBD & Student Presentations (1-5 in KRAN 301) & $\cdot$ & \\
+\hline
+December 19th & All Papers Due & $\cdot$ & Papers Due\\
+\hline
+\end{tabular}
+\end{table}
+
+\clearpage
+\nocite{*}
+\bibliography{NumericalMethodsSyllabus}
+
+%Judd
+%Sargent \& Ljungqvist
+%Conesa, Kehoe, Ruhl
+%Harberger
+%Shoven Whalley
+%Rust 1989(?)
+%McFadden 1989
+%Keane and Moffitt, 1995
+%Krusell \& Smith, 1998
+
+%Homework 1: Replicating Deaton 1991(?)
+%Homework 2:  Replicating Bresnehan and Reis (1991)
+
+
+\end{document}

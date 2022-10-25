@@ -3,110 +3,19 @@
 # but do not ignore the .gitignore file
 !.gitignore
 
+# do not ignore dirs (needed due to the above bullet point)
+!/Syllabus
+!/Slides/
+!/Slides/Chapter 0 - Course Introduction
 
-# but do not ignore these files
-!/Syllabus/*.pdf
+# ignore files and sub dirs
+#/Syllabus/*
+/Slides/*
+/Homeworks/*
 
-!/Lecture 1 - Intro/Lecture 1-Intro.pdf
-!/Lecture 1 - Intro/Lecture 1-Intro.tex
+# but do not ignore the config.fish file
+!/Lecture 1 - Intro/
+!/Lecture 1 - Intro/*.pdf
+!/Lecture 1 - Intro/*.png
 
-!/Lecture 2 - Matlab Intro/CakeEating.m
-!/Lecture 2 - Matlab Intro/CakeGrowth.m
-!/Lecture 2 - Matlab Intro/GraphingExample.m
-!/Lecture 2 - Matlab Intro/HelenofTroy.m
-!/Lecture 2 - Matlab Intro/MatlabIntro.m
-!/Lecture 2 - Matlab Intro/SampleFunction.m
-!/Lecture 2 - Matlab Intro/VFI_intro.m
-
-!/Lecture 3 - Bellman Theory/Lecture-3-BellmanEquationsTheory.tex
-!/Lecture 3 - Bellman Theory/Lecture-3-BellmanEquationsTheory.pdf
-
-!/Lecture 4 - VFI/interpfig_*.png
-!/Lecture 4 - VFI/Lecture 4- BellmanSolutions.tex
-!/Lecture 4 - VFI/Lecture 4- BellmanSolutions.pdf
-!/Lecture 4 - VFI/*.m
-
-!/Lecture 5 - Newton's Method/Lecture 5- NewtonsMethod.pdf
-!/Lecture 5 - Newton's Method/Lecture 5- NewtonsMethod.tex
-!/Lecture 5 - Newton's Method/*.png
-!/Lecture 5 - Newton's Method/*.nb
-
-!/Lecture 6 - Newton's Method Applied/*.m
-!/Lecture 6 - Newton's Method Applied/*.pdf
-!/Lecture 6 - Newton's Method Applied/*.tex
-!/Lecture 6 - Newton's Method Applied/*.png
-
-!/Lecture 7 - Other Methods/*.png
-!/Lecture 7 - Other Methods/*.m
-!/Lecture 7 - Other Methods/*.tex
-!/Lecture 7 - Other Methods/*.pdf
-
-!/Lecture 8 - Interpolation/*.m
-!/Lecture 8 - Interpolation/*.png
-!/Lecture 8 - Interpolation/*.tex
-!/Lecture 8 - Interpolation/*.pdf
-
-!/Lecture 9 - Quadrature/*.m
-!/Lecture 9 - Quadrature/*.png
-!/Lecture 9 - Quadrature/*.pdf
-!/Lecture 9 - Quadrature/*.tex
-
-!/Lecture 9 - Reinforcement Learning/*.m
-!/Lecture 9 - Reinforcement Learning/*.png
-!/Lecture 9 - Reinforcement Learning/*.pdf
-!/Lecture 9 - Reinforcement Learning/*.tex
-!/Lecture 9 - Reinforcement Learning/*
-
-!/Lecture 9 - Reinforcement Learning/Discrete_VFI/
-!/Lecture 9 - Reinforcement Learning/Discrete_VFI/*.m
-!/Lecture 9 - Reinforcement Learning/Discrete_VFI/*.mat
-
-!/Lecture 9 - Reinforcement Learning/NN_VFI/
-!/Lecture 9 - Reinforcement Learning/NN_VFI/*.m
-!/Lecture 9 - Reinforcement Learning/NN_VFI/*.mat
-
-!/Lecture 10 - Sargent Ljungqvist/*.tex
-!/Lecture 10 - Sargent Ljungqvist/*.pdf
-!/Lecture 10 - Sargent Ljungqvist/*.m
-
-!/Lecture 11 - NCG/NCG Code/
-!/Lecture 11 - NCG/NCG Code/*.m
-!/Lecture 11 - NCG/NCG Code/*.png
-!/Lecture 11 - NCG/*.pdf
-!/Lecture 11 - NCG/*.tex
-!/Lecture 11 - NCG/*.png
-
-!/Lecture 12 - CGE/*.xlsx
-!/Lecture 12 - CGE/*.png
-!/Lecture 12 - CGE/*.pdf
-!/Lecture 12 - CGE/*.tex
-
-!/Lecture 13 - GMM/*.tex
-!/Lecture 13 - GMM/*.pdf
-!/Lecture 13 - GMM/*.m
-!/Lecture 13 - GMM/*.mat
-!/Lecture 13 - GMM/FittingFirmSize/
-!/Lecture 13 - GMM/FittingFirmSize/*.m
-
-!/Lecture 14 - Simulation Estimation/*.m
-!/Lecture 14 - Simulation Estimation/*.png
-!/Lecture 14 - Simulation Estimation/*.tex
-!/Lecture 14 - Simulation Estimation/*.pdf
-
-!/Lecture 15 - Dynamic Discrete Choice Estimation/*.m
-!/Lecture 15 - Dynamic Discrete Choice Estimation/*.pdf
-!/Lecture 15 - Dynamic Discrete Choice Estimation/*.tex
-!/Lecture 15 - Dynamic Discrete Choice Estimation/*.png
-
-!/Lecture 16 - MCMC/*.m
-!/Lecture 16 - MCMC/*.pdf
-!/Lecture 16 - MCMC/*.tex
-!/Lecture 16 - MCMC/*.png
-
-!/Lecture 17 - Likelihoods and Filtering/*.m
-!/Lecture 17 - Likelihoods and Filtering/*.pdf
-!/Lecture 17 - Likelihoods and Filtering/*.tex
-!/Lecture 17 - Likelihoods and Filtering/*.png
-
-!/Homework 1/*.pdf
-
+Lecture 1 - IntroLecture 2 - Matlab IntroLecture 3 - Bellman TheoryLecture 4 - VFILecture 5 - Newton's MethodLecture 6 - Newton's Method AppliedLecture 7 - Other MethodsLecture 8 - InterpolationLecture 9 - QuadratureLecture 9 - Reinforcement LearningLecture 10 - Sargent LjungqvistLecture 11 - NCGLecture 12 - CGELecture 13 - GMMLecture 14 - Simulation EstimationLecture 15 - Dynamic Discrete Choice EstimationLecture 16 - MCMCLecture 17 - Likelihoods and FilteringLecture 18 - HeterogeneousAgents
