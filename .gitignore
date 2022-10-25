@@ -4,7 +4,7 @@
 !.gitignore
 
 
-# but do not ignore the these
+# but do not ignore these files
 !/Syllabus/*.pdf
 
 !/Lecture 1 - Intro/Lecture 1-Intro.pdf
