@@ -1,6 +1,7 @@
 %This file solves a simple NCG-style model using value function iteration
-%We take choices as discrete, and loop over all possible states
-%individually.
+%We take choices as discrete, and maximize all the possible values of the
+%state variable simultaneously, in matrix form, rather than looping over
+%state variables.
 
 %Preliminaries
     clc;
@@ -15,8 +16,15 @@
 %Define state space (grid of states)
     k_min = 1;
     k_max = 500; 
-    k_num = 1000;
+    k_num = 50;
     k_space = linspace(k_min,k_max,k_num); 
+
+    knext_min = 1;
+    knext_max = 500; 
+    knext_num = 1000;
+    knext_space = linspace(knext_min,knext_max,knext_num); 
+
+    [k_grid,knext_grid]=meshgrid(k_space,knext_space);
     
 %Initialize value function for each point on grid
     V_1 = 40+0.01.*k_space;
@@ -27,38 +35,32 @@ error = Inf;
 counter = 0;
 tic
 while error > 1e-10 
-    %Loop over each state (index)
-    for k_index = 1:k_num
-        %Given index, look up k value
-        k = k_space(k_index);
-        %Find the indicies of all the k's we can afford next period
-            kchoice_index = find(k_space < 0.93*k+k.^0.7);
-        %Using their indicies, store the possible k choices
-            k_choices = k_space(kchoice_index);
-        %Given k now and our choice of k, we can see the consumption today
-        %from the budget constraint
-        c_choices = 0.93*k+k.^0.7-k_choices;
+    counter = counter+1;
+    %Solve all states jointly
+        c_choices = (1-delta)*k_grid+k_grid.^alpha-knext_grid;
         %Given consumption and value function, we can find the RHS of the
         %Bellman for each possible choice
-            utility = log(c_choices) + beta*V_0(find(kchoice_index)); 
+            utility = log(c_choices) + beta*interp1(k_space,V_0,knext_grid); 
+        %Set imaginary utilities to -Inf;
+            utility(imag(utility)~=0)=-Inf;
         %The RHS chooses the best of all choices
-            [V,ind] = max(utility);
+            [V,ind] = max(utility,[],1);
         %Store the utility of the best choice for this state as the value
         %of that state
-            V_1(k_index) = V;
+            V_1 = V;
         %Store the policy function
-            k_best(k_index) = k_choices(ind);
-    end
+            k_best = knext_space(ind);
     %Calculate how much we changed functions
         error = max(abs(V_1-V_0));
     %Once we have all of the new values sorted out, we store V_1 becomes
     %the new V_0, so we can iterate again.
 %     figure(3)
-        V_0 = V_1;
+%         V_0 = V_1;
 %         figure(1)
 %         plot(V_0)
 %         hold on
 %         drawnow
+        V_0=V_1;
     [counter,error,toc]
 end
 
