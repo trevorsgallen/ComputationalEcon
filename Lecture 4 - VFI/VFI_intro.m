@@ -32,12 +32,12 @@ while error > 1e-10
         %Given index, look up k value
         k = k_space(k_index);
         %Find the indicies of all the k's we can afford next period
-            kchoice_index = find(k_space < 0.93*k+k.^0.7);
+            kchoice_index = find(k_space < (1-delta)*k+k.^alpha);
         %Using their indicies, store the possible k choices
             k_choices = k_space(kchoice_index);
         %Given k now and our choice of k, we can see the consumption today
         %from the budget constraint
-        c_choices = 0.93*k+k.^0.7-k_choices;
+        c_choices = (1-delta)*k+k.^alpha-k_choices;
         %Given consumption and value function, we can find the RHS of the
         %Bellman for each possible choice
             utility = log(c_choices) + beta*V_0(find(kchoice_index)); 
