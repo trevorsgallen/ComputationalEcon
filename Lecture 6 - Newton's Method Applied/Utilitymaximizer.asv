@@ -8,18 +8,18 @@ close all;
     psi = 4.0001;
     
 %Define utility only as a function of endogenous variable L
-    %Make negative to minimize
-    utilityfxn_temp = @(L) -utilityfxn(L,w,nu,psi)
+    %Make negative to minimize (commented out, done directly in code)
+    %utilityfxn_temp = @(L) -utilityfxn(L,w,nu,psi)
     
 %Graph it out
     L_grid = [0.1:0.01:0.9];
-    plot(L_grid,-utilityfxn_temp(L_grid))
+    plot(L_grid,-utilityfxn(L_grid,w,nu,psi))
     
 %Maximize utility using a derivative-based method
-    [L_star,ut_star] = fminunc(utilityfxn_temp,0.2)
+    [L_star,ut_star] = fminunc(@(L) -utilityfxn(L,w,nu,psi),0.2)
     
 %Maximize utility using a derivative-free method
-    [L_star_alt,ut_star_alt] = patternsearch(utilityfxn_temp,0.2,[],[],[],[],0.001,0.999)
+    [L_star_alt,ut_star_alt] = patternsearch(@(L) utilityfxn(L,w,nu,psi),0.2,[],[],[],[],0.001,0.999)
 
     
 %Show the maximum on the graph
@@ -27,10 +27,11 @@ close all;
     scatter(L_star,-ut_star)
     
     
-%Now, choose the psi that would give us L^*=0.3
-    calibrator_temp = @(psitemp) calibrator(psitemp,w,nu)
-    [psi_star,fit]=patternsearch(calibrator_temp,2.2)
+%Now, choose the psi and w that would give us L=0.3, c = 1
+    [thetastar,fit]=patternsearch(calibrator(x(1),x(2),nu),[2.2,3])
     
+    psi
+
     tic
     [psi_star,fit]=fminunc(calibrator_temp,2.2)
     toc
