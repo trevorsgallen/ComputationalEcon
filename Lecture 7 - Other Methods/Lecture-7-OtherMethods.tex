@@ -3,9 +3,7 @@
 \usepackage{tikz}
 \usetikzlibrary{shapes,arrows}
 \usepackage{tikz}
-\usetheme{default}
 %\usecolortheme{seahorse}
-\usepackage{default}
 
   \setbeamertemplate{footline}[page number]
 \setbeamertemplate{navigation symbols}{}
@@ -401,6 +399,25 @@ $$X_{t+1}= X_t+\alpha_t^* S_t$$
 \includegraphics[scale=0.5]{SimulatedAnnealing_\x.png}
 \end{frame}
 }
+
+
+\begin{frame}
+\frametitle[alignment=center]{Implementation}
+\begin{itemize}
+\item Bisection method: fzero(function,($x_{low},x_{hi})$)
+\item Golden section search: fminbnd(function,$(x_{low},x_{hi})$)
+\item Conjugate gradient: some external functions, but fminunc, fmincon, lsqnonlin used for similar purposes:
+fminunc(fun,$x_0$), fmincon(fun,$x_0$,...), lsqnonlin(vectorfun,$x_0$,...)
+\item Nelder-Mead:  fminsearch(function,$x_0$)
+\item Pattern Search:  patternsearch(function,$x_0$,...)
+\item Differential Evolution: (external, downloadable function)
+\item Genetic Algorithm: ga(fun,length($x_0$),...,gaoptimset('InitialPopulation',$x_0$))
+\item ParticleSwarm: particleswarm(fun,length($x_0$),...,gaoptimset('InitialPopulation',$x_0$))
+\item Simulated Annealing: simulannealbnd(fun,$x_0$)
+\item Multistart, GlobalSearch:  can try a method multiple times:  see ``MultiStart" and ``GlobalSearch"
+\item New:  SurrogateOptimization
+\end{itemize}
+\end{frame}
 
 
 \end{document}
