@@ -54,9 +54,36 @@ src=#3 % same path as in addresource!
 
 
 \begin{frame}
+\frametitle[alignment=center]{Neural Networks}
+\begin{itemize}
+\item Neural networks, for our purposes, are just very very flexible nonlinear functional forms
+\smallskip
+\item Have $y^{data}$ and want to fit $f(x|\theta)$ to it
+\smallskip
+\item One way of producing a flexible function with easy derivatives (for fitting) is to stack logit functions 
+\smallskip
+\item Idea:  $X=[x_1,x_2,...]$ gets fed into multiple logits $f_1(X)$, $f_2(X)$, $f_3(X)$, each with its own logit weight on $X$: $\beta_1^f$, $\beta_2^f$, $\beta_3^f$.
+\smallskip
+\item The outputs of these three (+) logits then (possibly) get fed into another set of logits, $g_1(f_1,f_2,f_3)$, $g_2(f_1,f_2,f_3)$, each with their own set of weights $\beta^g_1$...
+\smallskip
+\item Eventually these are summed up or scaled to a single (or multiple!) output, such as $y^{fit}$
+\smallskip
+\item For most uses, NN just find $\theta$ like we would in any fitting problem, but use gradient descent (chain rule!) rather than Newton's method (too many cross-derivatives + many local minima)
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle[alignment=center]{Example to fit:  $x.^2+y.^2-2sin(x.*y)$}
+\begin{itemize}
+\item See Fitnet Example/Main.m for details!
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
 \frametitle[alignment=center]{The Three Curses of Dimensionality}
 \begin{itemize}
-\item Recall the three curses of dimensionality
+\item The three curses of dimensionality
 \begin{enumerate}
 \item As \textcolor{blue}{$n_{states}$} proliferates, \# problems to solve explodes for VFI
 \item As \textcolor{red}{$n_{actions}$} proliferates, \# choices to compare explodes
@@ -81,6 +108,8 @@ $$V(\textcolor{blue}{x})=\max_{\textcolor{red}{y\in\Gamma(X)}}\left\{F(x,y)+\bet
 \bigskip
 \item Critic function $\overline{V}(x|\phi)$  takes in state and spits out value (traditional value function)
 \end{itemize}
+\bigskip
+\item We can represent Actor \& Critic as flexible neural networks parameterized by $\theta$ and $\phi$ but how get values to fit?
 \bigskip
 \item Good actor function embeds both reward and stochastic future (actions and integral!)
 \bigskip
@@ -350,6 +379,21 @@ Not  terrible, but could use more running \& debugging to get level
 \item There are a cornucopia of flavors \& algorithms--I haven't yet found one that isn't intuitive \& obvious in retrospect (once you grok the core idea behind approximate dynamic programming idea)
 \bigskip
 \item However, economist notation and ML notation diverge a bit, so there's an investment in learning
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle[alignment=center]{Other ML Topics}
+\begin{itemize}
+\item We talked about reinforcement learning: have a problem, throw it at computer over and over, have computer solve it
+\bigskip
+\item There are other things you might care about:  highly nonlinear functions more generally (Kriging/gaussian process regression ``fitrgp")
+\bigskip
+\item Classification learning (such as support vector machines ``fitcsvm")
+\bigskip
+\item Regression learner
+\bigskip
+\item We won't talk about these, instead we'll start applying!
 \end{itemize}
 \end{frame}
 

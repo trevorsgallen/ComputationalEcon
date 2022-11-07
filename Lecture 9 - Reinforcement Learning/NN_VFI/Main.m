@@ -18,7 +18,7 @@ clearvars -global
 %Create the environment
     env = rlFunctionEnv(obsInfo,actInfo,'myStepFunction','myResetFunction');
 
-%Define a three-layer critic network
+%Define a three-layer critic network (400 x 400)
     criticNetwork = layerGraph(featureInputLayer([obsInfo.Dimension(1)],'Normalization','none','Name','state'));
     criticNetwork = addLayers(criticNetwork,featureInputLayer([numel(actInfo)],'Normalization','none','Name','action'));
     criticNetwork = addLayers(criticNetwork,concatenationLayer(1,2,'Name','concat'))
@@ -97,6 +97,8 @@ clearvars -global
         trainStats = train(agent,env,opt);
         save('myagent.mat','agent');
 
+    %Now we have a trained agent!  We can do all sorts of things.
+
     %Simulate (use step to simulate, will also simulate by hand)
     rng(1)
     simOpts = rlSimulationOptions(...
@@ -104,13 +106,14 @@ clearvars -global
         'NumSimulations',1,'UseParallel',0);
     experience = sim(env,agent,simOpts);
 
-    temp3=squeeze(experience.Observation.State.Data(1,1,1:end));
-    temp4=squeeze(experience.Observation.State.Data(2,1,1:end));
-
-    %Plot k
-    figure(2)
-    hold on
-    plot(temp3)
+%     %
+%     temp3=squeeze(experience.Observation.State.Data(1,1,1:end));
+%     temp4=squeeze(experience.Observation.State.Data(2,1,1:end));
+% 
+%     %Plot k
+%     figure(2)
+%     hold on
+%     plot(temp3)
 
     
 %Simulate by hand
