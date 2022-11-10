@@ -26,7 +26,7 @@ clear
     %the bias parameter.
     g = @(x) 1./(1+exp(-x));
     f_hidden_1 = @(alpha_1,beta_1,x0) g([ones(length(x0),1),x0]*[alpha_1,beta_1]')
-    %10 different logits are subjected to a relu layer
+    %10 different logits are subjected to a relu layer (irrelevant here)
     relu = @(x) x.*(x>0);
     %10 different logits are then fed as inputs to 5 logit layers 
     f_hidden_2 = @(alpha,beta,x1) g([ones(size(x1,1),1),x1]*[init_alpha_2;init_beta_2])
