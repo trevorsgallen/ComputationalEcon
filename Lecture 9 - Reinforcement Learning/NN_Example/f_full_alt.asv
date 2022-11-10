@@ -1,0 +1,13 @@
+function out = f_full_alt(theta,f_full)
+    persistent counter
+    if exist('counter')==0 || isempty(counter)
+        counter = 0;
+    else
+        counter = counter+1
+    end
+    
+    out = f_full(theta);
+    if mod(counter,100)==0
+        plot(out)
+    end
+end

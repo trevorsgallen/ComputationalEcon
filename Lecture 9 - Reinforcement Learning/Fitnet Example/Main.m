@@ -12,7 +12,8 @@ clear
     %Define a network
         %VERY small network (two logits), approx MSE 13
         counter = 0;
-        for netsize = [20,1,2,3,4,5,10,20]
+        rng(1)
+        for netsize = [1,2,3,4,5,10,20]
             %Shallow, small sample
             tic
             counter = counter+1;

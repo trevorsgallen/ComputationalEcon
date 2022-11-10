@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.7.13)  7 NOV 2022 14:07
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.7.13)  10 NOV 2022 10:34
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1080,113 +1080,257 @@ thkerncmss.
 
 ] [4
 
-] [5
-
-] [6
-
 ]
-Overfull \vbox (6.1664pt too high) detected at line 141
- []
+<NN_Example/Fig_Shallow_5.png, id=50, 562.2606pt x 421.575pt>
+File: NN_Example/Fig_Shallow_5.png Graphic file (type png)
+<use NN_Example/Fig_Shallow_5.png>
+Package pdftex.def Info: NN_Example/Fig_Shallow_5.png  used on input line 94.
+(pdftex.def)             Requested size: 281.12961pt x 210.78697pt.
+ [5
 
-[7
+ <./NN_Example/Fig_Shallow_5.png (PNG copy)>]
+<NN_Example/Fig_Shallow_1.png, id=57, 562.2606pt x 421.575pt>
+File: NN_Example/Fig_Shallow_1.png Graphic file (type png)
+<use NN_Example/Fig_Shallow_1.png>
+Package pdftex.def Info: NN_Example/Fig_Shallow_1.png  used on input line 101.
+(pdftex.def)             Requested size: 281.12961pt x 210.78697pt.
+ [6
 
-] [8
+ <./NN_Example/Fig_Shallow_1.png (PNG copy)>]
+<NN_Example/Fig_Shallow_2.png, id=64, 562.2606pt x 421.575pt>
+File: NN_Example/Fig_Shallow_2.png Graphic file (type png)
+<use NN_Example/Fig_Shallow_2.png>
+Package pdftex.def Info: NN_Example/Fig_Shallow_2.png  used on input line 108.
+(pdftex.def)             Requested size: 281.12961pt x 210.78697pt.
+ [7
 
-] [9
+ <./NN_Example/Fig_Shallow_2.png (PNG copy)>]
+<NN_Example/Fig_Shallow_3.png, id=72, 562.2606pt x 421.575pt>
+File: NN_Example/Fig_Shallow_3.png Graphic file (type png)
+<use NN_Example/Fig_Shallow_3.png>
+Package pdftex.def Info: NN_Example/Fig_Shallow_3.png  used on input line 115.
+(pdftex.def)             Requested size: 281.12961pt x 210.78697pt.
 
-] [10
+[8
 
-] [11
+ <./NN_Example/Fig_Shallow_3.png (PNG copy)>]
+<NN_Example/Fig_Shallow_4.png, id=79, 562.2606pt x 421.575pt>
+File: NN_Example/Fig_Shallow_4.png Graphic file (type png)
+<use NN_Example/Fig_Shallow_4.png>
+Package pdftex.def Info: NN_Example/Fig_Shallow_4.png  used on input line 122.
+(pdftex.def)             Requested size: 281.12961pt x 210.78697pt.
+ [9
 
-] [12
+ <./NN_Example/Fig_Shallow_4.png (PNG copy)>]
+<NN_Example/Fig_Shallow_6.png, id=86, 562.2606pt x 421.575pt>
+File: NN_Example/Fig_Shallow_6.png Graphic file (type png)
+<use NN_Example/Fig_Shallow_6.png>
+Package pdftex.def Info: NN_Example/Fig_Shallow_6.png  used on input line 131.
+(pdftex.def)             Requested size: 281.12961pt x 210.78697pt.
+ [10
 
-] [13
+ <./NN_Example/Fig_Shallow_6.png (PNG copy)>]
+<NN_Example/Fig_Shallow_7.png, id=93, 562.2606pt x 421.575pt>
+File: NN_Example/Fig_Shallow_7.png Graphic file (type png)
+<use NN_Example/Fig_Shallow_7.png>
+Package pdftex.def Info: NN_Example/Fig_Shallow_7.png  used on input line 139.
+(pdftex.def)             Requested size: 281.12961pt x 210.78697pt.
+ [11
 
-] [14
+ <./NN_Example/Fig_Shallow_7.png (PNG copy)>]
+<NN_Example/Fig_Shallow_8.png, id=100, 562.2606pt x 421.575pt>
+File: NN_Example/Fig_Shallow_8.png Graphic file (type png)
+<use NN_Example/Fig_Shallow_8.png>
+Package pdftex.def Info: NN_Example/Fig_Shallow_8.png  used on input line 146.
+(pdftex.def)             Requested size: 281.12961pt x 210.78697pt.
+ [12
 
-] [15
+ <./NN_Example/Fig_Shallow_8.png (PNG copy)>]
+<NN_Example/Fig_Shallow_9.png, id=107, 562.2606pt x 421.575pt>
+File: NN_Example/Fig_Shallow_9.png Graphic file (type png)
+<use NN_Example/Fig_Shallow_9.png>
+Package pdftex.def Info: NN_Example/Fig_Shallow_9.png  used on input line 153.
+(pdftex.def)             Requested size: 281.12961pt x 210.78697pt.
+ [13
 
-] [16
+ <./NN_Example/Fig_Shallow_9.png (PNG copy)>]
+<NN_Example/Fig_Shallow_10.png, id=115, 562.2606pt x 421.575pt>
+File: NN_Example/Fig_Shallow_10.png Graphic file (type png)
+<use NN_Example/Fig_Shallow_10.png>
+Package pdftex.def Info: NN_Example/Fig_Shallow_10.png  used on input line 160.
 
-]
-<Fig1.png, id=134, 1124.2pt x 843.15pt>
-File: Fig1.png Graphic file (type png)
-<use Fig1.png>
-Package pdftex.def Info: Fig1.png  used on input line 270.
-(pdftex.def)             Requested size: 281.04932pt x 210.78697pt.
+(pdftex.def)             Requested size: 281.12961pt x 210.78697pt.
+ [14
+
+ <./NN_Example/Fig_Shallow_10.png (PNG copy)>]
+<NN_Example/Fig_Shallow_11.png, id=122, 562.2606pt x 421.575pt>
+File: NN_Example/Fig_Shallow_11.png Graphic file (type png)
+<use NN_Example/Fig_Shallow_11.png>
+Package pdftex.def Info: NN_Example/Fig_Shallow_11.png  used on input line 167.
+
+(pdftex.def)             Requested size: 281.12961pt x 210.78697pt.
+ [15
+
+ <./NN_Example/Fig_Shallow_11.png (PNG copy)>]
+<NN_Example/Fig_Shallow_12.png, id=129, 562.2606pt x 421.575pt>
+File: NN_Example/Fig_Shallow_12.png Graphic file (type png)
+<use NN_Example/Fig_Shallow_12.png>
+Package pdftex.def Info: NN_Example/Fig_Shallow_12.png  used on input line 174.
+
+(pdftex.def)             Requested size: 281.12961pt x 210.78697pt.
+
+[16
+
+ <./NN_Example/Fig_Shallow_12.png (PNG copy)>]
+<NN_Example/Fig_Shallow_13.png, id=136, 562.2606pt x 421.575pt>
+File: NN_Example/Fig_Shallow_13.png Graphic file (type png)
+<use NN_Example/Fig_Shallow_13.png>
+Package pdftex.def Info: NN_Example/Fig_Shallow_13.png  used on input line 181.
+
+(pdftex.def)             Requested size: 281.12961pt x 210.78697pt.
  [17
 
- <./Fig1.png (PNG copy)>]
-<Fig2.png, id=141, 1124.2pt x 843.15pt>
-File: Fig2.png Graphic file (type png)
-<use Fig2.png>
-Package pdftex.def Info: Fig2.png  used on input line 279.
-(pdftex.def)             Requested size: 281.04932pt x 210.78697pt.
+ <./NN_Example/Fig_Shallow_13.png (PNG copy)>]
+<NN_Example/Fig_Shallow_14.png, id=143, 562.2606pt x 421.575pt>
+File: NN_Example/Fig_Shallow_14.png Graphic file (type png)
+<use NN_Example/Fig_Shallow_14.png>
+Package pdftex.def Info: NN_Example/Fig_Shallow_14.png  used on input line 188.
 
-[18
+(pdftex.def)             Requested size: 281.12961pt x 210.78697pt.
+ [18
 
- <./Fig2.png (PNG copy)>]
-<Fig3.png, id=148, 1124.2pt x 843.15pt>
-File: Fig3.png Graphic file (type png)
-<use Fig3.png>
-Package pdftex.def Info: Fig3.png  used on input line 288.
-(pdftex.def)             Requested size: 281.04932pt x 210.78697pt.
+ <./NN_Example/Fig_Shallow_14.png (PNG copy)>]
+<NN_Example/Fig_Shallow_15.png, id=150, 562.2606pt x 421.575pt>
+File: NN_Example/Fig_Shallow_15.png Graphic file (type png)
+<use NN_Example/Fig_Shallow_15.png>
+Package pdftex.def Info: NN_Example/Fig_Shallow_15.png  used on input line 195.
+
+(pdftex.def)             Requested size: 281.12961pt x 210.78697pt.
  [19
 
- <./Fig3.png (PNG copy)>]
-<Fig7.png, id=156, 1124.2pt x 843.15pt>
-File: Fig7.png Graphic file (type png)
-<use Fig7.png>
-Package pdftex.def Info: Fig7.png  used on input line 297.
-(pdftex.def)             Requested size: 281.04932pt x 210.78697pt.
- [20
+ <./NN_Example/Fig_Shallow_15.png (PNG copy)>] [20
 
- <./Fig7.png (PNG copy)>]
-<Fig8.png, id=164, 1124.2pt x 843.15pt>
-File: Fig8.png Graphic file (type png)
-<use Fig8.png>
-Package pdftex.def Info: Fig8.png  used on input line 307.
-(pdftex.def)             Requested size: 281.04932pt x 210.78697pt.
+]
+<NN_Example/Deep_7_7.png, id=166, 562.2606pt x 421.575pt>
+File: NN_Example/Deep_7_7.png Graphic file (type png)
+<use NN_Example/Deep_7_7.png>
+Package pdftex.def Info: NN_Example/Deep_7_7.png  used on input line 221.
+(pdftex.def)             Requested size: 281.12961pt x 210.78697pt.
  [21
 
- <./Fig8.png (PNG copy)>]
-<Fig9.png, id=171, 1124.2pt x 843.15pt>
-File: Fig9.png Graphic file (type png)
-<use Fig9.png>
-Package pdftex.def Info: Fig9.png  used on input line 318.
-(pdftex.def)             Requested size: 281.04932pt x 210.78697pt.
- [22
+ <./NN_Example/Deep_7_7.png (PNG copy)>] [22
 
- <./Fig9.png (PNG copy)>]
-<Fig4.png, id=178, 1124.2pt x 843.15pt>
-File: Fig4.png Graphic file (type png)
-<use Fig4.png>
-Package pdftex.def Info: Fig4.png  used on input line 329.
-(pdftex.def)             Requested size: 281.04932pt x 210.78697pt.
- [23
+] [23
 
- <./Fig4.png (PNG copy)>]
-<Fig5.png, id=185, 1124.2pt x 843.15pt>
-File: Fig5.png Graphic file (type png)
-<use Fig5.png>
-Package pdftex.def Info: Fig5.png  used on input line 337.
-(pdftex.def)             Requested size: 281.04932pt x 210.78697pt.
- [24
+] [24
 
- <./Fig5.png (PNG copy)>]
-<Fig6.png, id=192, 1124.2pt x 843.15pt>
-File: Fig6.png Graphic file (type png)
-<use Fig6.png>
-Package pdftex.def Info: Fig6.png  used on input line 345.
-(pdftex.def)             Requested size: 281.04932pt x 210.78697pt.
- [25
+] [25
 
- <./Fig6.png (PNG copy)>]
-[26
+] [26
 
-] [27
+]
+Overfull \vbox (6.1664pt too high) detected at line 344
+ []
+
+[27
 
 ] [28
+
+] [29
+
+] [30
+
+] [31
+
+] [32
+
+] [33
+
+] [34
+
+] [35
+
+] [36
+
+]
+<Fig1.png, id=277, 1124.2pt x 843.15pt>
+File: Fig1.png Graphic file (type png)
+<use Fig1.png>
+Package pdftex.def Info: Fig1.png  used on input line 475.
+(pdftex.def)             Requested size: 281.04932pt x 210.78697pt.
+ [37
+
+ <./Fig1.png (PNG copy)>]
+<Fig2.png, id=285, 1124.2pt x 843.15pt>
+File: Fig2.png Graphic file (type png)
+<use Fig2.png>
+Package pdftex.def Info: Fig2.png  used on input line 484.
+(pdftex.def)             Requested size: 281.04932pt x 210.78697pt.
+
+[38
+
+ <./Fig2.png (PNG copy)>]
+<Fig3.png, id=292, 1124.2pt x 843.15pt>
+File: Fig3.png Graphic file (type png)
+<use Fig3.png>
+Package pdftex.def Info: Fig3.png  used on input line 493.
+(pdftex.def)             Requested size: 281.04932pt x 210.78697pt.
+ [39
+
+ <./Fig3.png (PNG copy)>]
+<Fig7.png, id=299, 1124.2pt x 843.15pt>
+File: Fig7.png Graphic file (type png)
+<use Fig7.png>
+Package pdftex.def Info: Fig7.png  used on input line 502.
+(pdftex.def)             Requested size: 281.04932pt x 210.78697pt.
+ [40
+
+ <./Fig7.png (PNG copy)>]
+<Fig8.png, id=307, 1124.2pt x 843.15pt>
+File: Fig8.png Graphic file (type png)
+<use Fig8.png>
+Package pdftex.def Info: Fig8.png  used on input line 512.
+(pdftex.def)             Requested size: 281.04932pt x 210.78697pt.
+ [41
+
+ <./Fig8.png (PNG copy)>]
+<Fig9.png, id=314, 1124.2pt x 843.15pt>
+File: Fig9.png Graphic file (type png)
+<use Fig9.png>
+Package pdftex.def Info: Fig9.png  used on input line 523.
+(pdftex.def)             Requested size: 281.04932pt x 210.78697pt.
+ [42
+
+ <./Fig9.png (PNG copy)>]
+<Fig4.png, id=321, 1124.2pt x 843.15pt>
+File: Fig4.png Graphic file (type png)
+<use Fig4.png>
+Package pdftex.def Info: Fig4.png  used on input line 534.
+(pdftex.def)             Requested size: 281.04932pt x 210.78697pt.
+ [43
+
+ <./Fig4.png (PNG copy)>]
+<Fig5.png, id=329, 1124.2pt x 843.15pt>
+File: Fig5.png Graphic file (type png)
+<use Fig5.png>
+Package pdftex.def Info: Fig5.png  used on input line 542.
+(pdftex.def)             Requested size: 281.04932pt x 210.78697pt.
+ [44
+
+ <./Fig5.png (PNG copy)>]
+<Fig6.png, id=336, 1124.2pt x 843.15pt>
+File: Fig6.png Graphic file (type png)
+<use Fig6.png>
+Package pdftex.def Info: Fig6.png  used on input line 550.
+(pdftex.def)             Requested size: 281.04932pt x 210.78697pt.
+ [45
+
+ <./Fig6.png (PNG copy)>]
+[46
+
+] [47
+
+] [48
 
 ]
 \tf@nav=\write6
@@ -1208,40 +1352,43 @@ not changed.
 ### simple group (level 1) entered at line 32 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 28128 strings out of 478268
- 590460 string characters out of 5846347
- 875481 words of memory out of 5000000
- 45713 multiletter control sequences out of 15000+600000
- 484587 words of font info for 83 fonts, out of 8000000 for 9000
+ 28299 strings out of 478268
+ 593778 string characters out of 5846347
+ 874481 words of memory out of 5000000
+ 45826 multiletter control sequences out of 15000+600000
+ 484881 words of font info for 84 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 128i,11n,122p,459b,2038s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 128i,11n,122p,459b,1988s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts
 /cm/cmcsc10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts
 /cm/cmex10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/
-cmextra/cmex9.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmmi10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmmi12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmmi6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmmi8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmmi9.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-ss10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cms
-s12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmss
-8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.
-pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.
-pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi12.
-pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.p
-fb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi9.pf
-b></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
-></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><
-/usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></u
-sr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></us
-r/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-
-Output written on "Lecture-9-Reinforcement Learning.pdf" (28 pages, 1090009 byt
+cmextra/cmex7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfon
+ts/cmextra/cmex9.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmmi10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmmi12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmmi6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmmi7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmmi8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmmi9.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mss10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+ss12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cms
+s8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9
+.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx1
+0.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi1
+0.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi1
+2.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8
+.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi9.
+pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.p
+fb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb
+></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb><
+/usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></
+usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pf
+b>
+Output written on "Lecture-9-Reinforcement Learning.pdf" (48 pages, 1747769 byt
 es).
 PDF statistics:
- 322 PDF objects out of 1000 (max. 8388607)
- 231 compressed objects within 3 object streams
- 57 named destinations out of 1000 (max. 500000)
- 88 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 487 PDF objects out of 1000 (max. 8388607)
+ 353 compressed objects within 4 object streams
+ 97 named destinations out of 1000 (max. 500000)
+ 168 words of extra memory for PDF output out of 10000 (max. 10000000)
 

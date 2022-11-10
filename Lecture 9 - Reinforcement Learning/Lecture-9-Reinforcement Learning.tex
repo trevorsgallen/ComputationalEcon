@@ -73,6 +73,206 @@ src=#3 % same path as in addresource!
 \end{frame}
 
 \begin{frame}
+\frametitle[alignment=center]{Neural Networks}
+\begin{itemize}
+\item Concrete example:  want to approximate $f(x)$
+\bigskip
+\item Suggestion:  one set of five logits, whose sum is then scaled:
+$$f(x)\approx \alpha_{L2}+\left(\sum_{i=1}^5 \beta_{L2,i}\frac{1}{1+e^{-(\alpha_{1,i}+\beta_{L1,i}x)}}\right)$$
+\item A little hard to read!  
+\bigskip
+\item See Simple\_5\_Main.m, and then Simple\_N\_Main.m for N logits
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle[alignment=center]{Neural Networks: 5 Logit+Linear Approx}
+\begin{figure}
+\includegraphics[scale=0.5]{NN_Example/Fig_Shallow_5.png}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle[alignment=center]{Neural Networks: 1 Logit+Linear Approx}
+\begin{figure}
+\includegraphics[scale=0.5]{NN_Example/Fig_Shallow_1.png}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle[alignment=center]{Neural Networks: 2 Logit+Linear Approx}
+\begin{figure}
+\includegraphics[scale=0.5]{NN_Example/Fig_Shallow_2.png}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle[alignment=center]{Neural Networks: 3 Logit+Linear Approx}
+\begin{figure}
+\includegraphics[scale=0.5]{NN_Example/Fig_Shallow_3.png}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle[alignment=center]{Neural Networks: 4 Logit+Linear Approx}
+\begin{figure}
+\includegraphics[scale=0.5]{NN_Example/Fig_Shallow_4.png}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}
+\frametitle[alignment=center]{Neural Networks: 6 Logit+Linear Approx}
+\begin{figure}
+\includegraphics[scale=0.5]{NN_Example/Fig_Shallow_6.png}
+\end{figure}
+Got stuck at local minima!  (Bad!)
+\end{frame}
+
+\begin{frame}
+\frametitle[alignment=center]{Neural Networks: 7 Logit+Linear Approx}
+\begin{figure}
+\includegraphics[scale=0.5]{NN_Example/Fig_Shallow_7.png}
+\end{figure}
+Got stuck at local minima!  (Bad!)
+\end{frame}
+
+\begin{frame}
+\frametitle[alignment=center]{Neural Networks: 8 Logit+Linear Approx}
+\begin{figure}
+\includegraphics[scale=0.5]{NN_Example/Fig_Shallow_8.png}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle[alignment=center]{Neural Networks: 9 Logit+Linear Approx}
+\begin{figure}
+\includegraphics[scale=0.5]{NN_Example/Fig_Shallow_9.png}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle[alignment=center]{Neural Networks: 10 Logit+Linear Approx}
+\begin{figure}
+\includegraphics[scale=0.5]{NN_Example/Fig_Shallow_10.png}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle[alignment=center]{Neural Networks: 11 Logit+Linear Approx}
+\begin{figure}
+\includegraphics[scale=0.5]{NN_Example/Fig_Shallow_11.png}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle[alignment=center]{Neural Networks: 12 Logit+Linear Approx}
+\begin{figure}
+\includegraphics[scale=0.5]{NN_Example/Fig_Shallow_12.png}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle[alignment=center]{Neural Networks: 13 Logit+Linear Approx}
+\begin{figure}
+\includegraphics[scale=0.5]{NN_Example/Fig_Shallow_13.png}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle[alignment=center]{Neural Networks: 14  Logit+Linear Approx}
+\begin{figure}
+\includegraphics[scale=0.5]{NN_Example/Fig_Shallow_14.png}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle[alignment=center]{Neural Networks: 15 Logit+Linear Approx}
+\begin{figure}
+\includegraphics[scale=0.5]{NN_Example/Fig_Shallow_15.png}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}
+\frametitle[alignment=center]{Deep Learning}
+\begin{itemize}
+\item I think of Neural Networks as really flexible sets of if statements combined with linear functions.
+\bigskip
+\item Logits act as "if's"
+\bigskip
+\item But could have a doubly-stacked if statement: 
+\begin{itemize}
+\item First layer: $$f_{a,1}(x_1,x_2)=1\iff x_1>3$$ $$f_{a,2}(x_1,x_2)=1\iff x_2<1$$
+\item Second layer: $$f_b(f_{a,1},f_{a,2})=1\iff f_{a,1}==1\ \&\ f_{a,2}==1$$
+\end{itemize}
+\item Idea:  multiple layers give ability to encode complex ``if" statements ``easily"
+\bigskip
+\item Let's see my stacked version!  Deep\_N\_Main.m
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle[alignment=center]{Neural Networks: 5x5 Logit+Linear Approx}
+\begin{figure}
+\includegraphics[scale=0.5]{NN_Example/Deep_7_7.png}
+\end{figure}
+\end{frame}
+
+
+%\begin{frame}
+%\frametitle[alignment=center]{Neural Networks: 20x10 Logit+Linear Approx}
+%\begin{figure}
+%\includegraphics[scale=0.5]{NN_Example/Deep_20_10.png}
+%\end{figure}
+%\end{frame}
+
+
+
+
+\begin{frame}
+\frametitle[alignment=center]{Neural Networks}
+\begin{itemize}
+\item Can generalize this, add more layers of logits or other functions
+\item Because minimized with gradient descent, we want things that we can use chain rule on
+\item Because multiple minima, want things that are bounded
+\item Some common ones:
+\begin{itemize}
+\item ``Rectifier" $f(x)=max(0,x)$ (helps for piecewise)
+\item Hyperbolic tangent $tanh(x)$ (similar to logit/``sigmoid", but -1 to 1)
+\item Scaling layer: $\alpha+\beta X$
+\item Softmax/``categorical distribution": vector output, takes vec $x$ and spits out $\frac{exp(x_i)}{\sum_j exp(x_j)}$
+\item Less relevant in most econ: convolution, pool ``nearby" observations
+\item LSTM: let value today affect fits for tomorrow (so $f(X_2)$ (X matrix at $t=2$) is a function of $X_2$ and $X_1$), all the way back
+\item Dropout layer: randomly drop inputs (train drunk!)s
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle[alignment=center]{Matlab: build in shallow NN}
+\begin{itemize}
+\item Matlab has a lot of built-in neural network stuff
+\bigskip
+\item Unfortunately(?) this is an evolving field, and so commands are changing, becoming obsolete, etc.
+\bigskip
+\item Can be frustrating, but equivalent to Theano dying, Google transitioning from TensorFlow to JAX(?)
+\bigskip
+\item But can be as simple as:\\
+\texttt{net = fitnet(netsize);}\\
+\texttt{net = train(net,Xdata,Ydata,'UseParallel','yes');}\\
+ \item Just like we write before, a bunch of logits that are netsize, give it X and Y data, minimizes.
+ \bigskip
+ \item Great for predicting, obviously \textbf{not solution for causality} (sorry micro ppl)
+\end{itemize}
+\end{frame}
+
+
+
+
+\begin{frame}
 \frametitle[alignment=center]{Example to fit:  $x.^2+y.^2-2sin(x.*y)$}
 \begin{itemize}
 \item See Fitnet Example/Main.m for details!
@@ -84,9 +284,12 @@ src=#3 % same path as in addresource!
 \frametitle[alignment=center]{The Three Curses of Dimensionality}
 \begin{itemize}
 \item The three curses of dimensionality
+\bigskip
 \begin{enumerate}
 \item As \textcolor{blue}{$n_{states}$} proliferates, \# problems to solve explodes for VFI
+\smallskip
 \item As \textcolor{red}{$n_{actions}$} proliferates, \# choices to compare explodes
+\smallskip
 \item As \textcolor{green}{$n_{outcomes}$} proliferates (particularly stochastic), space to integrate over explodes
 \end{enumerate}
 $$V(\textcolor{blue}{x})=\max_{\textcolor{red}{y\in\Gamma(X)}}\left\{F(x,y)+\beta \textcolor{green}{E(V(x'(y)))}\right\}$$
@@ -113,7 +316,7 @@ $$V(\textcolor{blue}{x})=\max_{\textcolor{red}{y\in\Gamma(X)}}\left\{F(x,y)+\bet
 \bigskip
 \item Good actor function embeds both reward and stochastic future (actions and integral!)
 \bigskip
-\item \emph{Given} $\theta$ and $\phi$, can simulate an agent
+\item \emph{Given} $\theta$ and $\phi$, can simulate an agent, get data to fit
 \bigskip
 \item Need to find $\theta$ and $\phi$
 \end{itemize}
@@ -195,13 +398,15 @@ $$\phi=\phi+\beta d\phi$$
 $$V(A,K,t)=\underset{\max}{K'}\left\{\log(A K^{\alpha}-K')+\beta E(V(A',K',t+1))\right\}$$
 $$A'=(1-\rho)+\rho A+\epsilon,\ \ \ \epsilon\sim\mathcal{N}(0,0.05)$$
 \item How will we set this up?
-\begin{itemize}
+\bigskip
 \item Define a set of functions that:
+\bigskip
 \begin{itemize}
 \item A function that sets up actor and critic neural networks, defines observations, and trains (Main.m)
+\bigskip
 \item Initialize an agent (including random draws) (myResetFunction.m)
+\bigskip
 \item Step an agent forward in time, simulate draws (myStepFunction.m)
-\end{itemize}
 \end{itemize}
 \end{itemize}
 \end{frame}

@@ -2,7 +2,7 @@ clear
 close all
 delta = 0.07;
 alpha = 0.7;
-
+asdf
 rng(0,'twister')
 clearvars -global
 
