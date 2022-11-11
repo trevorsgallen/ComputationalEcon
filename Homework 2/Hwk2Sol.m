@@ -160,26 +160,20 @@ clear N P s epsilon_shock zeta_shock Y c
     table([[0.01;0.02;0.04;0.64;0.05],[sigxi_hat;sigzeta_hat;sigepsilon_hat;phihat;psihat],[0;sig_zeta.^2;sig_epsilon.^2;NaN;NaN]])
 
 %Plot of results
-    % subplot(2,2,1)
-    % plot(P')
-    % title('Permanent Income')
-    % subplot(2,2,2)
-    % plot(c')
-    % title('Consumption')
-    % subplot(2,2,3)
-    % plot(s')
-    % title('Savings')
-    % subplot(2,2,4)
-    % plot(var(P))
-    % hold on
-    % plot(var(c))
-    % plot(var(s))
-    % legend('Y','C','s')
-    % title('Variance by Age')
-
-% [beta=0.952380952380952, sig_s0=0.1 , var 1.00137259671126, mean 0.0286811022357401]
-% [beta=0.952380952380952, sig_s0=0 , var 1.00136626981579, mean 0.0206002725489628]
-% [beta=0.93, sig_s0=0 , var 1.00188733468966, mean 0.0994967833932455]
-% [beta=0.93, sig_s0=0.1 , var 1.00178878161423, mean 0.00409152745454521]
-
+    subplot(2,2,1)
+    plot(P')
+    title('Permanent Income')
+    subplot(2,2,2)
+    plot(c')
+    title('Consumption')
+    subplot(2,2,3)
+    plot(s')
+    title('Savings')
+    subplot(2,2,4)
+    plot(var(P))
+    hold on
+    plot(var(c))
+    plot(var(s))
+    legend('Y','C','s')
+    title('Variance by Age')
 
