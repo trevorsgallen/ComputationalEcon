@@ -1,0 +1,81 @@
+\documentclass[11pt]{article}
+\usepackage{appendix}
+\usepackage{graphicx} 
+\usepackage{setspace}
+\usepackage{amsmath,float,verbatim,multicol}
+\usepackage{array}
+\usepackage{lscape}
+\usepackage{hyperref}
+
+\usepackage{amssymb}
+\bibliographystyle{plainnat}
+\usepackage[round]{natbib}
+\usepackage{multirow}
+\usepackage{xcolor}
+
+\setlength{\textheight}{8.8in} \setlength{\textwidth}{6.3in}
+\setlength{\oddsidemargin}{0.2in} \setlength{\topmargin}{-0.30in}
+\setlength{\footnotesep}{10.0pt}
+
+\newcommand{\ol}{\overline}
+
+
+
+\renewcommand{\baselinestretch}{1.25}
+\title{Solving a McCall Search Model via Reinforcement Learning}
+\author{ Trevor Gallen \\ Econ 64200 }
+\date{Fall 2022}
+
+\begin{document}
+\bibliographystyle{myplainnat}
+%\bibpunct{(}{)}{;}{a}{}{,}6868
+
+\maketitle
+
+
+\textbf{Deliverables}
+\begin{itemize}
+\item You should have a word/\LaTeX document that has three sections: 
+\begin{enumerate}
+\item Discusses the model and answers the questions I pose throughout.
+\item Contains the tables and figures you will produce.
+\item Contains a discussion of your programming choices if you had to make any.
+\end{enumerate}
+\item You should have a Matlab file or set of files (zipped) that contain \textbf{all} your programs and raw data.  There should be a file called ``Main.M" that produces everything I need in one click.
+\end{itemize}
+\ \\
+\ \\
+
+
+\section{Model}
+In this homework, we're going to try to solve a simple McCall search model with Reinforcement Learning.  \\
+\ \\
+Each period, agents wage up with a wage draw  $w\sim\log\mathcal{N}\left(1,3\right)$, they have a choice whether or not to accept the offer or not.  If they accept, they receive that $w^{accepted}$ draw every period for the rest of their life.  If they reject, then (if they don't die) receive zero and get a new wage draw in the next period, discounted by a factor of $\beta$.  The probability of death is $\alpha=0.067$.  Their problem is can therefore be written:
+
+$$V(w)=\underset{accept,reject}{\max}\left\{\frac{w}{1-(1-\alpha)\beta},(1-\alpha)\beta V(w')\right\}$$
+
+\section{Problem}
+Set this problem up and solve it with a reinforcement learning agent in Matlab.  Note that while the state is continuous, the decision is discrete.  However, you may make a discrete decision continuous (round a sigmoid function, for instance), and approximate a continuous state with a discrete set of $N$ levels.  To solve this, you must therefore:
+\begin{enumerate}
+\item Set up an action space (accept/reject) and observation space (wage draw)
+\item Set up neural networks (if actor critic, then a critic network that takes in one action and one state and spits out a scalar, and an action network that takes in a state and spits out an action)
+\item Set up a reset function that starts your actor
+\item Set up a step function that advances them one period, or terminates the problem if they accept (or die)
+\end{enumerate}
+This can be as simple as creating the observation info (rlNumericSpec(dimensions)), the act info (rlFiniteSetSpec(discrete actions), set up the environment (rlFunctionEnv(obsInfo,actInfo,stepfcn,resetfcn)) and then setting up a default DQN agent (rlDQNAgent(obsInfo,actInfo)), telling it the discount factor (agent.AgentOptions.DiscountFactor = xxx), and training it train(agent,env,opt).  \textbf{I leave it to you} how you solve it, this is merely a suggestion.\\
+ Once you've solved the problem, you should graph out:
+ \begin{itemize}
+ \item The value function of each action, contingent on draw (getValue(getCritic(agent,wage draw)))
+ \item The action at each wage draw getAction(agent,wage draw)
+ \end{itemize}
+ 
+ \section{Research}
+ Change the model in some interesting way and report your results.
+
+
+\end{document}
+
+
+
+
+
