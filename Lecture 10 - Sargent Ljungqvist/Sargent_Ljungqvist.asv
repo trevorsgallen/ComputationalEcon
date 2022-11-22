@@ -48,20 +48,21 @@
     V_new_LF = V_LF;
     V_b_new_LF = V_b_LF;
     V_0_new_LF = V_0_LF;
+% asdf
+%     load V_sto3.mat V_0 V_b V V_0_LF V_b_LF V_LF;
 
-    load('sol.mat','V_new','V_b','V_0')
 %Solve the welfare state economy
     zcount = 0;
     error = Inf;
     while error > 1e-10
-        zcount = zcount+1;
+        zcount = zcount+1
             %Solve for V
                     for w_ind = 1:length(w_space)
                         for h_ind = 1:length(h_space)
                             w = w_space(w_ind);
                             h = h_space(h_ind);
                             I = w.*h;
-                            %Grab the relevant UI index (highest lower than I)
+                            %Grab the relevant UI index
                                 ind2 = max(find(I<= UI_interval));
                                 %Old
                                 %[temp2, ind2] = min(abs(UI_interval-I)+(UI_interval<I)*1000);
@@ -107,9 +108,8 @@
                             V_b_prob = @(s) -(-c(s) + (1-tau).*0.7.*I + (1-alpha).*beta.*(sum(((1-pi(s))*V_b(I_ind,:) + pi(s).*sum(repmat(prob_wage,1,length(h_space)).*val_temp)).*pi_u(h_ind,:))))  ;                  
                             [temp_b,temp_a] = fminbnd(V_b_prob,0,1);
 
-                        %Store the value and policy
-                            V_b_new(I_ind,h_ind) = -temp_a;
-                            V_b_policy(I_ind,h_ind) = temp_b;
+                        V_b_new(I_ind,h_ind) = -temp_a;
+                        V_b_policy(I_ind,h_ind) = temp_b;
 
                     end
                 end
@@ -121,35 +121,29 @@
                     %RHS of V_0 problem
                     V_0_prob = @(s) -(-c(s) + (1-alpha).*beta.*sum(((1-pi(s))*V_0'+pi(s)*sum(repmat(prob_wage,1,length(h_space)).*V)).*pi_u(h_ind,:)));
 
-                    %Solve for best unemployed value, store value and
-                    %policy
-                        [temp1, temp2] = fminbnd(V_0_prob,0,1);
-                        V_0_new(h_ind) = -temp2;
-                        V_0_policy(h_ind) = temp1;
+                    [temp1, temp2] = fminbnd(V_0_prob,0,1);
+                    V_0_new(h_ind) = -temp2;
+                    V_0_policy(h_ind) = temp1;
 
                 end
 
-            %Error is maximum absolute change in any value 
-            error = max([max(abs(V_0_new-V_0)),max(max(abs(V_b_new-V_b))),max(max(abs(V_new-V)))]);
+            error = max([max(abs(V_0_new-V_0)),max(max(abs(V_b_new-V_b))),max(max(abs(V_new-V)))])
 
-            %Display count and means
-            format long g
-            sprintf(' %5g %0.5g %3g %3g %3g ',zcount,error,mean(mean(V_new)),mean(mean(V_b_new)),mean(V_0_new))
+            [mean(mean(V_new)),mean(mean(V_b_new)),mean(V_0_new)]
 
-            %New (LHS) values are now Old (RHS) values
             V_0 = V_0_new;
             V_b = V_b_new;
             V = V_new;
-        save sol.mat V_0 V_b V V_0_LF V_b_LF V_LF;
+        save V_sto4.mat V_0 V_b V V_0_LF V_b_LF V_LF;
     end
 
-        save sol.mat V_0 V_b V V_0_LF V_b_LF V_LF;
+    save V_sto4.mat V_0 V_b V V_0_LF V_b_LF V_LF;
     
 %% Laissez-Faire economy
     zcount = 0;
     error = Inf;
     while error > 1e-10
-        zcount = zcount+1;
+        zcount = zcount+1
             %Solve for V
                     for w_ind = 1:length(w_space)
                         for h_ind = 1:length(h_space)
@@ -184,9 +178,9 @@
                     end
                 end
 
-            error = max([max(abs(V_0_new_LF-V_0_LF)),max(max(abs(V_b_new_LF-V_b_LF))),max(max(abs(V_new_LF-V_LF)))]);
+            error = max([max(abs(V_0_new_LF-V_0_LF)),max(max(abs(V_b_new_LF-V_b_LF))),max(max(abs(V_new_LF-V_LF)))])
 
-            [zcount,error,mean(mean(V_new_LF)),mean(mean(V_b_new_LF)),mean(V_0_new_LF)]
+            [mean(mean(V_new_LF)),mean(mean(V_b_new_LF)),mean(V_0_new_LF)]
 
             V_0_LF = V_0_new_LF;
             V_b_LF = V_b_new_LF;
