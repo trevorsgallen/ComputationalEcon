@@ -63,9 +63,9 @@ load moment.mat moment
     %Now compare simulated data to moments
         %First, households have no insurance
             moment(1,1) = [length(find(best_m==0 & best_p == 0))./num ];
-        %Next, state that 20% of households have 1 m contract
+        %Next, state that  of households have 1 m contract
             moment(2,1) = [length(find(best_m==1))./num ];
-        %Next, state that 50% of households with 1 m contract have at least one
+        %Next, state that  of households with 1 m contract have at least one
         %p contract
             moment(3,1) = [length(find(best_m==1 & best_p >= 1))./length(find(best_m==1))];
         %The average level of consumption is 3
