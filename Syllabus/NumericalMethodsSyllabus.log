@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.2.24)  16 OCT 2023 15:18
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.2.24)  19 OCT 2023 13:20
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -731,52 +731,65 @@ Underfull \hbox (badness 10000) in paragraph at lines 38--40
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 41--52
+Underfull \hbox (badness 10000) in paragraph at lines 41--56
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 41--52
+Underfull \hbox (badness 10000) in paragraph at lines 41--56
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 41--52
+Underfull \hbox (badness 10000) in paragraph at lines 41--56
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 41--52
+Underfull \hbox (badness 10000) in paragraph at lines 41--56
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 53--56
+Underfull \hbox (badness 10000) in paragraph at lines 41--56
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 53--56
+Underfull \hbox (badness 10000) in paragraph at lines 41--56
 
  []
 
 [1
 
 {/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 65--66
+Underfull \hbox (badness 10000) in paragraph at lines 57--60
 
  []
 
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 70.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 70.
 
-Overfull \hbox (45.80142pt too wide) in paragraph at lines 70--119
+Underfull \hbox (badness 10000) in paragraph at lines 57--60
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 69--70
+
+ []
+
+[2]
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 75.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 75.
+
+Overfull \hbox (45.80142pt too wide) in paragraph at lines 75--124
  [][] 
  []
 
-[2] (./NumericalMethodsSyllabus.bbl) [3
+[3
+
+] (./NumericalMethodsSyllabus.bbl) [4
 
 ] (./NumericalMethodsSyllabus.aux)
 Package rerunfilecheck Info: File `NumericalMethodsSyllabus.out' has not change
@@ -784,9 +797,9 @@ d.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 22074 strings out of 478268
- 441623 string characters out of 5846347
- 749766 words of memory out of 5000000
+ 22075 strings out of 478268
+ 441629 string characters out of 5846347
+ 746766 words of memory out of 5000000
  39903 multiletter control sequences out of 15000+600000
  473881 words of font info for 43 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -800,10 +813,10 @@ r/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/
 local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/l
 ocal/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/lo
 cal/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on NumericalMethodsSyllabus.pdf (3 pages, 107924 bytes).
+Output written on NumericalMethodsSyllabus.pdf (4 pages, 109649 bytes).
 PDF statistics:
- 86 PDF objects out of 1000 (max. 8388607)
- 64 compressed objects within 1 object stream
- 21 named destinations out of 1000 (max. 500000)
+ 90 PDF objects out of 1000 (max. 8388607)
+ 67 compressed objects within 1 object stream
+ 22 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
