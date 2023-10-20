@@ -47,7 +47,7 @@ This homework is the first part of a multi-part homework.  This homework starts 
 
 \section{Model}
 Infinitely-lived households start each period with human capital endowment $h_t$, and have period utility over consumption $c_t$.  They have one unit of time each period, which they use to either study $i_t$ or work $L_t$ . If they study, their human capital for next period grows, while if they work, consumption increases.  Households do not have access to savings technology.  They maximize the net present value of utility discounted at a rate $0<\beta<1$:
-$$\sum_{t=0}^\infty \log(c_t)$$
+$$\sum_{t=0}^\infty \beta^t\log(c_t)$$
 subject to the law of motion of human capital:
 $$h_{t+1}=(1-\delta)h_t+Ai_t^\gamma$$
 And their budget constraint:
@@ -61,7 +61,7 @@ $$c_t=h_tL_t$$
 \textbf{Question 1b:} Take first order conditions with respect to $c$, $i$, $L$, and $h'$, and find the Envelope condition for $h$ $\left(\frac{\partial V}{\partial h}=?\right)$.\\
  \ \\
 
-\textbf{Question 1c:} Using the elements from 1b, you should be able to derive an equation that looks like: $$\beta \left((1-\delta)\frac{1}{\gamma A i'^{\gamma-1}}\frac{h'}{c'}+\frac{L'}{c'}\right)=\frac{1}{\gamma A i'^{\gamma-1}}\frac{h}{c}$$
+\textbf{Question 1c:} Using the elements from 1b, you should be able to derive an equation that looks like: $$\beta \left((1-\delta)\frac{1}{\gamma A i'^{\gamma-1}}\frac{h'}{c'}+\frac{L'}{c'}\right)=\frac{1}{\gamma A i^{\gamma-1}}\frac{h}{c}$$
 While this looks horrific at first glance, it's very simple to understand \emph{economically}.\footnote{For instance, when we take FOC's with respect to a standard labor/leisure tradeoff with preferences $u(c,L)=\log(c)+\psi\log(1-L)$ we get $u'(c)=\frac{1}{w}\frac{\psi}{1-L}$, which just says that the marginal benefit of one more unit of consumption, which is $1/c$, is equal to the marginal cost, which is the amount of time it took to earn that one unit $\frac{1}{w}$ multiplied by the marginal disutility of working that amount, $\frac{\psi}{1-L}$.}  Interpret each of the three pieces (breaking up the LHS into two additive pieces) economically. What does each mean?\\
  \ \\
 
