@@ -5,7 +5,6 @@
 \usepackage{tikz}
 \usetheme{default}
 %\usecolortheme{seahorse}
-\usepackage{default}
 
   \setbeamertemplate{footline}[page number]
 \setbeamertemplate{navigation symbols}{}
@@ -384,5 +383,23 @@ $$|f(x)-\hat{f}_{n-1}(x)|\leq \frac{1}{2^{n-1}n!}\underset{\xi\in[-1,1]}{\max}|f
  for scattered/non-gridded data.
 \end{itemize}
 \end{frame}
+
+\begin{frame}
+\frametitle[alignment=center]{Practical Note-IV}
+\begin{itemize}
+\item Making grids in Matlab
+\bigskip
+\item Two commands: ndgrid (interpolation) and meshgrid (ease of graphing)
+\item $[a,b]=meshgrid([1:2],[3:4])$ gives:
+$$a=\left[\begin{array}{cc}1 & 2 \\ 1 & 2\end{array}\right]\ \ b=\left[\begin{array}{cc}3 & 3 \\ 4 & 4\end{array}\right]$$
+\item $[a,b]=ndgrid([1:2],[3:4])$ gives:
+$$a=\left[\begin{array}{cc}1 & 1 \\ 2 & 2\end{array}\right]\ \ b=\left[\begin{array}{cc}3 & 4 \\ 3 & 4\end{array}\right]$$
+\item Matlab expects things to be in ndgrid format for interpolation (while surf uses meshgrid)
+\bigskip
+\item Can always transpose, but if things aren't working, check if this is a problem.  Useful to have different \#'s of indicies so interp crashes if things are in wrong order
+\end{itemize}
+\end{frame}
+
+
 
 \end{document}
