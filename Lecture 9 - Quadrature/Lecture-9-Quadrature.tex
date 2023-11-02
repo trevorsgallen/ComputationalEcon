@@ -3,9 +3,7 @@
 \usepackage{tikz}
 \usetikzlibrary{shapes,arrows}
 \usepackage{tikz}
-\usetheme{default}
 %\usecolortheme{seahorse}
-\usepackage{default}
 
   \setbeamertemplate{footline}[page number]
 \setbeamertemplate{navigation symbols}{}
@@ -209,6 +207,56 @@ $$\Pi=\left[\begin{array}{ccccc}0.5 & 0.5 & 0 & 0 & 0\\ 0 & 0.5 & 0.5 & 0 & 0 \\
 \item Easy to ``integrate" and get probabilities
 \bigskip
 \item Don't leave home without them
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle[alignment=center]{How to approximate time series with Markov chains}
+\begin{itemize}
+\item Can get closed-form solutions using ``Tauchen's method"
+\bigskip
+\item Choose transition matrix and points to match CDFs
+\bigskip
+\item But a good opportunity to show minimization techniques
+\bigskip
+\item Let's try to match $y_t=(1-\rho)\overline{y}+\rho y_{t-1}+\epsilon$, with $\epsilon\sim\mathcal{N}(0,1)$ to a 5x5 Markov process
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle[alignment=center]{How to approximate time series with Markov chains}
+\begin{itemize}
+\item So:
+$$P=\left[\begin{array}{ccccc}\theta_1 & \theta_2 & \theta_3 & \theta_4 & \theta_5 \\
+					      \theta_6 & \theta_7 & \theta_8 & \theta_9 & \theta_{10} \\
+					      \theta_{11} & \theta_{12} & \theta_{13} & \theta_{14} & \theta_{15} \\
+					      \theta_{16} & \theta_{17} & \theta_{18} & \theta_{19} & \theta_{20} \\
+					      \theta_{21} & \theta_{22} & \theta_{23} & \theta_{24} & \theta_{25} \\
+					      \end{array}\right]\ \ \ s=\left[\begin{array}{c}\theta_26 \\ \theta_{27} \\ \theta_{28} \\ \theta_{29} \\ \theta_{30}\end{array}\right]$$
+\item Choose parameters to minimize simulation time series difference compared to actual time series difference \end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle[alignment=center]{How to approximate time series with Markov chains}
+\begin{itemize}
+\item Choose $\theta$ to minimize the sum of squared differences for:
+\begin{itemize}
+\item Mean (mean of values)
+\item Unconditional variance (range of values)
+\item One-step variance ($\rho$ and shock variance)
+\item Two-step variance ($\rho$, given shock variance)
+\item Skewness (force a rough symmetry)
+\item Kurtosis (endpoints)
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle[alignment=center]{How to approximate time series with Markov chains}
+\begin{itemize}
+\item See TauchenLike.m 
 \end{itemize}
 \end{frame}
 
