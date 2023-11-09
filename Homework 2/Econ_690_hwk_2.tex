@@ -78,13 +78,52 @@ Interest rate: &  $r$  & $\frac{1}{0.95}-1$\\
 \end{tabular}
 \end{table}
 
-\textbf{Question 2:} Write a Matlab program that takes in the parameterization of Table 1 and uses value function iteration to solve the agent's problem.  To be clear, your problem is now $V(h_t,A_t,w_t)$, and has a choice over not just $i_t$ but also $w_t$.  Also note that you will have to truncate the distribution of $A_{t+1}$:  be clear about your justification for what you choose!\footnote{I suggest bounding state variable $h\in\left[7.5,10\right]$, $w\in\left[0 , 1.5\right]$, and finding your own bounds for $A$.  Moreover, I suggest taking only five points in each space to start (125 points total), so that you ``fail quickly" if something isn't working.  }\\
+\textbf{Question 2:} Write a Matlab program that takes in the parameterization of Table 1 and uses value function iteration to solve the agent's problem.  To be clear, your problem is now $V(h_t,A_t,w_{t-1})$, and has a choice over not just $i_t$ but also $w_t$.  Also note that you will have to truncate the distribution of $A_{t+1}$:  be clear about your justification for what you choose!\footnote{I suggest bounding state variable $h\in\left[7.5,10\right]$, $w\in\left[0 , 1.5\right]$, and finding your own bounds for $A$.  Moreover, I suggest taking only five points in each space to start (125 points total), so that you ``fail quickly" if something isn't working.  }\\
+\ \\
+\textbf{See Main.m for code.}\\
 \ \\
 
-\textbf{Question 3:} Plot the two-dimensional policy function for $i$ and for $s$ as a function of $A$ and $w$ when $h=8.46$.  \\
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=0.5]{Fig1.png}
+\caption{My code uses both Policy Function Iteration and Value Function Iteration.  This figure compares the speed of the two, plotting on the x-axis seconds of run-time and on the y-axis the error between value function updates (when solving the actual value function).  It omits the value function changes that do not involve maximization, to compare apples to apples.  What a speed difference!}
+\end{figure}
+
+
+
+
+
+\textbf{Question 3:} Plot the two-dimensional policy functions for $i$ and for $s$ as a function of $A$ and $w$ when $h=8.46$.  \\
 \ \\
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=0.5]{Fig2.png}
+\caption{This figure plots the policy function for $i^*(s,A|h=8.46)$.}
+\end{figure}
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=0.5]{Fig3.png}
+\caption{This figure plots the policy function for $s^*(s,A|h=8.46)$.}
+\end{figure}
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=0.5]{Fig4.png}
+\caption{This figure plots the value function for $s^*(s,A|h=8.46)$.}
+\end{figure}
+
 
 \textbf{Question 4:} Assuming the productivity parameter is independently drawn across individuals, use your estimated policy functions for $i$ and $s$, as well as the law of motion of $A$ to simulate the savings over many periods, so your initialization doesn't matter for at least 1000 individuals.  Using your simulated individuals, plot the stationary distribution of wealth in this society.
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=0.5]{Fig5.png}
+\caption{This figure plots the stationary wealth distribution.}
+\end{figure}
+
+
+
 \end{document}
 
 

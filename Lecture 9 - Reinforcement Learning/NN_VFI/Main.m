@@ -58,7 +58,7 @@ clearvars -global
         fullyConnectedLayer(numel(actInfo),'Name','action','BiasLearnRateFactor',1,'Bias',0)];
     
     % set some options for the actor
-    actorOpts = rlRepresentationOptions();
+    actorOpts = rlRepresentationOptions('LearnRate',1e-3);
     
     % create the actor based on the network approximator
     actor = rlDeterministicActorRepresentation(actorNetwork,obsInfo,actInfo,...
