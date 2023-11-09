@@ -324,17 +324,16 @@ $$V(\textcolor{blue}{x})=\max_{\textcolor{red}{y\in\Gamma(X)}}\left\{F(x,y)+\bet
 
 
 \begin{frame}
-\frametitle[alignment=center]{Actor-Critic Algorithm (Discussion)}
+\frametitle[alignment=center]{Actor-Critic Algorithm (\textbf{sketch(!)})}
 \begin{itemize}
 \footnotesize
 \item Start with a guess for $\theta$ and $\phi$, and an initial state value
 \item Simulate the system many times (random draws \& laws of motion for stochastic problems)
 \item Now we have a bunch of paths for a given $\theta$ and $\phi$
-\item For every step $t$, compute the return $G_t$, sum of reward and discounted future reward, calculated with $\overline{V(x_{t+1})}$
-\item Calculate the ``advantage function" $D_t=G_t-V(S_t|\phi)$, value of action vs value of what we think is best action embedded in $V$
-\item Calculate gradients for actor and critic networks: 
-$$d\theta=\sum_{i=1}^N\nabla)_{\theta}\log(\pi(A|x_t;\theta)D_t$$
-$$d\phi=\sum_{t=1}^N\nabla_{\phi}(G_t-V(x_t;\phi))^2$$
+\item Calculate the experienced reward+value' of that action (using critic to fill in future data)
+\item Calculate the ``disappointment" or ``advantage" of that action: $D_t=G_t-V(x_t;\phi)$
+$$d\theta=\sum_{i=1}^N\nabla_{\theta}\log(\pi(a_t|x_t;\theta))D_t$$
+$$d\phi=\sum_{t=1}^N\nabla_{\phi}(D_t(\phi))^2$$
 \item Idea:  $\nabla_{\theta}$ pushes us in direction of better choices/happiness, $\nabla_{\phi}$ pushes us in direction of lower error in value function
 \item Update the parameters of the functions:
 $$\theta=\theta+\alpha d\theta$$
@@ -342,6 +341,23 @@ $$\phi=\phi+\beta d\phi$$
 \item So we update the actor $\pi$ using critic $V$, and update $V$ using simulation
 \end{itemize}
 \end{frame}
+
+
+\begin{frame}
+\frametitle[alignment=center]{Detail on the Gradient}
+\begin{itemize}
+\item Look at
+$$\nabla_{\theta}\log(\pi(a_t|x_t;\theta))D_t$$
+\item Why?
+\item $\log(\pi(a_t|x_t;\theta))$ is probability you take action
+\item $D_t$ is if was good
+\item So say action had positive $D$. Increasing prob of that decision is good, gradient positive.
+\item If action had negative $D$, increasing prob of that decision is bad, gradient negative.
+\item Move in good direction
+\end{itemize}
+\end{frame}
+
+
 
 \begin{frame}
 \frametitle[alignment=center]{Explaining to Mum-I}

@@ -39,16 +39,14 @@ clearvars -global
     plot(criticNetwork)
 
     %Options for critics
-        % criticOpts = rlRepresentationOptions('LearnRate',0.001,'GradientThreshold',1);
-        criticOpts = rlRepresentationOptions();
-
+        criticOpts = rlRepresentationOptions('LearnRate',0.001,'GradientThreshold',1);
+    
     % create the critic based on the network approximator
         critic = rlQValueRepresentation(criticNetwork,obsInfo,actInfo,...
             'Observation',{'state'},'Action',{'action'},criticOpts);
 
 
-%Create the actor (because I don't have to concatenate state+action, I can define the
-%network in a matrix more easily)
+%Create the actor (because I don't 
     actorNetwork = [
         featureInputLayer([obsInfo.Dimension(1)],'Normalization','none','Name','state')
         fullyConnectedLayer(5,'Name','fc1')
@@ -58,7 +56,7 @@ clearvars -global
         fullyConnectedLayer(numel(actInfo),'Name','action','BiasLearnRateFactor',1,'Bias',0)];
     
     % set some options for the actor
-    actorOpts = rlRepresentationOptions();
+    actorOpts = rlRepresentationOptions('LearnRate',0.001,'GradientThreshold',1);
     
     % create the actor based on the network approximator
     actor = rlDeterministicActorRepresentation(actorNetwork,obsInfo,actInfo,...
@@ -77,9 +75,11 @@ clearvars -global
         'SaveAgentDirectory', pwd + "/agents/",...
         'UseParallel',0,'Verbose',0);
 
-        %Train the agent (load for speed or to restart)
         rng(1)
+
+        %Train the agent (load for speed or to restart)
         trainStats = train(agent,env,opt);
+        save('myagent.mat','agent');
 
     %Now we have a trained agent!  We can do all sorts of things.
 
