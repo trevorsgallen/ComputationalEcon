@@ -12,13 +12,13 @@ clearvars -global
     obsInfo.Description = ['K,A,step'];
 
 %Act Info (capital choices, via savings)
-    actInfo = rlNumericSpec([1 1],'LowerLimit',0.001,'UpperLimit',0.999);
-    actInfo.Name = 'Knext';
+    actInfo = rlNumericSpec([1 1],'LowerLimit',0.01,'UpperLimit',0.99);
+    actInfo.Name = 'savrate';
 
 %Create the environment
     env = rlFunctionEnv(obsInfo,actInfo,'myStepFunction','myResetFunction');
 
-%Define a simple 2-layer critic network (5x5) takes in states and action,
+%Define a simple 2-layer critic network (10x10) takes in states and action,
 %concatenates them, then feeds them through the network to spit out 1x1 
 %state value
     criticNetwork = layerGraph(featureInputLayer([obsInfo.Dimension(1)],'Normalization','none','Name','state'));
@@ -26,11 +26,11 @@ clearvars -global
     criticNetwork = addLayers(criticNetwork,concatenationLayer(1,2,'Name','concat'))
     criticNetwork = connectLayers(criticNetwork,'state','concat/in1');
     criticNetwork = connectLayers(criticNetwork,'action','concat/in2');
-    criticNetwork = addLayers(criticNetwork, fullyConnectedLayer(5,'Name','fc1'));
+    criticNetwork = addLayers(criticNetwork, fullyConnectedLayer(40,'Name','fc1'));
     criticNetwork = connectLayers(criticNetwork,'concat','fc1');
     criticNetwork = addLayers(criticNetwork, tanhLayer('Name','tanh1'));
     criticNetwork = connectLayers(criticNetwork,'fc1','tanh1');
-    criticNetwork = addLayers(criticNetwork, fullyConnectedLayer(5,'Name','fc2'));
+    criticNetwork = addLayers(criticNetwork, fullyConnectedLayer(40,'Name','fc2'));
     criticNetwork = connectLayers(criticNetwork,'tanh1','fc2');
     criticNetwork = addLayers(criticNetwork, tanhLayer('Name','tanh2'));
     criticNetwork = connectLayers(criticNetwork,'fc2','tanh2');
@@ -51,14 +51,15 @@ clearvars -global
 %network in a matrix more easily)
     actorNetwork = [
         featureInputLayer([obsInfo.Dimension(1)],'Normalization','none','Name','state')
-        fullyConnectedLayer(5,'Name','fc1')
+        fullyConnectedLayer(40,'Name','fc1')
         sigmoidLayer('Name','sig1')
-        fullyConnectedLayer(5,'Name','fc2');
+        fullyConnectedLayer(40,'Name','fc2');
         sigmoidLayer('Name','sig2')
-        fullyConnectedLayer(numel(actInfo),'Name','action','BiasLearnRateFactor',1,'Bias',0)];
+        fullyConnectedLayer(actInfo.Dimension(1),'Name','fc3');
+        sigmoidLayer('Name','action')];
     
     % set some options for the actor
-    actorOpts = rlRepresentationOptions('LearnRate',1e-3);
+    actorOpts = rlRepresentationOptions();
     
     % create the actor based on the network approximator
     actor = rlDeterministicActorRepresentation(actorNetwork,obsInfo,actInfo,...
@@ -69,7 +70,7 @@ clearvars -global
 
 %Training Options
     opt = rlTrainingOptions(...
-        'MaxEpisodes',1000,...
+        'MaxEpisodes',100000,...
         'MaxStepsPerEpisode',200,...
         'StopTrainingCriteria',"AverageReward",...
         'StopTrainingValue',Inf,...
@@ -89,7 +90,6 @@ clearvars -global
         'MaxSteps',10000,...
         'NumSimulations',1,'UseParallel',0);
     experience = sim(env,agent,simOpts);
-
 
 %Q function slice 
     clear vsto actionsto

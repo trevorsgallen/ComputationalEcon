@@ -309,7 +309,7 @@ $$V(\textcolor{blue}{x})=\max_{\textcolor{red}{y\in\Gamma(X)}}\left\{F(x,y)+\bet
 \begin{itemize}
 \item Actor function $\overline{\pi}(y|x;\theta)$ takes in state and spits out an action (possibly probabilistically)
 \bigskip
-\item Critic function $\overline{V}(x|\phi)$  takes in state and spits out value (traditional value function)
+\item Critic function $\overline{Q}(x,y|\phi)$  takes in state and spits out value (Q-function, value function would be $\overline{V}(x|\phi)=\overline{Q}(x,\overline{\pi}(y|x;\theta)|\phi)$)
 \end{itemize}
 \bigskip
 \item We can represent Actor \& Critic as flexible neural networks parameterized by $\theta$ and $\phi$ but how get values to fit?
@@ -328,13 +328,15 @@ $$V(\textcolor{blue}{x})=\max_{\textcolor{red}{y\in\Gamma(X)}}\left\{F(x,y)+\bet
 \begin{itemize}
 \footnotesize
 \item Start with a guess for $\theta$ and $\phi$, and an initial state value
-\item Simulate the system many times (random draws \& laws of motion for stochastic problems)
+\item Simulate the system, get data
 \item Now we have a bunch of paths for a given $\theta$ and $\phi$
-\item Calculate the experienced reward+value' of that action (using critic to fill in future data)
-\item Calculate the ``disappointment" or ``advantage" of that action: $D_t=G_t-V(x_t;\phi)$
-$$d\theta=\sum_{i=1}^N\nabla_{\theta}\log(\pi(a_t|x_t;\theta))D_t$$
+\item Define ``disappointment" as difference between what we thought we would get and what we actually got, using our critic to fill in for the future:
+$$D_t=reward_t+\overline{V}(x'|\phi)-\overline{Q}(x,y|\phi)$$
+\item Update the critic to minimize the sum of squared errors between expectation and experience
 $$d\phi=\sum_{t=1}^N\nabla_{\phi}(D_t(\phi))^2$$
-\item Idea:  $\nabla_{\theta}$ pushes us in direction of better choices/happiness, $\nabla_{\phi}$ pushes us in direction of lower error in value function
+\item Update the actor using the chain rule: $\theta$ affects $A$, $A$ affects $Q$.
+$$d\theta=\sum_{i=1}^N\nabla_yQ(x,y;\phi)\nabla_\theta \overline{\pi}(y|x;\theta)  $$
+\item Idea:  $d\theta$ pushes us in direction of better choices/happiness, $\nabla_{\phi}$ pushes us in direction of lower error in value function
 \item Update the parameters of the functions:
 $$\theta=\theta+\alpha d\theta$$
 $$\phi=\phi+\beta d\phi$$
@@ -346,14 +348,17 @@ $$\phi=\phi+\beta d\phi$$
 \begin{frame}
 \frametitle[alignment=center]{Detail on the Gradient}
 \begin{itemize}
-\item Look at
-$$\nabla_{\theta}\log(\pi(a_t|x_t;\theta))D_t$$
-\item Why?
-\item $\log(\pi(a_t|x_t;\theta))$ is probability you take action
-\item $D_t$ is if was good
-\item So say action had positive $D$. Increasing prob of that decision is good, gradient positive.
-\item If action had negative $D$, increasing prob of that decision is bad, gradient negative.
-\item Move in good direction
+\item Let's say that $Q(x,y)=abs(y-x)$, and we know the true $Q$
+\item So optimal action function is $y^*=x$ $\phi^{true}=\left[\begin{array}{c}0 \\ 1\end{array}\right]$
+\item But we start with a bad action function: $y^*=0.5+2*x$.  $\phi=\left[\begin{array}{c}0.5 \\ 2\end{array}\right]$
+\item We sample the point $x=1$, and choose $y=2.5$
+\item Then $\nabla_yQ(x,y;\phi)=-1$, b/c linear penalty to missing target
+\item And $\nabla_\theta=\left[\begin{array}{c}1 \\ 1\end{array}\right]$
+\item Multiplying together, we get:
+$$d\phi = \left[\begin{array}{c}-1 \\ -1\end{array}\right]$$
+\item Then, if we put a weight of $0.01$ on the update we get:
+$$\phi=0.99\left[\begin{array}{c}0.5 \\ 2\end{array}\right]+0.01\left[\begin{array}{c}-1 \\ -1\end{array}\right]=\left[\begin{array}{c}0.485 \\ 1.97\end{array}\right]$$
+\item Closer to the truth!
 \end{itemize}
 \end{frame}
 

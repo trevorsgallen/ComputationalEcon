@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.10.28)  7 NOV 2023 18:25
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.10.28)  9 NOV 2023 14:56
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1312,11 +1312,19 @@ Package pdftex.def Info: NN_Example/Deep_7_7.png  used on input line 221.
 ]
 
 LaTeX Font Warning: Font shape `OT1/cmss/bx/sc' undefined
-(Font)              using `OT1/cmss/bx/n' instead on input line 343.
+(Font)              using `OT1/cmss/bx/n' instead on input line 345.
+
+
+Overfull \vbox (23.1664pt too high) detected at line 345
+ []
 
 [27
 
-] [28
+]
+Overfull \vbox (6.76234pt too high) detected at line 363
+ []
+
+[28
 
 ] [29
 
@@ -1337,74 +1345,75 @@ LaTeX Font Warning: Font shape `OT1/cmss/bx/sc' undefined
 ] [37
 
 ]
-<Fig1.png, id=284, 1124.2pt x 843.15pt>
+<Fig1.png, id=285, 1124.2pt x 843.15pt>
 File: Fig1.png Graphic file (type png)
 <use Fig1.png>
-Package pdftex.def Info: Fig1.png  used on input line 491.
+Package pdftex.def Info: Fig1.png  used on input line 496.
 (pdftex.def)             Requested size: 281.04932pt x 210.78697pt.
  [38
 
  <./Fig1.png (PNG copy)>]
-<Fig2.png, id=291, 1124.2pt x 843.15pt>
+<Fig2.png, id=292, 1124.2pt x 843.15pt>
 File: Fig2.png Graphic file (type png)
 <use Fig2.png>
-Package pdftex.def Info: Fig2.png  used on input line 500.
+Package pdftex.def Info: Fig2.png  used on input line 505.
 (pdftex.def)             Requested size: 281.04932pt x 210.78697pt.
- [39
+
+[39
 
  <./Fig2.png (PNG copy)>]
-<Fig3.png, id=298, 1124.2pt x 843.15pt>
+<Fig3.png, id=299, 1124.2pt x 843.15pt>
 File: Fig3.png Graphic file (type png)
 <use Fig3.png>
-Package pdftex.def Info: Fig3.png  used on input line 509.
+Package pdftex.def Info: Fig3.png  used on input line 514.
 (pdftex.def)             Requested size: 281.04932pt x 210.78697pt.
  [40
 
  <./Fig3.png (PNG copy)>]
-<Fig7.png, id=306, 1124.2pt x 843.15pt>
+<Fig7.png, id=307, 1124.2pt x 843.15pt>
 File: Fig7.png Graphic file (type png)
 <use Fig7.png>
-Package pdftex.def Info: Fig7.png  used on input line 518.
+Package pdftex.def Info: Fig7.png  used on input line 523.
 (pdftex.def)             Requested size: 281.04932pt x 210.78697pt.
  [41
 
  <./Fig7.png (PNG copy)>]
-<Fig8.png, id=313, 1124.2pt x 843.15pt>
+<Fig8.png, id=314, 1124.2pt x 843.15pt>
 File: Fig8.png Graphic file (type png)
 <use Fig8.png>
-Package pdftex.def Info: Fig8.png  used on input line 528.
+Package pdftex.def Info: Fig8.png  used on input line 533.
 (pdftex.def)             Requested size: 281.04932pt x 210.78697pt.
  [42
 
  <./Fig8.png (PNG copy)>]
-<Fig9.png, id=320, 1124.2pt x 843.15pt>
+<Fig9.png, id=321, 1124.2pt x 843.15pt>
 File: Fig9.png Graphic file (type png)
 <use Fig9.png>
-Package pdftex.def Info: Fig9.png  used on input line 539.
+Package pdftex.def Info: Fig9.png  used on input line 544.
 (pdftex.def)             Requested size: 281.04932pt x 210.78697pt.
  [43
 
  <./Fig9.png (PNG copy)>]
-<Fig4.png, id=328, 1124.2pt x 843.15pt>
+<Fig4.png, id=329, 1124.2pt x 843.15pt>
 File: Fig4.png Graphic file (type png)
 <use Fig4.png>
-Package pdftex.def Info: Fig4.png  used on input line 550.
+Package pdftex.def Info: Fig4.png  used on input line 555.
 (pdftex.def)             Requested size: 281.04932pt x 210.78697pt.
  [44
 
  <./Fig4.png (PNG copy)>]
-<Fig5.png, id=335, 1124.2pt x 843.15pt>
+<Fig5.png, id=336, 1124.2pt x 843.15pt>
 File: Fig5.png Graphic file (type png)
 <use Fig5.png>
-Package pdftex.def Info: Fig5.png  used on input line 558.
+Package pdftex.def Info: Fig5.png  used on input line 563.
 (pdftex.def)             Requested size: 281.04932pt x 210.78697pt.
  [45
 
  <./Fig5.png (PNG copy)>]
-<Fig6.png, id=342, 1124.2pt x 843.15pt>
+<Fig6.png, id=343, 1124.2pt x 843.15pt>
 File: Fig6.png Graphic file (type png)
 <use Fig6.png>
-Package pdftex.def Info: Fig6.png  used on input line 566.
+Package pdftex.def Info: Fig6.png  used on input line 571.
 (pdftex.def)             Requested size: 281.04932pt x 210.78697pt.
  [46
 
@@ -1440,7 +1449,7 @@ not changed.
 Here is how much of TeX's memory you used:
  27061 strings out of 478994
  547382 string characters out of 5858183
- 856398 words of memory out of 5000000
+ 858654 words of memory out of 5000000
  43858 multiletter control sequences out of 15000+600000
  419346 words of font info for 84 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1465,16 +1474,17 @@ s8.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9
 2.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8
 .pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi9.
 pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.p
-fb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb
-></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb><
-/usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></
-usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pf
-b>
-Output written on "Lecture-9-Reinforcement Learning.pdf" (49 pages, 1729575 byt
+fb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb
+></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><
+/usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></u
+sr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></us
+r/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
+
+Output written on "Lecture-9-Reinforcement Learning.pdf" (49 pages, 1739910 byt
 es).
 PDF statistics:
- 469 PDF objects out of 1000 (max. 8388607)
- 359 compressed objects within 4 object streams
+ 473 PDF objects out of 1000 (max. 8388607)
+ 362 compressed objects within 4 object streams
  99 named destinations out of 1000 (max. 500000)
  168 words of extra memory for PDF output out of 10000 (max. 10000000)
 
