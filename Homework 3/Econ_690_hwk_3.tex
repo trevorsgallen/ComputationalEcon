@@ -31,8 +31,7 @@
 
 \maketitle
 
-This homework is the next part of a multi-part homework.  This homework takes the deterministic model we had in the first homework and asks you to estimate its parameters using Markov chain Monte Carlo (the Metropolis-Hastings algorithm, to be specific).  Please recall the philosophy of the homework in this course:  \emph{I care less that you get the right answer than you understand the shape of the obstacles you have to solve (or avoid) when encountering this problem.  Understanding what you have to overcome is half the problem.  If you see a trick or shortcut or simplification that you can solve, but can't solve the harder problem, do that first, it's worth a significant amount of credit.}\\
-
+This homework asks you to write down and run a simple dynamic problem using reinforcement learning.
 \textbf{Deliverables}
 \begin{itemize}
 \item You should have a word/\LaTeX document that has three sections: 
@@ -46,64 +45,25 @@ This homework is the next part of a multi-part homework.  This homework takes th
 
 
 \section{Model}
-Infinitely-lived households start each period with human capital endowment $h_t$, and have period utility over consumption $c_t$.  They have one unit of time each period, which they use to either study $i_t$ or work $L_t$ . If they study, their human capital for next period grows, while if they work, consumption increases.  Households do not have access to savings technology.  They maximize the net present value of utility discounted at a rate $0<\beta<1$:
-$$\sum_{t=0}^\infty \log(c_t)$$
-subject to the law of motion of human capital:
-$$h_{t+1}=(1-\delta)h_t+Ai_t^\gamma$$
-And their budget constraint:
-$$c_t=h_tL_t$$
+Each period, firms begin the period with prices $p_{t-1}$ and observe optimal price $\overline{P}_t$.  They may either change their price $p_t$, which costs $\phi(p_{t}-p_{t-1})^2$, or leave it fixed at $p_{t-1}$.  Their value function is:
+$$V(p_{t-1},\overline{P}_t)=\underset{p_t}{\max} -(p_t-\overline{P}_t)^2-\phi(p_{t}-p_{t-1})^2+\beta V(p_{t-1},\overline{P}_t)$$
+Where:
+$$\overline{P}_t=\rho \overline{P}_{t-1}+\epsilon\ \ \ \epsilon\sim\mathcal{N}\left(0,\sigma^2\right)$$
+Let $\rho=0.95$, $\sigma=0.01$, and $\phi=0.1$.  
 \ \\
-\ \\
-\section{Basic Matlab}
-Now, let the following numerical assumptions hold:
-\begin{table}[ht!]
-\centering
-\begin{tabular}{lcc}
-\hline
-\hline
-\multicolumn{3}{c}{Table 1: Calibration}\\
-\hline
-Concept & Parameter & Value \\ 
-Discount factor & $\beta$ & 0.95\\
-Decreasing returns to human capital investment: & $\gamma$  & 0.6\\
-AR(1) parameter for productivity shocks: & $\rho$  & 0.95\\
-Variance of productivity shocks: &  $\sigma^2_\epsilon$  & 0.01\\
-Interest rate: &  $r$  & $\frac{1}{0.95}-1$\\
-\hline
-Concept & Parameter & Prior Distribution \\ 
-Prior: Ability to accumulate human capital: &  $A$ & $\mathcal{N}\left(1,0.05\right)$\\
-Prior: Human capital depreciation rate:&  $\delta$  & $\mathcal{U}\left(0.03,0.08\right)$\\
-Prior: Correlation between $A$ and $\delta$ &  $cov(A,\delta)$  & $0$\\
-\hline
-\end{tabular}
-\end{table}
-Note that we now have a normal prior over the ability to accumulate human capital, and a uniform prior over the depreciation rate.  Also note that we assume  a ``Minnesota prior," of no correlation between the two priors.  \\
-\ \\
-\textbf{Question 2:} Write a Matlab program that takes in the parameterization of Table 1, and also takes in $A$ and $\delta$, uses value function iteration to solve the agent's problem.  To be clear, your problem is now $V(A,\delta,h_t)$, and has a choice over $i_t$.  This is adapting problem 1 to be not just a function of $h$, which changes, but also $A$ and $\delta$, which do not for an individual's problem, but which the econometrician will be solving over!  You should end up with a policy function for $i$ as a function of $A$, $\delta$, and $h$.  \\
 \ \\
 
-\textbf{Question 3:} Now assume that you observe a series of $\tilde{h}_{i,t}$, where $\tilde{h}_{i,t}=h_{i,t}+\epsilon_{i,t}$, i.e. you measure true $h$ with noise (that does not affect the choice of agents).  $\epsilon_{i,t}$ is known to be distributed $\epsilon_{i,t}=\mathcal{N}\left(0,0.01\right)$.  Using your policy function from Question 2, write a function that, given $\delta$ and $A$, takes in all of the $\tilde{h}_{i,t}$'s and calculates the log-likelihood.  \\
-\ \\
-
-\textbf{Question 4:} Use the Metropolis-Hastings algorithm to generate the posterior distribution of $A$ and $\delta$ given your priors and the data.  To be clear, the steps of the Metropolis-Hastings algorithm are, letting $\theta=\{A,\delta\}$:
+\section{Problems}
+\textbf{Question 1} Do the following in matlab:
 \begin{itemize}
-\item Choose a proposal distribution, which, given some initial $\theta$, proposes a random new $\hat{\theta}$. I suggest something like a bivariate normal with mean zero, variance 0.01, covariance zero.
-\item Start with some initial $\theta_t$.
-\item Then:
-\begin{itemize}
-\item Propose a new $\hat{\theta}$
-\item Calculate the log-likelihood of data with proposed $\hat{\theta}$ (e.g. $log(p(x|\hat{\theta}))$) from your function in Question 3, and the log-likelihood of the proposed $\hat{\theta}$ from your prior distribution (e.g. $log(p(\hat{\theta}))$)
-\item Calculate the log-likelihood of data with current $\theta_t$ (e.g. $log(p(x|\theta_t))$) from your function in Question 3, and the log-likelihood of the proposed $\theta_t$ from your prior distribution (e.g. $log(p(\theta_t))$)
-\item Calculate the ratio of probabilities using the difference of logs to find the log acceptance probability:
-$$\log(r)=log(p(x|\hat{\theta}))+log(p(\hat{\theta}))-log(p(x|\theta_t))-log(p(\theta_t))$$
-\item Take a random draw $x$ between zero and one.  Then:
-$$\theta_{t+1}=\begin{cases} \hat{\theta} & \text{if }$log(rand) < min(log(1),log(r))$\\ 
-\theta_t & otherwise
-\end{cases}$$
+\item Define an environment for the problem: observation (2x1) and action info (1x1).
+\item Write out a reset function for state variables $p_{t-1}$ and $\overline{P}_t$
+\item Write out a step function that takes in $\overline{P}_t$, $p_{t-1}$ and $p_{t}$ and generates the reward and next  $\overline{P}_{t+1}$
+\item Define a critic network, and actor network, and an agent
+\item Train the agent
+\item Display the agent's optimal policy function for $p_t$ as a function of $\overline{P}_t$ and $p_{t-1}$.
 \end{itemize}
-\item Run that 10000+ times.  Take all observations after the first thousand ``burn-in" and treat it as your joint posterior distribution.
-\end{itemize}
-Having done that, graph the prior and posterior distributions of $A$ and $\delta$. 
+ 
 \end{document}
 
 
