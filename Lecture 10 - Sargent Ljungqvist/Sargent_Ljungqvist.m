@@ -191,10 +191,10 @@
             V_0_LF = V_0_new_LF;
             V_b_LF = V_b_new_LF;
             V_LF = V_new_LF;
-            save V_sto4.mat V_0 V_b V V_0_LF V_b_LF V_LF;
+            save V_sol.mat V_0 V_b V V_0_LF V_b_LF V_LF;
     end
 
-        save V_sto4.mat V_0 V_b V V_0_LF V_b_LF V_LF;
+        save V_sol.mat V_0 V_b V V_0_LF V_b_LF V_LF;
 
 
 %Find reservation wage for unemployed
@@ -304,44 +304,6 @@
         accept_sim(t) = sum(accept_pr'.*H_sim(:,t));
     end
     
-
-%Finding job    
-%     for i_ind = 1:I
-%         i_ind
-%         for t = 1:T
-%             if sim_E(i_ind,t) == 0
-%                 %Find their search
-%                     s_sim(i_ind,t) = ;
-%                 
-%                 %Determine whether or not they're made an offer
-%                     temp1 = rand;
-%                     if temp1 < s_sim(i_ind,t).^0.3;
-%                         temp2 = rand;
-%                         woffer = w_space(find(wbounds(:,1) < temp2 & wbounds(:,2) >= temp2));
-%                         if woffer < interp2(h_space,UI_interval,rwage,sim_H(i_ind,t),sim_UI(i_ind,t));
-%                             sim_E(i_ind,t+1) = 0;
-%                         elseif woffer >= interp2(h_space,UI_interval,rwage,sim_H(i_ind,t),sim_UI(i_ind,t));
-%                             sim_E(i_ind,t+1:end) = 1;
-%                             sim_findjob(i_ind) = t;
-%                         end
-%                     elseif temp1 >= s_sim(i_ind,t).^0.3;
-%                         sim_E(i_ind,t+1) = 0;
-%                     end
-%                 %Next, find HC next period
-%                     temp3 = rand;
-%                     if temp3 < 0.2
-%                         sim_H(i_ind,t+1) = max(sim_H(i_ind,t+1)-0.05,1);
-%                     elseif temp3 >= 0.2
-%                         sim_H(i_ind,t+1) = sim_H(i_ind,t);
-%                     end
-%             end
-%         end
-%     end
-%     
-%     for t = 1:52*5
-%         numfindjob(t) = length(find(sim_findjob==t))./length(find(sim_findjob>=t))
-%     end
-
         
     figure(1)
     surf(h_space,UI_interval,V_b_policy)
