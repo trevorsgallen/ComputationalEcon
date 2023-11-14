@@ -1,22 +1,23 @@
 %Import the data from NIPA (I, delta*K, Y, C)
     clear
-    filename = 'Workbook2.csv';
+    filename = 'Raw Data/NIPA.csv';
     delimiter = ',';
     startRow = 2;
     formatSpec = '%f%f%f%f%[^\n\r]';
     fileID = fopen(filename,'r');
     dataArray = textscan(fileID, formatSpec, 'Delimiter', delimiter, 'HeaderLines' ,startRow-1, 'ReturnOnError', false);
     fclose(fileID);
-    I_t = dataArray{:, 1}*1000000000;
-    deltaK_t = dataArray{:, 2}*1000000000;
-    Y_t = dataArray{:, 3}*1000000000;
-    Cdat = dataArray{:, 4}*1000000000;
+    Y_t = dataArray{:, 1}*1000000000;
+    Cdat = dataArray{:, 2}*1000000000;
+    I_t = dataArray{:, 3}*1000000000;
+    N_t = dataArray{:, 4}*1000;
+    deltaK_t = cellfun(@str2num,dataArray{:, 5})*1000000000
     %Re-calculate C to be consistent with our model: note this counts
     %everything that isn't investment as consumption!
     C_t = Y_t-I_t;
     
 %Import the data from BLS (hours and employment)
-    [~, ~, raw] = xlsread('HoursEmployment.xlsx','Sheet1');
+    [~, ~, raw] = xlsread('Raw Data/HoursEmployment.xlsx','Sheet1');
     raw(cellfun(@(x) ~isempty(x) && isnumeric(x) && isnan(x),raw)) = {''};
     R = cellfun(@(x) ~isnumeric(x) && ~islogical(x),raw); 
     raw(R) = {NaN};
@@ -24,10 +25,6 @@
     H_t = data(:,1);
     E_t = data(:,2)*1000;
     E_t(end) = E_t(end-1).*1.02;
-    
-%% Import the data from BLS (population)
-    N_t = xlsread('Population.xlsx','Sheet1');
-    N_t = N_t*1000;
     
 %Calculate total labor hours
     L_t = H_t.*E_t;
@@ -55,11 +52,11 @@ clearvars data raw R;
     [error,K_t] = f_temp([k0,delta]);
 
     figure(3)
-    plot([1967:2015],K_t)
+    plot([1967:2023],K_t)
     title('Capital Stock (per capita)')
     xlabel('Year')
     ylabel('Dollars')
-    print('Figure_3.png','-dpng')
+    print('../Figures/Figure_3.png','-dpng')
 
 %Alpha
     alpha = 0.7;
@@ -70,30 +67,30 @@ clearvars data raw R;
     r_t = (1-alpha).*Y_t./K_t(1:end-1);
 
     figure(4)
-    plot([1967:2014],A_t)
+    plot([1967:2022],A_t)
     title('TFP')
     xlabel('Year')
     ylabel('Value')
-    print('Figure_4.png','-dpng')
+    print('../Figures/Figure_4.png','-dpng')
 
     
 %Beta
     figure(5)
-    plot([1967:2013],(1./(1-delta+r_t(2:end)).*(C_t(2:end)./C_t(1:end-1))));
+    plot([1967:2021],(1./(1-delta+r_t(2:end)).*(C_t(2:end)./C_t(1:end-1))));
     title('Beta/Euler Equation Values')
     xlabel('Year')
     ylabel('Beta')
-    print('Figure_5.png','-dpng')
+    print('../Figures/Figure_5.png','-dpng')
 
      beta_avg = mean((1./(1-delta+r_t(2:end)).*(C_t(2:end)./C_t(1:end-1))));
 
 %gamma
     figure(6)
-    plot([1967:2014],((w_t.*(1-L_t)./C_t)));
+    plot([1967:2022],((w_t.*(1-L_t)./C_t)));
     title('psi/intratemporal foc')
     xlabel('Year')
     ylabel('psi')
-    print('Figure_6.png','-dpng')
+    print('../Figures/Figure_6.png','-dpng')
 
     psi_avg = mean((w_t.*(1-L_t)./C_t));
 

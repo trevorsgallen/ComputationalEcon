@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.10.28)  22 NOV 2022 11:30
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.10.28)  14 NOV 2023 17:30
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1282,59 +1282,59 @@ Overfull \hbox (1.13875pt too wide) detected at line 244
 ] [23
 
 ]
-<Figures/Figure_1.png, id=226, 578.16pt x 433.62pt>
+<Figures/Figure_1.png, id=226, 562.2606pt x 421.575pt>
 File: Figures/Figure_1.png Graphic file (type png)
 <use Figures/Figure_1.png>
 Package pdftex.def Info: Figures/Figure_1.png  used on input line 330.
-(pdftex.def)             Requested size: 289.07928pt x 216.80946pt.
+(pdftex.def)             Requested size: 281.12961pt x 210.78697pt.
  [24
 
  <./Figures/Figure_1.png (PNG copy)>]
-<Figures/Figure_2.png, id=233, 578.16pt x 433.62pt>
+<Figures/Figure_2.png, id=233, 562.2606pt x 421.575pt>
 File: Figures/Figure_2.png Graphic file (type png)
 <use Figures/Figure_2.png>
 Package pdftex.def Info: Figures/Figure_2.png  used on input line 338.
-(pdftex.def)             Requested size: 289.07928pt x 216.80946pt.
+(pdftex.def)             Requested size: 281.12961pt x 210.78697pt.
  [25
 
  <./Figures/Figure_2.png (PNG copy)>]
-<Figures/Figure_3.png, id=241, 578.16pt x 433.62pt>
+<Figures/Figure_3.png, id=241, 562.2606pt x 421.575pt>
 File: Figures/Figure_3.png Graphic file (type png)
 <use Figures/Figure_3.png>
 Package pdftex.def Info: Figures/Figure_3.png  used on input line 346.
-(pdftex.def)             Requested size: 289.07928pt x 216.80946pt.
+(pdftex.def)             Requested size: 281.12961pt x 210.78697pt.
  [26
 
  <./Figures/Figure_3.png (PNG copy)>]
 File: Figures/Figure_3.png Graphic file (type png)
 <use Figures/Figure_3.png>
 Package pdftex.def Info: Figures/Figure_3.png  used on input line 354.
-(pdftex.def)             Requested size: 289.07928pt x 216.80946pt.
+(pdftex.def)             Requested size: 281.12961pt x 210.78697pt.
 
 [27
 
 ]
-<Figures/Figure_4.png, id=257, 578.16pt x 433.62pt>
+<Figures/Figure_4.png, id=257, 562.2606pt x 421.575pt>
 File: Figures/Figure_4.png Graphic file (type png)
 <use Figures/Figure_4.png>
 Package pdftex.def Info: Figures/Figure_4.png  used on input line 362.
-(pdftex.def)             Requested size: 289.07928pt x 216.80946pt.
+(pdftex.def)             Requested size: 281.12961pt x 210.78697pt.
  [28
 
  <./Figures/Figure_4.png (PNG copy)>]
-<Figures/Figure_5.png, id=266, 578.16pt x 433.62pt>
+<Figures/Figure_5.png, id=266, 562.2606pt x 421.575pt>
 File: Figures/Figure_5.png Graphic file (type png)
 <use Figures/Figure_5.png>
 Package pdftex.def Info: Figures/Figure_5.png  used on input line 370.
-(pdftex.def)             Requested size: 289.07928pt x 216.80946pt.
+(pdftex.def)             Requested size: 281.12961pt x 210.78697pt.
  [29
 
  <./Figures/Figure_5.png (PNG copy)>]
-<Figures/Figure_6.png, id=273, 578.16pt x 433.62pt>
+<Figures/Figure_6.png, id=273, 562.2606pt x 421.575pt>
 File: Figures/Figure_6.png Graphic file (type png)
 <use Figures/Figure_6.png>
 Package pdftex.def Info: Figures/Figure_6.png  used on input line 378.
-(pdftex.def)             Requested size: 289.07928pt x 216.80946pt.
+(pdftex.def)             Requested size: 281.12961pt x 210.78697pt.
  [30
 
  <./Figures/Figure_6.png (PNG copy)>] [31
@@ -1430,7 +1430,7 @@ sr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr
 /local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/latxfont/line10.pfb>
 </usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.
 pfb>
-Output written on "Lecture 11-NCG.pdf" (38 pages, 903146 bytes).
+Output written on "Lecture 11-NCG.pdf" (38 pages, 878938 bytes).
 PDF statistics:
  416 PDF objects out of 1000 (max. 8388607)
  309 compressed objects within 4 object streams
