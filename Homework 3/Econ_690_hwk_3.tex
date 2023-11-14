@@ -46,7 +46,7 @@ This homework asks you to write down and run a simple dynamic problem using rein
 
 \section{Model}
 Each period, firms begin the period with prices $p_{t-1}$ and observe optimal price $\overline{P}_t$.  They may either change their price $p_t$, which costs $\phi(p_{t}-p_{t-1})^2$, or leave it fixed at $p_{t-1}$.  Their value function is:
-$$V(p_{t-1},\overline{P}_t)=\underset{p_t}{\max} -(p_t-\overline{P}_t)^2-\phi(p_{t}-p_{t-1})^2+\beta V(p_{t-1},\overline{P}_t)$$
+$$V(p_{t-1},\overline{P}_t)=\underset{p_t}{\max} -(p_t-\overline{P}_t)^2-\phi(p_{t}-p_{t-1})^2+\beta V(p_{t},\overline{P}_{t+1})$$
 Where:
 $$\overline{P}_t=\rho \overline{P}_{t-1}+\epsilon\ \ \ \epsilon\sim\mathcal{N}\left(0,\sigma^2\right)$$
 Let $\rho=0.95$, $\sigma=0.01$, and $\phi=0.1$.  Discount factor is 0.95.
