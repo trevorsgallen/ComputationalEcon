@@ -437,7 +437,7 @@ $$\psi = \frac{1}{N}\sum_{t=1}^N\frac{w_t(1-L_t)}{C_t} $$
 \centering
 \includegraphics[scale=0.5]{Figures/Figure_7.png}
 \end{figure}
-\uncover<2->{Which is theory, which is data?}
+\uncover<2-3>{Which is theory, which is data? } \uncover<3-3>{Red is data! (Look at L)}
 \end{frame}
 
 \begin{frame}
@@ -456,6 +456,52 @@ $$\psi = \frac{1}{N}\sum_{t=1}^N\frac{w_t(1-L_t)}{C_t} $$
 \includegraphics[scale=0.5]{Figures/Figure_9.png}
 \end{figure}
 \end{frame}
+
+\begin{frame}
+\frametitle[alignment=center]{Aside on Wedges}
+\begin{itemize}
+\item Macro, IO, trade, and much of labor take models+data seriously
+\bigskip
+\item Can ask ``what (invisible) tax would explain the behavior I see?"
+\bigskip
+\item Put another way, feed in some labor tax $\tau$ that makes our model behave like the data
+\bigskip
+\item This is ``wedge accounting" a la Mulligan (2002) Chari Kehoe McGrattan (2004/2007) 
+\bigskip
+\item Same concept as a Solow residual
+\bigskip
+\item This is also how MLE estimation of these processes works:  given a time series process for residual, choose parameters to maximize likelihood of seeing observations
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle[alignment=center]{Find $\psi=(1-\textcolor{red}{\tau_t})\frac{w_t(1-L_t)}{c_t}$}
+\begin{figure}
+\centering
+\includegraphics[scale=0.5]{Figures/Figure_6b.png}
+\end{figure}
+Choose $\psi$ to be mean, then $\psi=(1-\textcolor{red}{\tau_t})\frac{w_t(1-L_t)}{c_t}$. Note 2020!
+\end{frame}
+
+
+\begin{frame}
+\frametitle[alignment=center]{Aside on Wedges-II}
+\begin{itemize}
+\item Many don't like wedges, why have invisible process that reconciles theory with data? Theory is always true!?
+\bigskip
+\item Misses the point!
+\bigskip
+\item Wedges are diagnostics: measurements of what in the data doesn't make sense
+\bigskip
+\item  If your change to the model helps make wedges small, it's progress!
+\bigskip
+\item \textbf{Wedges are a quantitative way of describing puzzles and their (sometimes partial) resolution}
+\bigskip
+\item Finally, note that ``wedges" aren't always tax wedges--could be preference shocks, etc.  
+\end{itemize}
+\end{frame}
+
+
 
 
 \begin{frame}

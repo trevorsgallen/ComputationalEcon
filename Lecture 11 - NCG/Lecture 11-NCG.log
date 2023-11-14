@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.10.28)  14 NOV 2023 17:30
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.10.28)  14 NOV 2023 17:53
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1344,45 +1344,61 @@ Package pdftex.def Info: Figures/Figure_6.png  used on input line 378.
 ] [33
 
 ]
-<Figures/Figure_7.png, id=299, 578.16pt x 433.62pt>
+<Figures/Figure_7.png, id=299, 562.2606pt x 421.575pt>
 File: Figures/Figure_7.png Graphic file (type png)
 <use Figures/Figure_7.png>
 Package pdftex.def Info: Figures/Figure_7.png  used on input line 441.
-(pdftex.def)             Requested size: 289.07928pt x 216.80946pt.
-
-Overfull \vbox (3.66551pt too high) detected at line 441
- []
-
-[34
+(pdftex.def)             Requested size: 281.12961pt x 210.78697pt.
+ [34
 
  <./Figures/Figure_7.png (PNG copy)>]
 File: Figures/Figure_7.png Graphic file (type png)
 <use Figures/Figure_7.png>
 Package pdftex.def Info: Figures/Figure_7.png  used on input line 441.
-(pdftex.def)             Requested size: 289.07928pt x 216.80946pt.
-
-Overfull \vbox (3.66551pt too high) detected at line 441
- []
-
-[35
+(pdftex.def)             Requested size: 281.12961pt x 210.78697pt.
+ [35
 
 ]
-<Figures/Figure_8.png, id=313, 578.16pt x 433.62pt>
+File: Figures/Figure_7.png Graphic file (type png)
+<use Figures/Figure_7.png>
+Package pdftex.def Info: Figures/Figure_7.png  used on input line 441.
+(pdftex.def)             Requested size: 281.12961pt x 210.78697pt.
+ [36
+
+]
+<Figures/Figure_8.png, id=319, 562.2606pt x 421.575pt>
 File: Figures/Figure_8.png Graphic file (type png)
 <use Figures/Figure_8.png>
 Package pdftex.def Info: Figures/Figure_8.png  used on input line 449.
-(pdftex.def)             Requested size: 289.07928pt x 216.80946pt.
- [36
+(pdftex.def)             Requested size: 281.12961pt x 210.78697pt.
+ [37
 
  <./Figures/Figure_8.png (PNG copy)>]
-<Figures/Figure_9.png, id=320, 578.16pt x 433.62pt>
+<Figures/Figure_9.png, id=327, 562.2606pt x 421.575pt>
 File: Figures/Figure_9.png Graphic file (type png)
 <use Figures/Figure_9.png>
 Package pdftex.def Info: Figures/Figure_9.png  used on input line 458.
-(pdftex.def)             Requested size: 289.07928pt x 216.80946pt.
- [37
+(pdftex.def)             Requested size: 281.12961pt x 210.78697pt.
 
- <./Figures/Figure_9.png (PNG copy)>] [38
+[38
+
+ <./Figures/Figure_9.png (PNG copy)>] [39
+
+]
+<Figures/Figure_6b.png, id=340, 562.2606pt x 421.575pt>
+File: Figures/Figure_6b.png Graphic file (type png)
+<use Figures/Figure_6b.png>
+Package pdftex.def Info: Figures/Figure_6b.png  used on input line 484.
+(pdftex.def)             Requested size: 281.12961pt x 210.78697pt.
+
+Overfull \vbox (1.35548pt too high) detected at line 484
+ []
+
+[40
+
+ <./Figures/Figure_6b.png (PNG copy)>] [41
+
+] [42
 
 ]
 \tf@nav=\write6
@@ -1403,13 +1419,13 @@ Package rerunfilecheck Info: File `"Lecture 11-NCG".out' has not changed.
 ### simple group (level 1) entered at line 32 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 26979 strings out of 478994
- 546143 string characters out of 5858183
+ 27001 strings out of 478994
+ 546431 string characters out of 5858183
  859187 words of memory out of 5000000
- 43809 multiletter control sequences out of 15000+600000
- 416281 words of font info for 73 fonts, out of 8000000 for 9000
+ 43821 multiletter control sequences out of 15000+600000
+ 416575 words of font info for 74 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 131i,13n,132p,441b,1896s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 131i,13n,132p,441b,1904s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts
 /cm/cmcsc10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts
 /cm/cmex10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/
@@ -1420,20 +1436,21 @@ mmi7.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmm
 i8.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmss1
 0.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12
 .pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.p
-fb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.p
-fb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi12.p
-fb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pf
-b></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
-></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><
-/usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></u
-sr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr
-/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/latxfont/line10.pfb>
-</usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.
-pfb>
-Output written on "Lecture 11-NCG.pdf" (38 pages, 878938 bytes).
+fb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.
+pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.
+pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi12.
+pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.p
+fb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pf
+b></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb>
+</usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></
+usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></us
+r/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/latxfont/line10.pfb
+></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10
+.pfb>
+Output written on "Lecture 11-NCG.pdf" (42 pages, 925041 bytes).
 PDF statistics:
- 416 PDF objects out of 1000 (max. 8388607)
- 309 compressed objects within 4 object streams
- 77 named destinations out of 1000 (max. 500000)
- 128 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 447 PDF objects out of 1000 (max. 8388607)
+ 334 compressed objects within 4 object streams
+ 85 named destinations out of 1000 (max. 500000)
+ 133 words of extra memory for PDF output out of 10000 (max. 10000000)
 

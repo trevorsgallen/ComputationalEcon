@@ -1,4 +1,5 @@
 clear
+close all
 
 %Call Data Preparation Step
     Data_Preparation

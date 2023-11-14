@@ -94,6 +94,21 @@ clearvars data raw R;
 
     psi_avg = mean((w_t.*(1-L_t)./C_t));
 
+%gamma
+    figure(60)
+    plot([1967:2022],((w_t.*(1-L_t)./C_t)));
+    hold on
+    plot([1967:2022],psi_avg(ones(1,2022-1967+1)),'--r','LineWidth',3);
+    text(1973,psi_avg+0.4,"Period of 'high taxes' (distortions)")
+    text(1987,psi_avg-0.14,["Period of 'low ","taxes' (distortions)"])
+    scatter(2020,((w_t(end-2).*(1-L_t(end-2))./C_t(end-2))),'red')
+    title('psi/intratemporal foc')
+    xlabel('Year')
+    ylabel('psi')
+    print('../Figures/Figure_6b.png','-dpng')
+
+
+
     save Data.mat Y_t w_t L_t K_t N_t C_t A_t I_t r_t
 
 
