@@ -84,7 +84,7 @@ MC_tau = @(Q) S_curve_tau(Q)-D_curve_tau(Q)
 qclear_tau = fzero(MC_tau,5)
 pclear_tau = S_curve_tau(qclear_tau)
 pclear_tau_S = pclear_tau;
-pclear_tau_D = pclear_tau.*(1+0.142127264282397);
+pclear_tau_D = pclear_tau./(1-0.142127264282397);
 
 figure(4)
 plot(Q_space,S_curve(Q_space),'-r')
