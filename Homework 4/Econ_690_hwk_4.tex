@@ -1,0 +1,95 @@
+\documentclass[11pt]{article}
+\usepackage{appendix}
+\usepackage{graphicx} 
+\usepackage{setspace}
+\usepackage{amsmath,float,verbatim,multicol}
+\usepackage{array}
+\usepackage{lscape}
+\usepackage{hyperref}
+
+\usepackage{amssymb}
+\bibliographystyle{plainnat}
+\usepackage[round]{natbib}
+\usepackage{multirow}
+
+\setlength{\textheight}{8.8in} \setlength{\textwidth}{6.3in}
+\setlength{\oddsidemargin}{0.2in} \setlength{\topmargin}{-0.30in}
+\setlength{\footnotesep}{10.0pt}
+
+\newcommand{\ol}{\overline}
+
+
+
+\renewcommand{\baselinestretch}{1.25}
+\title{Getting the Hang of Structural Estimation)  }
+\author{ Trevor Gallen \\ Econ 64200 }
+\date{Fall 2023}
+
+\begin{document}
+\bibliographystyle{myplainnat}
+%\bibpunct{(}{)}{;}{a}{}{,}6868
+
+\maketitle
+
+This homework tries to lead you through a straightforward example of GMM to help you \emph{actually} understand GMM better!  
+
+
+\textbf{Deliverables}
+\begin{itemize}
+\item You should have a word/\LaTeX document that has three sections: 
+\begin{enumerate}
+\item Discusses the model and answers the questions I pose throughout.
+\item Contains the tables and figures you will produce.
+\item Contains a discussion of your programming choices if you had to make any.
+\end{enumerate}
+\item You should have a Matlab file or set of files (zipped) that contain \textbf{all} your programs and raw data.  There should be a file called ``Main.M" that produces everything I need in one click.
+\end{itemize}
+
+
+\section{Model}
+Consider the simplest dynamic model that I can think of: a two-period model over labor and consumption, in which agents maximize utility subject to the standard budget constraint.  Letting $c_t$, $L_t$, $w_t$ be consumption, labor and wages in period $t$, $\nu$ be the initial property income of the agent,  $r$ be the interest rate between periods, $\psi$ control the utility of leisure, and $\beta$ be the discount rate, the agent maximizes:
+$$U(c_1,c_2,L_1,L_2)=\log(c_1)+\beta\log(c_2)+\psi\log(1-L_1)+\beta\psi\log(1-L_2)$$
+Subject to the NPV budget constraint:
+$$w_1+\frac{w_2}{1+r}+\nu=w_1+\frac{w_2}{1+r}+\nu=c_1+\frac{c_2}{1+r}$$
+\ \\
+We have a dataset of $w_1$, $w_2$, $r$, $\nu$, $c_1$, $c_2$, and $L_1$ ($L_2$ can be found with the budget constraint).  \
+\ \\
+You'll find that the closed-form solution to these three series is (feel free to check my work):
+$$c_1=\frac{\nu+r \nu+w_1+r w_1+w_2}{(1+r) (1+\beta) (1+\psi)}$$
+$$c_2=\beta\frac{\nu+r \nu+w_1+r w_1+w_2}{(1+\beta) (1+\psi)}$$
+$$L_1=\frac{-\nu \psi-r \nu \psi+w_1+r w_1+\beta w_1+r \beta w_1+\beta \psi w_1+r \beta \psi w_1-\psi w_2}{(1+r) (1+\beta) (1+\psi) w_1}$$
+\ \\
+\textbf{Question 1:} Write a Matlab program that takes in parameters to be estimated $\theta=\{\beta,\psi\}$ and data on $w_1$, $w_2$, $r$, and $\nu$ and spits out $c_1^*$, $c_2^*$, and $L_1^*$ as given in the formulae above.  \\
+\ \\
+
+\textbf{Question 2:}  Use the data provided in data.csv on $w_1$, $w_2$, $r$, $\nu$, $c_1$, $c_2$, and $L_1$ and the algorithm from Question 1 to ``Calibrate" the model by choosing $\beta$ and $\psi$ so that the mean $c_1$, $c_2$, and $L_1$ in the data are equal to their mean model values.  This will give you three moments:
+$$mom(\theta,data)=\left[\begin{array}{c}mean(c_1^{model}-mean(c_1^{data})) \\ mean(c_2^{model}-mean(c_2^{data})) \\ mean(L_1^{model}-mean(L_1^{data}))\end{array}\right]$$
+You can combine these to get an error by using the quadratic form with identity weighting matrix:
+$$err=mom(\theta,data)'\left[\begin{array}{ccc}1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1\end{array}\right]mom(\theta,data)$$
+Report your estimated coefficients.  You have now (hopefully successfully) indirectly calibrated a structural model. \\
+\ \\
+\textbf{Question 3:}  You can turn calibration into estimation by reporting standard errors. This isn't as hard as it seems! Your moment matrix was a 3x1, formed from the means of an Nx3 set of individual conditions. All we need to do is find the (1) variance-covariance matrix of our moments, which is simply the covariance matrix of the individual moment conditions.  So if:
+$$mom_i(:,1) = c_1^{model}-c_1^{data}$$
+$$mom_i(:,2) = c_2^{model}-c_2^{data}$$
+$$mom_i(:,3) = L_1^{model}-L_1^{data}$$
+Then you can calculate the optimal weighting matrix with:
+$$S=cov(mom_i)$$
+And weight by the inverse of $S$.  \\
+Then the formula for the asymptotic variance-covariance matrix of your estimates can be calculated as:
+$$\hat{V}=\frac{\left(D'cov(mom_i)^{-1}D\right)^{-1}}{N}$$
+Where $N$ is the number of observations and $D$ is the Jacobian (so $D$ would look like:
+$$D=E\left(\left[\begin{array}{ccc}\frac{\partial mom_1}{\partial \beta} & \frac{\partial mom_1}{\partial \psi} \\ \frac{\partial mom_2}{\partial \beta} & \frac{\partial mom_2}{\partial \psi} \\ \frac{\partial mom_3}{\partial \beta} & \frac{\partial mom_3}{\partial \psi} \\\end{array}\right]\right)$$
+You can calculate this with finite differences!  Perturb $\hat{\beta}$ and see how the average moment condition changes for each of the three moment conditions for the first column, and similarly with $\hat{\psi}$ for the second column.
+\ \\
+\ \\
+\textbf{Report your estimated coefficients along with their standard errors.}
+ \\
+\ \\
+
+
+\end{document}
+
+
+
+
+
