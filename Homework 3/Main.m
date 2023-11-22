@@ -1,5 +1,5 @@
-% clear
-% close all
+clear
+close all
 
 %Pretrain option
     pretrain = 0;
@@ -11,7 +11,7 @@
     myparms.rho = 0.95;
 
 
-%State bounds (K,A,t)
+%State bounds (K,A)
     myparms.smin = [-0.13,-0.13];
     myparms.smax=[0.13,0.13];
 
