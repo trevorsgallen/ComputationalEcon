@@ -104,7 +104,7 @@ while error > 1e-20
         ylabel('Saving Rate')
         drawnow
 end
-dfghjk
+
 
 %Graph final policy and value functions
     figure(2)
