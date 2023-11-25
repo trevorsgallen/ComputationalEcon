@@ -50,7 +50,7 @@ This homework tries to lead you through a straightforward example of GMM to help
 Consider the simplest dynamic model that I can think of: a two-period model over labor and consumption, in which agents maximize utility subject to the standard budget constraint.  Letting $c_t$, $L_t$, $w_t$ be consumption, labor and wages in period $t$, $\nu$ be the initial property income of the agent,  $r$ be the interest rate between periods, $\psi$ control the utility of leisure, and $\beta$ be the discount rate, the agent maximizes:
 $$U(c_1,c_2,L_1,L_2)=\log(c_1)+\beta\log(c_2)+\psi\log(1-L_1)+\beta\psi\log(1-L_2)$$
 Subject to the NPV budget constraint:
-$$w_1+\frac{w_2}{1+r}+\nu=w_1+\frac{w_2}{1+r}+\nu=c_1+\frac{c_2}{1+r}$$
+$$w_1L_1+\frac{w_2L_2}{1+r}+\nu=c_1+\frac{c_2}{1+r}$$
 \ \\
 We have a dataset of $w_1$, $w_2$, $r$, $\nu$, $c_1$, $c_2$, and $L_1$ ($L_2$ can be found with the budget constraint).  \
 \ \\
@@ -62,7 +62,7 @@ $$L_1=\frac{-\nu \psi-r \nu \psi+w_1+r w_1+\beta w_1+r \beta w_1+\beta \psi w_1+
 \textbf{Question 1:} Write a Matlab program that takes in parameters to be estimated $\theta=\{\beta,\psi\}$ and data on $w_1$, $w_2$, $r$, and $\nu$ and spits out $c_1^*$, $c_2^*$, and $L_1^*$ as given in the formulae above.  \\
 \ \\
 
-\textbf{Question 2:}  Use the data provided in data.csv on $w_1$, $w_2$, $r$, $\nu$, $c_1$, $c_2$, and $L_1$ and the algorithm from Question 1 to ``Calibrate" the model by choosing $\beta$ and $\psi$ so that the mean $c_1$, $c_2$, and $L_1$ in the data are equal to their mean model values.  This will give you three moments:
+\textbf{Question 2:}  Use the data provided in data.csv on $w_1$, $w_2$, $r$, $\nu$, $c_1$, $c_2$, and $L_1$ and the algorithm from Question 1 to ``Calibrate" the model by choosing $\beta$ and $\psi$ so that the mean $c_1$, $c_2$, and $L_1$ in the data are equal to their mean model values.  \textbf{The column order is $\{c1,c2,L1,L2,w1,w2,r,nu\}$ }This will give you three moments:
 $$mom(\theta,data)=\left[\begin{array}{c}mean(c_1^{model}-mean(c_1^{data})) \\ mean(c_2^{model}-mean(c_2^{data})) \\ mean(L_1^{model}-mean(L_1^{data}))\end{array}\right]$$
 You can combine these to get an error by using the quadratic form with identity weighting matrix:
 $$err=mom(\theta,data)'\left[\begin{array}{ccc}1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1\end{array}\right]mom(\theta,data)$$
