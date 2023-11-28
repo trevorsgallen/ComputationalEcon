@@ -1,0 +1,125 @@
+\documentclass[a4paper]{article}
+\usepackage[margin=1in, paperwidth=5.5in, paperheight=8.5in]{geometry}
+\usepackage{geometry}
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+\usepackage{natbib}
+
+\usepackage{bibentry}
+
+\usepackage{hyperref}
+\usepackage{hypcap}
+\usepackage{tikz}
+\usepackage{multirow}
+
+\usetikzlibrary{shapes,arrows}
+
+\bibpunct{(}{)}{,}{a}{}{;}
+
+\parindent 0in
+\usepackage{fancyhdr} 
+\pagestyle{fancy} 
+%\bibliographystyle{natbib}
+\bibliographystyle{apalike}
+%\bibliographystyle{aer}
+\fancyhead[RE,RO]{\textsc   Econ 641 Gallen 2023}
+\fancyhead[CE,CO]{\textsc}
+\fancyhead[LE,LO]{\textsc Syllabus}
+
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+\title{Econ 690: Computational Economics/Numerical Methods}
+\author{Trevor Gallen}
+\date{Fall 2023}
+\begin{document}
+%\nobibliography{NumericalMethodsSyllabus}
+
+\maketitle
+
+\begin{itemize}
+\item Intro Matlab Files
+\begin{itemize}
+\item \textbf{Lecture 2 - Matlab Intro/MatlabIntro.m}:  Lecture file that introduces the various commands of Matlab. 
+\item \textbf{Lecture 2 - Matlab Intro/GraphingExample}:  Lecture file that introduces three different ways to plot.
+\item \textbf{Lecture 2 - Matlab Intro/SampleFunction}:  Lecture file introduces an external function.
+\end{itemize}
+\item Value Function Iteration
+\begin{itemize}
+\item \textbf{Lecture 2 - Matlab Intro/HelenofTroy}:  Lecture file that introduces ``Helen of Troy" discrete choice, finite horizon stochastic Value Function Iteration.  Similar to a VFI exercise on the value of an American Option.
+\item \textbf{Lecture 2 - Matlab Intro/CakeEating}:  Lecture file that introduces a ``Cake Eating" problem: finite horizon deterministic problem on consuming finite natural resource.
+\item \textbf{Lecture 2 - Matlab Intro/CakeGrowth}:  Lecture file that introduces a ``Cake Eating" problem with stochastic growth: finite horizon stochastic problem on consuming stochastically-growing natural resource.
+\item \textbf{Lecture 4 - VFI/VFI\_Intro\_Discrete}:  Runs the standard simple Neoclassical Growth Model value function iteration problem (discrete time, discrete choice, deterministic).
+\item \textbf{Lecture 4 - VFI/VFI\_Intro\_Continuous}:  Same as above, but with continuous choice.
+\item \textbf{Lecture 4 - VFI/VFI\_Cheb}:  Runs the standard simple Neoclassical Growth Model value function iteration problem (discrete time, discrete choice, deterministic) but using a Chebyshev Polynomial basis.  Rather than using closed forms on Chebyshev nodes, it instead fits its cloud of points using least squares on a Chebyshev basis.  
+\item \textbf{Lecture 4 - VFI/VFI\_polynomial.m}:  Runs the standard simple Neoclassical Growth Model value function iteration problem (discrete time, discrete choice, deterministic) but using a Chebyshev Polynomial basis.  Rather than using closed forms on Chebyshev nodes, it instead fits its cloud of points using least squares on a Chebyshev basis.  
+\end{itemize}
+\item Newton's Method
+\begin{itemize}
+\item \textbf{Lecture 5 - Newton's Method} Mathematica (not Matlab) file NewtonsMethod.nb graphically shows Newton's Method on two 2-dimensional functions.
+\item \textbf{Lecture 6 - Newton's Method Applied/Lecture\_6\_NewtonsMethod\_DixitStiglitz.m} Applies Newton's Method/derivative-based minimization (fsolve) to a ``light" Dixit-Stiglitz general equilibrium model with constant elasticity of substituion aggregators.
+\item \textbf{Lecture 6 - Newton's Method Applied/Lecture\_6\_NewtonsMethod\_LinReg.m} Applies Newton's Method/derivative-based minimization (fsolve) to a ``light" Dixit-Stiglitz general equilibrium model with constant elasticity of substituion aggregators.
+\item \textbf{Lecture 6 - Newton's Method Applied/ZerosandMinimization.m} Showcases the many equation solvers and minimizers available in matlab (including non-derivative based ones).
+\end{itemize}
+\item Other Minimization Methods
+\begin{itemize}
+\item \textbf{Lecture 7 - Other Methods/ConjugateGradientMethod.m} displays the conjugate-gradient method, useful when you don't want to take second derivatives but don't want to fall prey to the flaws of gradient descent.
+\item \textbf{Lecture 7 - Other Methods/GeneticAlgorithm.m} displays Matlab's genetic algorithm, a ``global" minimizer.  Slow, but effective and can work with integer constraints, unlike most other methods.\item \textbf{Lecture 7 - Other Methods/DifferentialEvolution.m} displays a differential-evolution based minimizer, comparable to the genetic algorithm.\item \textbf{Lecture 7 - Other Methods/NelderMead.m} displays the ``Nelder-Mead" simplex.  Fast non-derivative based minmimizer.
+\item \textbf{Lecture 7 - Other Methods/PatternSearch.m}  displays the ``Pattern-Search" minimizer.  Fast non-derivative based minmimizer.\item \textbf{Lecture 7 - Other Methods/SimulatedAnnealing.m} displays the ``Simulated-Annealing" minimizer.  Slow, and in my experience not great minimizer.
+\end{itemize}
+\item Interpolation
+\begin{itemize}
+\item \textbf{Lecture 8 - Interpolation/Bases.m} Graphs out the first nine Monomial and Chebyshev Bases.
+\item \textbf{Lecture 8 - Interpolation/Simple\_Interpolation.m} Displays simple interpolation commands and graphs them.
+\item \textbf{Lecture 8 - Interpolation/ChebyChev\_1D.m} One-dimensional Chebyshev interpolation.
+\item \textbf{Lecture 8 - Interpolation/ChebyChev\_2D.m} Two-dimensional Chebyshev interpolation.
+\item \textbf{Lecture 8 - Interpolation/Monom\_1D.m} One-dimensional monomial/Taylor interpolation.
+\item \textbf{Lecture 8 - Interpolation/Monom\_2D.m} Two-dimensional monomial/Taylor interpolation.
+\end{itemize}
+\item Reinforcement Learning
+\begin{itemize}
+\item \textbf{Lecture 9 - Reinforcement Learning/Discrete\_VFI/Discrete\_VFI.m} Standard VFI, copied from the discrete choice example.  Used for graphing comparison in RL.
+\item \textbf{Lecture 9 - Reinforcement Learning/Fitnet Example/Main.m} Displays a neural network used for fitting (think highly flexible nonlinear least squares.)
+\item \textbf{Lecture 9 - Reinforcement Learning/NN\_Example/Simple\_5\_Main.m} Shows a simple single-layer, 5 neuron network.
+\item \textbf{Lecture 9 - Reinforcement Learning/NN\_Example/Simple\_N\_Main.m} Shows a simple single-layer, N-neuron network.
+\item \textbf{Lecture 9 - Reinforcement Learning/NN\_Example/Deep\_N\_Main.m} Shows a deep-learning (2 layer) \[N,N\]-neuron network.
+\item \textbf{Lecture 9 - Reinforcement Learning/NN\_VFI/Actor\_Critic\_UpdateActor.m} Shows the actor-critic updating algorithm (specifically, updating the actor step).
+\item \textbf{Lecture 9 - Reinforcement Learning/NN\_VFI/Main.m} Uses the actor-critic algorithm to solve the standard neoclassical growth model.
+\item \textbf{Lecture 9 - Reinforcement Learning/NN\_VFI/myResetFunction.m} Called by Main.m, resets the problem.
+\item \textbf{Lecture 9 - Reinforcement Learning/NN\_VFI/myStepFunction.m} Called by Main.m, steps the problem forward in time.
+\end{itemize}
+\item Sargent \& Ljungqvist (1998)
+\begin{itemize}
+\item \textbf{Lecture 10 - Sargent Ljungqvist/Sargent\_Ljungqvist.m} Mostly (but not perfectly) replicates several figures in Sargent \& Ljungqvist (1998).
+\end{itemize}
+\item Neoclassical Growth Model
+\begin{itemize}
+\item \textbf{Lecture 11 - NCG/NCG\_New//Main.m} this file first calls the data cleaner, calibrates parameters, and solves the Neoclassical Growth Model.  
+\item \textbf{Lecture 11 - NCG/NCG\_New/focs\_NCGTrend.m}. this file contains the first order conditions the Main.m file has to zero.
+\item \textbf{Lecture 11 - NCG/NCG\_New/f\_Kstock.m} this file contains two moments the initial capital stock/depreciation rate solver has to zero (calibrate initial capital stock+depreciation rate).
+\item \textbf{Lecture 11 - NCG/NCG\_New/Data\_Preparation.m} this file cleans the data and calibrates the moments.
+\end{itemize}
+\item Computable General Equilibrium models
+\begin{itemize}
+\item \textbf{Lecture 12 - CGE/HarbergerwESIdecisio.xlsx} is an excel(!) file that solves the CGE model in Gallen \& Mulligan 2018.  Uses the Microsoft Excel derivative-based ``solver" add-on.
+\end{itemize}
+\item Generalized Method of Moments
+\begin{itemize}
+\item \textbf{Lecture 13 - GMM/FittingFirmSize/Main\_Firm.m} starts with a guess and calibrates the firm size model
+\item \textbf{Lecture 13 - GMM/FittingFirmSize/Estimator\_Firm.m} takes in parameter values, solves the general equilibrium model for firms \& households (wages clear labor markets) and spits out moment error.
+\item \textbf{Lecture 13 - GMM/MedicaidExample/Main\_Pref} starts with a guess and calibrates the preference model
+\item \textbf{Lecture 13 - GMM/MedicaidExample/Estimation\_Pref} takes in parameter values, solves the household problem and returns moment errors.\end{itemize}
+\item Simulation Estimation
+\item Dynamic Discrete Choice Estimation
+\item Markov Chain Monte Carlo
+\begin{itemize}
+\item \textbf{Lecture 16 - MCMC/Metropolis\_Hastings.m}
+\end{itemize}
+\item Likelihoods and Filtering
+\begin{itemize}
+\item \textbf{Lecture 17 - Likelihoods and Filtering/KalmanNew.m} this file runs through a Kalman Filter and Kalman Smoother problem to filter out permanent income based on income+consumption data from a permanent income hypothesis style problem.
+\item \textbf{Lecture 17 - Likelihoods and Filtering/Kalman.m} this file straightforwardly applies the Kalman Filter to track a target whose movements are known with noise. (Basic Kalman problem)\item \textbf{Lecture 17 - Likelihoods and Filtering/Kalman\_Lemma1.m} this file simply shows the variance of x residual of control y $var(x-\hat{\beta}y)$ is equal to $var(x)-\frac{var(x)cov(xy)}{var(y)}$ (in matrix form).  The most important fact for the Kalman filter (Kalman gain).\item \textbf{Lecture 17 - Likelihoods and Filtering/Markov.m} Markov Chain example with Bayesian updating.\item \textbf{Lecture 17 - Likelihoods and Filtering/Markov2.m} Another Markov Chain example with Bayesian updating.
+\end{itemize}\item Heterogeneous Agent Models
+\begin{itemize}
+\item \textbf{Lecture 18 - Heterogeneous Agents/Krusell\_Smith.m}. Application of the basic Krusell-Smith (1998) heterogeneous agents algorithm.
+\end{itemize}
+\end{itemize}
+\end{document}
