@@ -61,7 +61,8 @@ $$L_1=\frac{-\nu \psi-r \nu \psi+w_1+r w_1+\beta w_1+r \beta w_1+\beta \psi w_1+
 \ \\
 \textbf{Question 1:} Write a Matlab program that takes in parameters to be estimated $\theta=\{\beta,\psi\}$ and data on $w_1$, $w_2$, $r$, and $\nu$ and spits out $c_1^*$, $c_2^*$, and $L_1^*$ as given in the formulae above.  \\
 \ \\
-
+\textbf{Suggested Solution}:  See Main.m.
+\ \\
 \textbf{Question 2:}  Use the data provided in data.csv on $w_1$, $w_2$, $r$, $\nu$, $c_1$, $c_2$, and $L_1$ and the algorithm from Question 1 to ``Calibrate" the model by choosing $\beta$ and $\psi$ so that the mean $c_1$, $c_2$, and $L_1$ in the data are equal to their mean model values.  \textbf{The column order is $\{c1,c2,L1,L2,w1,w2,r,nu\}$ }This will give you three moments:
 $$mom(\theta,data)=\left[\begin{array}{c}mean(c_1^{model}-mean(c_1^{data})) \\ mean(c_2^{model}-mean(c_2^{data})) \\ mean(L_1^{model}-mean(L_1^{data}))\end{array}\right]$$
 You can combine these to get an error by using the quadratic form with identity weighting matrix:

@@ -1,0 +1,21 @@
+%This code estimates the offer distribution of a Helen of Troy/McCall-style search model from data on accepted offers and time periods.
+clear
+close all
+
+load('data.mat')
+seed = 1;
+
+N = 1000;
+V_guess = zeros(100,1);
+theta_guess = [30,40];
+W = eye(2);
+%Check the nonlinear constraint part
+    [temp1,temp2,V_guess]=VCheck(theta_guess,V_guess,[],'nonlinc')
+    temp2
+
+%Check the estimation part
+    [temp3]=VCheck(theta_guess,V_guess,[],'estim',data,W)
+
+%Put them together
+    
+
