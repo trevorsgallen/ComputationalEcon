@@ -5,7 +5,6 @@
 \usepackage{tikz}
 \usetheme{default}
 %\usecolortheme{seahorse}
-\usepackage{default}
   \setbeamertemplate{footline}[page number]
 \usepackage{multirow}
 \setbeamertemplate{navigation symbols}{}
@@ -188,6 +187,62 @@ $$g(x'|x)\sim\mathcal{N}(x,0.1)$$
 \bigskip
 \item Use M-H
 \end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle[alignment=center]{Metropolis-Hasting Example-Motivation}
+\begin{itemize}
+\item Consider a human capital accumulation problem (as in Homework 1, 2 in 2023)
+\bigskip
+\item Households choose how much time to study vs. work, no asset accumulation
+\bigskip
+\item VFI problem, but want to estimate depreciation rate and ability level
+\bigskip
+\item Bayesian Structural Estimation!
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle[alignment=center]{Model/Problem}
+$$V(h)=\underset{i}{\max}\left\{log((1-i)h)+\beta V((1-\color{red}{\delta}\color{black})h+\color{red}{A}\color{black}i^\gamma)\right\}$$
+\begin{itemize}
+\bigskip
+\item Where \textcolor{red}{$A$}, \textcolor{red}{$\delta$} are to be estimated from decision data in the problem ($\gamma$ is known).
+\bigskip
+\item For convenience (real structural problem would have more natural probabilities), $i^{obs}=i^{data}+\epsilon$ where $\epsilon\sim\mathcal{N}\left(0,\sigma^2\right)$
+\bigskip
+\item For convenience, I solve this for a grid of $\delta$ and $A$
+\bigskip
+\item This gives me pr(data|parameter)
+\bigskip
+\item Metropolis-Hastings lets me combine model based probability p(parameter) to get p(parameter|data) without having to integrate across
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle[alignment=center]{Model}
+\begin{itemize}
+\item Assume prior distribution of $\{A,\delta\}$ (here independently distributed $f(A)\sim\mathcal{N}(1,0.05)$ $f(\delta)\sim\mathcal{U}(0.03,0.08)$
+\item Use transition distribution $\Delta\theta\sim\mathcal{N}(0,0.01)$
+\item Have probability of choice conditional on parameter $g(i|\theta)$  from structural model
+\item Have starting point for MCMC $\theta_0\sim\mathcal{N}(1,0.05) $
+\begin{itemize}
+\item Draw new $\theta_1=\theta_0+\Delta\theta$
+\item Compare: $r=\frac{g(i|\theta_1)f(\theta_1)}{g(i|\theta_0)f(\theta_0)}$
+\item Either accept or reject based on MH algo
+\item Repeat many times
+\item Now have sampling from posterior distribution
+\end{itemize}
+\item See Main.m, VFIGridSolver.m, and MCMC.m
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle[alignment=center]{Model}
+\begin{figure}
+\centering
+\includegraphics[scale=0.3]{MCMC_Example_VFI.png}
+\end{figure}
 \end{frame}
 
 
