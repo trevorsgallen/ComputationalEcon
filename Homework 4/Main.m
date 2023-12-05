@@ -17,15 +17,32 @@ N = 10000;
     c2_fxn = @(psi,beta) beta*(nu+r.*nu+w1+r.*w1+w2)./((1+beta).*(1+psi));
     L1_fxn = @(psi,beta) (-nu.*psi-r.*nu.*psi+w1+r.*w1+beta.*w1+r.*beta.*w1+beta.*psi.*w1+r.*beta.*psi.*w1-psi.*w2)./((1+r).*(1+beta).*(1+psi).*w1);
 
-%Store data
-    data.c1=  c1_fxn(psi,beta)+randn(N,1);
-    data.c2=  c2_fxn(psi,beta)+randn(N,1)*0.01;
-    data.L1=  L1_fxn(psi,beta)+randn(N,1)*0.01;
-    data.L2=  (1+r).*(((data.c1+data.c2./(1+r))-data.L1.*w1)./w2);
-    data.w1 = w1;
-    data.w2 = w2;
-    data.r = r;
-    data.nu = nu;
+%This is the data creation portion
+% %Create & Write Data
+%     data.c1=  c1_fxn(psi,beta)+randn(N,1);
+%     data.c2=  c2_fxn(psi,beta)+randn(N,1)*0.01;
+%     data.L1=  L1_fxn(psi,beta)+randn(N,1)*0.01;
+%     data.L2=  (1+r).*(((data.c1+data.c2./(1+r))-data.L1.*w1)./w2);
+%     data.w1 = w1;
+%     data.w2 = w2;
+%     data.r = r;
+%     data.nu = nu;
+% 
+% %Output data
+%     temp = [data.c1,data.c2,data.L1,data.L2,data.w1,data.w2,r,nu]
+%     csvwrite('Data.csv',temp)
+
+
+%Load data
+    temp = csvread('data.csv');
+    data.c1=  temp(:,1);
+    data.c2=  temp(:,2);
+    data.L1=  temp(:,3);
+    data.L2=  temp(:,4);
+    data.w1 = temp(:,5);
+    data.w2 = temp(:,6);
+    data.r = temp(:,7);
+    data.nu = temp(:,8);
 
 %Store functions
     fxns.c1 = c1_fxn;
@@ -33,8 +50,8 @@ N = 10000;
     fxns.L1 = L1_fxn;
 
 %Output data
-    temp = [data.c1,data.c2,data.L1,data.L2,data.w1,data.w2,r,nu]
-    csvwrite('/Users/tgallen/Dropbox/Econ_641/HwkSol/New Homework 4/Data.csv',temp)
+    % temp = [data.c1,data.c2,data.L1,data.L2,data.w1,data.w2,r,nu]
+    % csvwrite('/Users/tgallen/Dropbox/Econ_641/HwkSol/New Homework 4/Data.csv',temp)
 
 %Calibrate
     [bhat1]=fmincon(@(theta)mom([theta(1),theta(2)],data,eye(3),fxns),[0.95,3])

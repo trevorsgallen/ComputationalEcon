@@ -5,7 +5,6 @@
 \usepackage{tikz}
 \usetheme{default}
 %\usecolortheme{seahorse}
-\usepackage{default}
   \setbeamertemplate{footline}[page number]
 \usepackage{multirow}
 \setbeamertemplate{navigation symbols}{}
@@ -246,8 +245,9 @@ $$\hat{Y}=X\beta$$
 So:
 \begin{align*}
 Var(Y-\hat{Y}|X) & =Var(Y-X\beta|X)\\
- & =Var(Y|X)+\beta^2Var(X|X)-2\beta Cov(Y, X|X))\\
-  & =Var(Y|X)+2\beta^2 Var(Y)^{-1}\\
+ & =Var(Y|X)+\beta^2\underbrace{Var(X|X)}_{0}-2\beta Cov(Y, X|X))\\
+  & =Var(Y|X)-2\beta \frac{\beta}{Var(X)}\\
+  & =Var(Y|X)+2\beta^2 Var(X)^{-1}\\
 \end{align*}
 \end{frame}
 
@@ -259,6 +259,8 @@ Then:
 $$Y|X\sim\mathcal{N}\left(S_{XY'}S_{XX'}^{-1}X,S_{YY'|X}\right)$$
 Where, letting $A=S_{XY'}S_{XX}^{-1}$
 $$S_{YY'|X}=S_{YY'}-S_{XY'}S_{XX}^{-1}S_{YX'}=S_{YY'}-AS_{XX'}^{-1}A'$$
+Matrix analogue of previous slide:
+$$Var(Y-\hat{Y}|X)=Var(Y|X)+2\beta^2 Var(X)^{-1}$$
 \ \\
 In other words, our expectation of $X$ given $Y$ comes from a regression, and our conditional variance is our unconditional variance minus the regression coefficient squared times the variance of our signal.
 \ \\
@@ -267,11 +269,55 @@ In other words, our expectation of $X$ given $Y$ comes from a regression, and ou
 $^*$ This and the next two slides are inspired by Harald Uhlig's notation \& wonderful slides.
 \end{frame}
 
+
+\begin{frame}
+\frametitle[alignment=center]{Kalman Motivation}
+\begin{itemize}
+\item What if you observe some \textbf{possibly noisy} vector of values \textcolor{red}{Y} and want to use them to track some \textbf{possibly moving} vector of values \textcolor{blue}{$\xi$}?
+\begin{itemize}
+\item Bayesian Estimation: \textcolor{red}{Data} and \textcolor{blue}{Coefficents}
+\bigskip
+\item Polling: \textcolor{red}{Poll} and \textcolor{blue}{Latent Preferences}
+\bigskip
+\item Permanent Income: \textcolor{red}{period income and consumption} and \textcolor{blue}{Agent beliefs about permanent income}
+\bigskip
+\item Ballistic missiles, cars: \textcolor{red}{noisy GPS signal} and \textcolor{blue}{actual location}
+\end{itemize}
+\bigskip
+\item Want to combine noisy observations, unobservable moving due to some law of motion (with noise)
+\bigskip
+\item This is the Kalman Filter 
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle[alignment=center]{Intuition/Shape of Kalman Algorithm}
+\begin{itemize}
+\item Start with beliefs (mean, variance) about $\xi$ this period (not conditional on information this period)
+\bigskip
+\item We therefore have beliefs about what $Y$ will be (both itself noisy + don't know $\xi$ in truth)
+\bigskip
+\item Observe $Y$
+\bigskip
+\item Degree to which we are surprised by $Y$, plus how much we trust it, determines how we change our beliefs about mean and variance of $\xi$ (conditional on information this period)
+\bigskip
+\item Now we have (mean, variance) beliefs about today conditional on data today
+\bigskip
+\item Forecast (mean, variance) beliefs about tomorrow using law of motion
+\bigskip
+\item Repeat
+\end{itemize}
+\end{frame}
+
+
+
+
+
 \begin{frame}
 \frametitle[alignment=center]{Kalman System}
 \begin{itemize}
 \item You have an observation equation:
-$$Y_t=H_t\xi_t+\epsilon_t\ \ \ \ \ \epsilon_t\sim\mathcal{N}\left(0,\Sigma_t\right)$$
+$$\textcolor{red}{Y_t}=H_t\textcolor{blue}{\xi_t}+\epsilon_t\ \ \ \ \ \epsilon_t\sim\mathcal{N}\left(0,\Sigma_t\right)$$
 \item And a state equation:
 $$\xi_{t+1}=F_{t+1}\xi_t+\eta_{t+1}\ \ \ \ \ \eta_{t+1}\sim\mathcal{N}\left(0,\Phi_{t+1}\right)$$
 \item We assume that $\epsilon_t$ and $\eta_t$ are independent.
@@ -374,6 +420,23 @@ $$Y_t\sim\mathcal{N}\left(H_t\xi_t,\Sigma_t\right),\ \ \ \ \xi_{t}\sim\mathcal{N
 \item Now you can run Kalman filter point-by-point on your data to uncover your belief\ \emph{distribution} over your coefficients.
 \end{itemize}
 \end{frame}
+
+\begin{frame}
+\frametitle[alignment=center]{Kalman Smoother}
+\begin{itemize}
+\item Note that your beliefs at any given point are optimal given initial beliefs conditional on information \emph{up to that point}
+\bigskip
+\item But beliefs about today weren't conditioned on tomorrow's data
+\bigskip
+\item But tomorrow tells us something about today!
+\bigskip
+\item Once run Kalman Filter, you have beliefs about $\xi$ conditional on all past data, can run in reverse, condition beliefs about yesterday on today's data
+\bigskip
+\item This is the Kalman Smoother
+\end{itemize}
+\end{frame}
+
+
 
 \begin{frame}
 \frametitle[alignment=center]{One More Example: BVars (DSGE estimation)} 

@@ -1,5 +1,11 @@
 \begin{thebibliography}{}
 
+\bibitem[Auclert et~al., 2021]{Auclertetal2021}
+Auclert, A., Bard{\'o}czy, B., Rognlie, M., and Straub, L. (2021).
+\newblock Using the sequence-space jacobian to solve and estimate
+  heterogeneous-agent models.
+\newblock {\em Econometrica}, 89(5):2375--2408.
+
 \bibitem[Blundell et~al., 2008]{BlundellPrestonPistaferri2008}
 Blundell, R., Pistaferri, L., and Preston, I. (2008).
 \newblock Consumption inequality and partial insurance.
