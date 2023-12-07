@@ -101,6 +101,63 @@ $$x_2|x_1\sim\mathcal{N}\left(\rho x_1,(1-\rho)^2\right)$$
 }
 
 \begin{frame}
+\frametitle[alignment=center]{Rejection Sampling}
+\begin{itemize}
+\item Rejection sampling pretty easy way to draw from distributions if you can sample from uniform distribution
+\bigskip
+\item Want to draw from pdf $f(x)$ (x can be vector) 
+\bigskip
+\item Draw a uniformly-distributed set of $N$ $\hat{x}$'s and $\hat{y}$'s that span support of $f$ and the domain of $f$, respectively
+\bigskip
+\item Drop all the samples for which $\hat{y}>f(\hat{x}_i)$
+\bigskip
+\item Feels like dark magic first time you see it (Buffon's needle)
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle[alignment=center]{Rejection Sampling-Example}
+\begin{figure}
+\centering
+\includegraphics[scale=0.24]{RejectionSampling.png}
+\end{figure}
+Drop the blues, keep the reds, distributed normally with mean zero standard deviation 5
+\end{frame}
+
+
+\begin{frame}
+\frametitle[alignment=center]{Metropolis Hastings-Intro}
+\begin{itemize}
+\item Likelihoods coming from linearized models, as in macro, are pretty easy.
+\bigskip
+\item Let's say you wanted to do Bayesian estimation on a structural model
+\bigskip
+\item It's pretty hard!  Filter, a well-behaved distribution through a maximization problem with kinks, cliffs, and curvature and you quickly have an `intractable$^*$ posterior
+\bigskip
+\item How can we sample from it?
+\bigskip
+\item Metropolis Hastings Algorithm 
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle[alignment=center]{Metropolis Hastings-Idea}
+\begin{itemize}
+\item The core of MH is rejection sampling
+\bigskip
+\item Start out with an $x$
+\bigskip
+\item Randomly sample new $\hat{x}$
+\bigskip
+\item If  $f(\hat{x})=0.5 f(x)$, want to move there only sometimes (spend more time in more likely regions)
+\bigskip
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}
 \frametitle[alignment=center]{Metropolis Hastings}
 What if we can only evaluate likelihood at a given point?
 \begin{enumerate}
@@ -126,6 +183,7 @@ $$g(x^i|x')=g(x',x^i)$$
 \bigskip
 \item Our acceptance probability is easy:
 $$pr(x^i,x')=\min\left\{1,\frac{f(x')}{f(x^i)}\right\}$$
+\item Acceptance probability can be derived from wanting our Markov chain's stationary distribution to be equal to $f(x)$ conditional on switching probability
 \end{itemize}
 \end{frame}
 
@@ -152,7 +210,7 @@ $$g(x'|x)\sim\mathcal{N}(x,0.1)$$
 \foreach \x in {1,2,...,30}
 {
 \begin{frame}
-\frametitle[alignment=center]{Metropolist-Hastings Random Walk: Example}
+\frametitle[alignment=center]{Metropolis-Hastings Random Walk: Example}
 \includegraphics[scale=0.5]{MH_\x.png}
 \end{frame}
 }
